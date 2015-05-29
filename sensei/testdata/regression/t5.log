@@ -1,0 +1,908 @@
+line {
+  timestamp: 1430141594797130494
+  command_list_config {
+    command {
+      set {
+        logging {
+          log_timestamp: false
+          text_log_path: "../sensei/testdata/regression/t5.log"
+          clear_log_files: true
+        }
+        inertia_factor: 1
+        allow_undo: true
+        deterministic: true
+      }
+    }
+    command {
+      read_data {
+        data_reader {
+          format: LIBSVM
+          feature_spec {
+            product {
+              prefix: ""
+            }
+          }
+          thread_count: 1
+          training_set {
+            files_glob: ""
+          }
+        }
+      }
+    }
+    command {
+      internal {
+        get_model {
+        }
+      }
+    }
+    command {
+      repeat {
+        repetitions: 9
+        command {
+          fit_model_weights {
+            iterations: 1
+          }
+        }
+        command {
+          evaluate_stats {
+            auc: true
+          }
+        }
+        command {
+          internal {
+            get_model {
+            }
+          }
+        }
+      }
+    }
+  }
+  run_id: 864587174266492284
+}
+line {
+  timestamp: 1430141594797449524
+  run_command {
+    set {
+      logging {
+        log_timestamp: false
+        text_log_path: "../sensei/testdata/regression/t5.log"
+        clear_log_files: true
+      }
+      inertia_factor: 1
+      allow_undo: true
+      deterministic: true
+    }
+  }
+  run_id: 864587174266492284
+}
+line {
+  run_command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+        training_set {
+          files_glob: ""
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_model {
+      }
+    }
+  }
+}
+line {
+  internal_model {
+    precision: 0
+    w: 0
+    delta_w: 0
+    prev_total_loss: inf
+    creation_time: 1
+    loss_derivative: 0
+    current_creation_time: 1
+    total_loss: inf
+    synced_with_weights: false
+  }
+}
+line {
+  run_command {
+    repeat {
+      repetitions: 9
+      command {
+        fit_model_weights {
+          iterations: 1
+        }
+      }
+      command {
+        evaluate_stats {
+          auc: true
+        }
+      }
+      command {
+        internal {
+          get_model {
+          }
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  iteration {
+    index: 0
+    weight_stats {
+      size: 1
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    delta_weight_stats {
+      size: 1
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 3
+      loss: 2.0794415416798357
+      dloss {
+        size: 1
+        l1: 0.5
+        l2: 0.25
+        nonzero_count: 1
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: inf
+    total_loss: 2.0794415416798357
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.33333333333333331
+    cos_angle_loss_derivative_vs_delta_weight: -1
+  }
+}
+line {
+  iteration {
+    index: 1
+    weight_stats {
+      size: 1
+      l1: 0.66666666666666663
+      l2: 0.44444444444444442
+      nonzero_count: 1
+    }
+    delta_weight_stats {
+      size: 1
+      l1: 0.66666666666666663
+      l2: 0.44444444444444442
+      nonzero_count: 1
+    }
+    training_data_stats {
+      size: 3
+      loss: 1.9097769272228826
+      dloss {
+        size: 1
+        l1: 0.017730893702548545
+        l2: 0.00031438459149107565
+        nonzero_count: 1
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 2.0794415416798357
+    total_loss: 1.9097769272228826
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.5
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_model {
+      }
+    }
+  }
+}
+line {
+  internal_model {
+    precision: 0.75
+    w: 0.66666666666666663
+    delta_w: 0.66666666666666663
+    prev_total_loss: 2.0794415416798357
+    creation_time: 1
+    loss_derivative: -0.017730893702548545
+    current_creation_time: 1
+    total_loss: 1.9097769272228826
+    synced_with_weights: true
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.012255186624382675
+    cos_angle_loss_derivative_vs_delta_weight: -1
+  }
+}
+line {
+  iteration {
+    index: 2
+    weight_stats {
+      size: 1
+      l1: 1.3578437065820985
+      l2: 1.8437395315046121
+      nonzero_count: 1
+    }
+    delta_weight_stats {
+      size: 1
+      l1: 0.69117703991543189
+      l2: 0.47772570050625851
+      nonzero_count: 1
+    }
+    training_data_stats {
+      size: 3
+      loss: 2.044540124664957
+      dloss {
+        size: 1
+        l1: 0.38622706009316132
+        l2: 0.14917134194820644
+        nonzero_count: 1
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 1.9097769272228826
+    total_loss: 2.044540124664957
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.5
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_model {
+      }
+    }
+  }
+}
+line {
+  internal_model {
+    precision: 0.72340365944617724
+    w: 1.3578437065820985
+    delta_w: 0.69117703991543189
+    prev_total_loss: 1.9097769272228826
+    creation_time: 1
+    loss_derivative: 0.38622706009316132
+    current_creation_time: 1
+    total_loss: 2.044540124664957
+    synced_with_weights: true
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    undo_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 3
+    weight_stats {
+      size: 1
+      l1: 0.66666666666666663
+      l2: 0.44444444444444442
+      nonzero_count: 1
+    }
+    delta_weight_stats {
+      size: 1
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 3
+      loss: 1.9097769272228826
+      dloss {
+        size: 1
+        l1: 0.017730893702548545
+        l2: 0.00031438459149107565
+        nonzero_count: 1
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 2.044540124664957
+    total_loss: 1.9097769272228826
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.5
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_model {
+      }
+    }
+  }
+}
+line {
+  internal_model {
+    precision: 0.72340365944617724
+    w: 0.66666666666666663
+    delta_w: 0
+    prev_total_loss: 2.044540124664957
+    creation_time: 1
+    loss_derivative: -0.017730893702548545
+    current_creation_time: 1
+    total_loss: 1.9097769272228826
+    synced_with_weights: true
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.00043459082268364825
+    cos_angle_loss_derivative_vs_delta_weight: -1
+  }
+}
+line {
+  iteration {
+    index: 4
+    weight_stats {
+      size: 1
+      l1: 0.691177039915432
+      l2: 0.47772570050625868
+      nonzero_count: 1
+    }
+    delta_weight_stats {
+      size: 1
+      l1: 0.024510373248765371
+      l2: 0.0006007583967937932
+      nonzero_count: 1
+    }
+    training_data_stats {
+      size: 3
+      loss: 1.9095437989855744
+      dloss {
+        size: 1
+        l1: 0.0013138580855714954
+        l2: 1.7262230690215949e-06
+        nonzero_count: 1
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 1.9097769272228826
+    total_loss: 1.9095437989855744
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.5
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_model {
+      }
+    }
+  }
+}
+line {
+  internal_model {
+    precision: 0.72340365944617724
+    w: 0.691177039915432
+    delta_w: 0.024510373248765371
+    prev_total_loss: 1.9097769272228826
+    creation_time: 1
+    loss_derivative: -0.0013138580855714954
+    current_creation_time: 1
+    total_loss: 1.9095437989855744
+    synced_with_weights: true
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -3.4595690487306522e-05
+    cos_angle_loss_derivative_vs_delta_weight: -1
+  }
+}
+line {
+  iteration {
+    index: 5
+    weight_stats {
+      size: 1
+      l1: 0.717508415325934
+      l2: 0.51481832606353306
+      nonzero_count: 1
+    }
+    delta_weight_stats {
+      size: 1
+      l1: 0.026331375410502011
+      l2: 0.00069334133100879
+      nonzero_count: 1
+    }
+    training_data_stats {
+      size: 3
+      loss: 1.9097397894341619
+      dloss {
+        size: 1
+        l1: 0.01617435207150153
+        l2: 0.00026160966493288582
+        nonzero_count: 1
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 1.9095437989855744
+    total_loss: 1.9097397894341619
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.5
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_model {
+      }
+    }
+  }
+}
+line {
+  internal_model {
+    precision: 0.72150275995198632
+    w: 0.717508415325934
+    delta_w: 0.026331375410502011
+    prev_total_loss: 1.9095437989855744
+    creation_time: 1
+    loss_derivative: 0.01617435207150153
+    current_creation_time: 1
+    total_loss: 1.9097397894341619
+    synced_with_weights: true
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    undo_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 6
+    weight_stats {
+      size: 1
+      l1: 0.691177039915432
+      l2: 0.47772570050625868
+      nonzero_count: 1
+    }
+    delta_weight_stats {
+      size: 1
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 3
+      loss: 1.9095437989855744
+      dloss {
+        size: 1
+        l1: 0.0013138580855714954
+        l2: 1.7262230690215949e-06
+        nonzero_count: 1
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 1.9097397894341619
+    total_loss: 1.9095437989855744
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.5
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_model {
+      }
+    }
+  }
+}
+line {
+  internal_model {
+    precision: 0.72150275995198632
+    w: 0.691177039915432
+    delta_w: 0
+    prev_total_loss: 1.9097397894341619
+    creation_time: 1
+    loss_derivative: -0.0013138580855714954
+    current_creation_time: 1
+    total_loss: 1.9095437989855744
+    synced_with_weights: true
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -2.3925384140408568e-06
+    cos_angle_loss_derivative_vs_delta_weight: -1.0000000000000002
+  }
+}
+line {
+  iteration {
+    index: 7
+    weight_stats {
+      size: 1
+      l1: 0.69299804207716864
+      l2: 0.48024628632278921
+      nonzero_count: 1
+    }
+    delta_weight_stats {
+      size: 1
+      l1: 0.00182100216173664
+      l2: 3.3160488730495161e-06
+      nonzero_count: 1
+    }
+    training_data_stats {
+      size: 3
+      loss: 1.9095425122986571
+      dloss {
+        size: 1
+        l1: 9.9428126426825969e-05
+        l2: 9.8859523247488879e-09
+        nonzero_count: 1
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 1.9095437989855744
+    total_loss: 1.9095425122986571
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.5
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_model {
+      }
+    }
+  }
+}
+line {
+  internal_model {
+    precision: 0.72150275995198632
+    w: 0.69299804207716864
+    delta_w: 0.00182100216173664
+    prev_total_loss: 1.9095437989855744
+    creation_time: 1
+    loss_derivative: -9.9428126426825969e-05
+    current_creation_time: 1
+    total_loss: 1.9095425122986571
+    synced_with_weights: true
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -1.9476344961959041e-07
+    cos_angle_loss_derivative_vs_delta_weight: -1
+  }
+}
+line {
+  iteration {
+    index: 8
+    weight_stats {
+      size: 1
+      l1: 0.6949568786420206
+      l2: 0.48296506317186016
+      nonzero_count: 1
+    }
+    delta_weight_stats {
+      size: 1
+      l1: 0.0019588365648519623
+      l2: 3.8370406878010363e-06
+      nonzero_count: 1
+    }
+    training_data_stats {
+      size: 3
+      loss: 1.909543596333878
+      dloss {
+        size: 1
+        l1: 0.0012061012790224312
+        l2: 1.4546802952595445e-06
+        nonzero_count: 1
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 1.9095425122986571
+    total_loss: 1.909543596333878
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.5
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_model {
+      }
+    }
+  }
+}
+line {
+  internal_model {
+    precision: 0.72135928461671894
+    w: 0.6949568786420206
+    delta_w: 0.0019588365648519623
+    prev_total_loss: 1.9095425122986571
+    creation_time: 1
+    loss_derivative: 0.0012061012790224312
+    current_creation_time: 1
+    total_loss: 1.909543596333878
+    synced_with_weights: true
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    undo_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 9
+    weight_stats {
+      size: 1
+      l1: 0.69299804207716864
+      l2: 0.48024628632278921
+      nonzero_count: 1
+    }
+    delta_weight_stats {
+      size: 1
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 3
+      loss: 1.9095425122986571
+      dloss {
+        size: 1
+        l1: 9.9428126426825969e-05
+        l2: 9.8859523247488879e-09
+        nonzero_count: 1
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 1.909543596333878
+    total_loss: 1.9095425122986571
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.5
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_model {
+      }
+    }
+  }
+}
+line {
+  internal_model {
+    precision: 0.72135928461671894
+    w: 0.69299804207716864
+    delta_w: 0
+    prev_total_loss: 1.909543596333878
+    creation_time: 1
+    loss_derivative: -9.9428126426825969e-05
+    current_creation_time: 1
+    total_loss: 1.9095425122986571
+    synced_with_weights: true
+  }
+}

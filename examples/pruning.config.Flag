@@ -1,0 +1,55 @@
+command_list {
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set {
+          files_glob: "input.libsvm"
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        feature_spec {
+          product {
+          }
+        }
+      }
+    }
+  }
+  command {
+    fit_model_weights {
+      iterations: 100
+    }
+  }
+  command {
+    prune_features {
+      feature_pruning {
+        feature_scoring {
+          feature_ordering: WEIGHT_ABSOLUTE_VALUE
+        }
+        top_fraction: 0.5
+      }
+    }
+  }
+  command {
+    fit_model_weights {
+      iterations: 100
+    }
+  }
+  command {
+    write_model {
+      set {
+        format: TEXT
+        output_model_path: "model.txt"
+      }
+    }
+  }
+  command {
+    write_model {
+      write {
+      }
+    }
+  }
+}

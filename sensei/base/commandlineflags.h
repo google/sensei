@@ -1,0 +1,6 @@
+#ifndef SENSEI_BASE_COMMANDLINEFLAGS_H_
+#define SENSEI_BASE_COMMANDLINEFLAGS_H_
+
+#include <gflags/gflags.h>
+
+#endif  // SENSEI_BASE_COMMANDLINEFLAGS_H_

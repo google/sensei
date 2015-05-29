@@ -1,0 +1,1951 @@
+line {
+  timestamp: 1430141535402288907
+  command_list_config {
+    command {
+      set {
+        name: "t1_sgd test :)"
+        logging {
+          log_timestamp: false
+          text_log_path: "../sensei/testdata/regression/t1_sgd.log"
+          clear_log_files: true
+        }
+        regularization {
+          l1: 1
+          l2: 0.5
+        }
+        sgd_learning_rate_schedule {
+          start_learning_rate: 0.5
+        }
+        deterministic: true
+      }
+    }
+    command {
+      read_data {
+        data_reader {
+          format: LIBSVM
+          feature_spec {
+            product {
+            }
+          }
+          feature_spec {
+            product {
+              prefix: ""
+            }
+          }
+          thread_count: 1
+          training_set {
+            files_glob: ""
+          }
+        }
+      }
+    }
+    command {
+      repeat {
+        repetitions: 20
+        command {
+          sgd {
+            learning_rate {
+              store_total_loss {
+              }
+            }
+          }
+        }
+        command {
+          run_sgd {
+            iterations: 50
+          }
+        }
+        command {
+          sgd {
+            learning_rate {
+              maybe_reduce {
+              }
+            }
+          }
+        }
+      }
+    }
+    command {
+      get_model {
+      }
+    }
+    command {
+      write_model {
+        set {
+          output_model_path: "../sensei/testdata/regression/t1_sgd.model"
+          format: TEXT
+        }
+      }
+    }
+    command {
+      write_model {
+        write {
+        }
+      }
+    }
+  }
+  run_id: 2674242239778754649
+}
+line {
+  timestamp: 1430141535402637951
+  run_command {
+    set {
+      name: "t1_sgd test :)"
+      logging {
+        log_timestamp: false
+        text_log_path: "../sensei/testdata/regression/t1_sgd.log"
+        clear_log_files: true
+      }
+      regularization {
+        l1: 1
+        l2: 0.5
+      }
+      sgd_learning_rate_schedule {
+        start_learning_rate: 0.5
+      }
+      deterministic: true
+    }
+  }
+  run_id: 2674242239778754649
+}
+line {
+  run_command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        feature_spec {
+          product {
+          }
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+        training_set {
+          files_glob: ""
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    repeat {
+      repetitions: 20
+      command {
+        sgd {
+          learning_rate {
+            store_total_loss {
+            }
+          }
+        }
+      }
+      command {
+        run_sgd {
+          iterations: 50
+        }
+      }
+      command {
+        sgd {
+          learning_rate {
+            maybe_reduce {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 0
+    weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 1112.5012247986658
+      dloss {
+        size: 114
+        l1: 6108.5
+        l2: 1289151.25
+        nonzero_count: 88
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: inf
+    total_loss: 1112.5012247986658
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 50
+    weight_stats {
+      size: 114
+      l1: 14.478970885105413
+      l2: 9.9907165703986323
+      nonzero_count: 35
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 617.82939520615946
+      dloss {
+        size: 114
+        l1: 829.41335259574794
+        l2: 22303.679075973432
+        nonzero_count: 70
+      }
+    }
+    regularization_stats {
+      loss: 19.474329170304721
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 1112.5012247986658
+    total_loss: 637.30372437646417
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 1112.5012247986658
+        current_total_loss: 637.30372437646417
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 100
+    weight_stats {
+      size: 114
+      l1: 14.478970885105415
+      l2: 9.9907165703986323
+      nonzero_count: 35
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 617.829395206159
+      dloss {
+        size: 114
+        l1: 829.41335259574453
+        l2: 22303.679075973327
+        nonzero_count: 70
+      }
+    }
+    regularization_stats {
+      loss: 19.474329170304721
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 637.30372437646417
+    total_loss: 637.30372437646372
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 637.30372437646417
+        current_total_loss: 637.30372437646372
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 150
+    weight_stats {
+      size: 114
+      l1: 14.47897088510541
+      l2: 9.9907165703986287
+      nonzero_count: 35
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 617.82939520615946
+      dloss {
+        size: 114
+        l1: 829.41335259574669
+        l2: 22303.679075973396
+        nonzero_count: 70
+      }
+    }
+    regularization_stats {
+      loss: 19.474329170304721
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 637.30372437646372
+    total_loss: 637.30372437646417
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 637.30372437646372
+        current_total_loss: 637.30372437646417
+        previous_learning_rate: 0.5
+        current_learning_rate: 0.1
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 200
+    weight_stats {
+      size: 114
+      l1: 23.15717269917258
+      l2: 17.688292366530767
+      nonzero_count: 56
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 560.2340334326426
+      dloss {
+        size: 114
+        l1: 1594.1660685701816
+        l2: 94130.343062469881
+        nonzero_count: 79
+      }
+    }
+    regularization_stats {
+      loss: 32.001318882437964
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 637.30372437646417
+    total_loss: 592.2353523150806
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 637.30372437646417
+        current_total_loss: 592.2353523150806
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 250
+    weight_stats {
+      size: 114
+      l1: 23.157219097510129
+      l2: 17.693984626605626
+      nonzero_count: 56
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 560.23042236335732
+      dloss {
+        size: 114
+        l1: 1594.1500870556874
+        l2: 94129.07626241367
+        nonzero_count: 79
+      }
+    }
+    regularization_stats {
+      loss: 32.004211410812943
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 592.2353523150806
+    total_loss: 592.23463377417022
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 592.2353523150806
+        current_total_loss: 592.23463377417022
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 300
+    weight_stats {
+      size: 114
+      l1: 23.157214360251594
+      l2: 17.694007571272476
+      nonzero_count: 56
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 560.23041323130246
+      dloss {
+        size: 114
+        l1: 1594.1500259097641
+        l2: 94129.071697208085
+        nonzero_count: 79
+      }
+    }
+    regularization_stats {
+      loss: 32.004218145887826
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 592.23463377417022
+    total_loss: 592.23463137719034
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 592.23463377417022
+        current_total_loss: 592.23463137719034
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 350
+    weight_stats {
+      size: 114
+      l1: 23.157214325326812
+      l2: 17.6940076750901
+      nonzero_count: 56
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 560.23041320783966
+      dloss {
+        size: 114
+        l1: 1594.1500256985162
+        l2: 94129.071684715527
+        nonzero_count: 79
+      }
+    }
+    regularization_stats {
+      loss: 32.004218162871865
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 592.23463137719034
+    total_loss: 592.23463137071155
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 592.23463137719034
+        current_total_loss: 592.23463137071155
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 400
+    weight_stats {
+      size: 114
+      l1: 23.157214325120609
+      l2: 17.694007675589095
+      nonzero_count: 56
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 560.23041320777907
+      dloss {
+        size: 114
+        l1: 1594.1500256977265
+        l2: 94129.071684683426
+        nonzero_count: 79
+      }
+    }
+    regularization_stats {
+      loss: 32.004218162915159
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 592.23463137071155
+    total_loss: 592.23463137069427
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 592.23463137071155
+        current_total_loss: 592.23463137069427
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 450
+    weight_stats {
+      size: 114
+      l1: 23.15721432511948
+      l2: 17.694007675591564
+      nonzero_count: 56
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 560.23041320777907
+      dloss {
+        size: 114
+        l1: 1594.1500256977231
+        l2: 94129.071684683309
+        nonzero_count: 79
+      }
+    }
+    regularization_stats {
+      loss: 32.004218162915272
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 592.23463137069427
+    total_loss: 592.23463137069439
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 592.23463137069427
+        current_total_loss: 592.23463137069439
+        previous_learning_rate: 0.1
+        current_learning_rate: 0.020000000000000004
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 500
+    weight_stats {
+      size: 114
+      l1: 24.6260600532636
+      l2: 18.782087350675305
+      nonzero_count: 66
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 517.7853934491061
+      dloss {
+        size: 114
+        l1: 411.60525563515358
+        l2: 6000.4537706702713
+        nonzero_count: 75
+      }
+    }
+    regularization_stats {
+      loss: 34.017103728601242
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 592.23463137069439
+    total_loss: 551.80249717770732
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 592.23463137069439
+        current_total_loss: 551.80249717770732
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 550
+    weight_stats {
+      size: 114
+      l1: 24.67326572801171
+      l2: 18.871897709873767
+      nonzero_count: 63
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 517.6622194567077
+      dloss {
+        size: 114
+        l1: 410.33159257756768
+        l2: 6009.9377848656222
+        nonzero_count: 75
+      }
+    }
+    regularization_stats {
+      loss: 34.109214582948596
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 551.80249717770732
+    total_loss: 551.77143403965624
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 551.80249717770732
+        current_total_loss: 551.77143403965624
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 600
+    weight_stats {
+      size: 114
+      l1: 24.685134603844862
+      l2: 18.883310726347993
+      nonzero_count: 63
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 517.64531054477436
+      dloss {
+        size: 114
+        l1: 410.5043750870592
+        l2: 6015.1453782181761
+        nonzero_count: 75
+      }
+    }
+    regularization_stats {
+      loss: 34.126789967018858
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 551.77143403965624
+    total_loss: 551.77210051179327
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 551.77143403965624
+        current_total_loss: 551.77210051179327
+        previous_learning_rate: 0.020000000000000004
+        current_learning_rate: 0.004000000000000001
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 650
+    weight_stats {
+      size: 114
+      l1: 24.844542623048845
+      l2: 18.979321247877863
+      nonzero_count: 60
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 514.82067808467275
+      dloss {
+        size: 114
+        l1: 67.2768302910015
+        l2: 182.54255924958852
+        nonzero_count: 67
+      }
+    }
+    regularization_stats {
+      loss: 34.334203246987784
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 551.77210051179327
+    total_loss: 549.15488133166059
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 551.77210051179327
+        current_total_loss: 549.15488133166059
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 700
+    weight_stats {
+      size: 114
+      l1: 24.819261153218534
+      l2: 19.010330273847472
+      nonzero_count: 60
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 514.82033223407552
+      dloss {
+        size: 114
+        l1: 67.722710977027177
+        l2: 187.24121227755958
+        nonzero_count: 67
+      }
+    }
+    regularization_stats {
+      loss: 34.32442629014227
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 549.15488133166059
+    total_loss: 549.14475852421776
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 549.15488133166059
+        current_total_loss: 549.14475852421776
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 750
+    weight_stats {
+      size: 114
+      l1: 24.802926752585112
+      l2: 19.023205063562866
+      nonzero_count: 59
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 514.826712852811
+      dloss {
+        size: 114
+        l1: 67.577130992436665
+        l2: 187.60922665853789
+        nonzero_count: 66
+      }
+    }
+    regularization_stats {
+      loss: 34.314529284366536
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 549.14475852421776
+    total_loss: 549.14124213717764
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 549.14475852421776
+        current_total_loss: 549.14124213717764
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 800
+    weight_stats {
+      size: 114
+      l1: 24.797240497936109
+      l2: 19.032092077530454
+      nonzero_count: 59
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 514.82669359331271
+      dloss {
+        size: 114
+        l1: 67.510594686337029
+        l2: 187.42309740816361
+        nonzero_count: 66
+      }
+    }
+    regularization_stats {
+      loss: 34.313286536701327
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 549.14124213717764
+    total_loss: 549.139980130014
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 549.14124213717764
+        current_total_loss: 549.139980130014
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 850
+    weight_stats {
+      size: 114
+      l1: 24.793687759985467
+      l2: 19.037693928465835
+      nonzero_count: 59
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 514.82679407701835
+      dloss {
+        size: 114
+        l1: 67.4501917176364
+        l2: 187.16756749208892
+        nonzero_count: 66
+      }
+    }
+    regularization_stats {
+      loss: 34.312534724218381
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 549.139980130014
+    total_loss: 549.13932880123673
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 549.139980130014
+        current_total_loss: 549.13932880123673
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 900
+    weight_stats {
+      size: 114
+      l1: 24.791342210245716
+      l2: 19.04130821042601
+      nonzero_count: 59
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 514.82694631089726
+      dloss {
+        size: 114
+        l1: 67.40191852449631
+        l2: 186.94319459734439
+        nonzero_count: 66
+      }
+    }
+    regularization_stats {
+      loss: 34.311996315458721
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 549.13932880123673
+    total_loss: 549.138942626356
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 549.13932880123673
+        current_total_loss: 549.138942626356
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 950
+    weight_stats {
+      size: 114
+      l1: 24.789764330535778
+      l2: 19.043720529332809
+      nonzero_count: 59
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 514.82706814446919
+      dloss {
+        size: 114
+        l1: 67.366328014666351
+        l2: 186.76547696778874
+        nonzero_count: 66
+      }
+    }
+    regularization_stats {
+      loss: 34.311624595202169
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 549.138942626356
+    total_loss: 549.13869273967134
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 549.138942626356
+        current_total_loss: 549.13869273967134
+      }
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        store_total_loss {
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    run_sgd {
+      iterations: 50
+    }
+  }
+}
+line {
+  run_command {
+    sgd {
+      learning_rate {
+        maybe_reduce {
+        }
+      }
+    }
+  }
+}
+line {
+  iteration {
+    index: 1000
+    weight_stats {
+      size: 114
+      l1: 24.788686871738598
+      l2: 19.04536201908487
+      nonzero_count: 59
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 514.82715405072327
+      dloss {
+        size: 114
+        l1: 67.340929809661873
+        l2: 186.62993920722141
+        nonzero_count: 66
+      }
+    }
+    regularization_stats {
+      loss: 34.311367881281022
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 549.13869273967134
+    total_loss: 549.13852193200432
+  }
+}
+line {
+  sgd {
+    learning_rate {
+      maybe_reduce {
+        previous_total_loss: 549.13869273967134
+        current_total_loss: 549.13852193200432
+      }
+    }
+  }
+}
+line {
+  run_command {
+    get_model {
+    }
+  }
+}
+line {
+  model {
+    weight {
+      feature: "74"
+      weight: -1.3887627
+    }
+    weight {
+      feature: "1"
+      weight: -1.1308923
+    }
+    weight {
+      feature: "35"
+      weight: -1.0328751
+    }
+    weight {
+      feature: "78"
+      weight: -0.98386919
+    }
+    weight {
+      feature: "76"
+      weight: -0.9751485
+    }
+    weight {
+      feature: "69"
+      weight: -0.87988091
+    }
+    weight {
+      feature: "33"
+      weight: -0.63950235
+    }
+    weight {
+      feature: "49"
+      weight: -0.53440082
+    }
+    weight {
+      feature: "2"
+      weight: -0.5044238
+    }
+    weight {
+      feature: "62"
+      weight: -0.47095507
+    }
+    weight {
+      feature: "19"
+      weight: -0.41692361
+    }
+    weight {
+      feature: "80"
+      weight: -0.40663359
+    }
+    weight {
+      feature: "86"
+      weight: -0.3161332
+    }
+    weight {
+      feature: "11"
+      weight: -0.29293093
+    }
+    weight {
+      feature: "44"
+      weight: -0.2890265
+    }
+    weight {
+      feature: "42"
+      weight: -0.25773534
+    }
+    weight {
+      feature: "24"
+      weight: -0.23703814
+    }
+    weight {
+      weight: -0.21293361
+    }
+    weight {
+      feature: "65"
+      weight: -0.20363724
+    }
+    weight {
+      feature: "14"
+      weight: -0.19044922
+    }
+    weight {
+      feature: "18"
+      weight: -0.18896966
+    }
+    weight {
+      feature: "72"
+      weight: -0.18046032
+    }
+    weight {
+      feature: "57"
+      weight: -0.17939931
+    }
+    weight {
+      feature: "7"
+      weight: -0.16764052
+    }
+    weight {
+      feature: "66"
+      weight: -0.16663058
+    }
+    weight {
+      feature: "41"
+      weight: -0.13971908
+    }
+    weight {
+      feature: "48"
+      weight: -0.1177068
+    }
+    weight {
+      feature: "88"
+      weight: -0.11103
+    }
+    weight {
+      feature: "26"
+      weight: -0.091406263
+    }
+    weight {
+      feature: "22"
+      weight: -0.049337018
+    }
+    weight {
+      feature: "36"
+      weight: -0.049337018
+    }
+    weight {
+      feature: "71"
+      weight: -0.017024217
+    }
+    weight {
+      feature: "16"
+      weight: -0.012653219
+    }
+    weight {
+      feature: "6"
+      weight: 0.027129432
+    }
+    weight {
+      feature: "15"
+      weight: 0.029758237
+    }
+    weight {
+      feature: "83"
+      weight: 0.064547285
+    }
+    weight {
+      feature: "8"
+      weight: 0.081090711
+    }
+    weight {
+      feature: "50"
+      weight: 0.082020812
+    }
+    weight {
+      feature: "53"
+      weight: 0.1408377
+    }
+    weight {
+      feature: "68"
+      weight: 0.14224853
+    }
+    weight {
+      feature: "17"
+      weight: 0.14894469
+    }
+    weight {
+      feature: "52"
+      weight: 0.15643658
+    }
+    weight {
+      feature: "55"
+      weight: 0.16935138
+    }
+    weight {
+      feature: "75"
+      weight: 0.17582914
+    }
+    weight {
+      feature: "5"
+      weight: 0.25310844
+    }
+    weight {
+      feature: "10"
+      weight: 0.25948426
+    }
+    weight {
+      feature: "47"
+      weight: 0.31872591
+    }
+    weight {
+      feature: "99"
+      weight: 0.42447782
+    }
+    weight {
+      feature: "25"
+      weight: 0.53576827
+    }
+    weight {
+      feature: "4"
+      weight: 0.55158275
+    }
+    weight {
+      feature: "23"
+      weight: 0.5627504
+    }
+    weight {
+      feature: "63"
+      weight: 0.59857649
+    }
+    weight {
+      feature: "9"
+      weight: 0.62618405
+    }
+    weight {
+      feature: "91"
+      weight: 0.72675169
+    }
+    weight {
+      feature: "61"
+      weight: 0.95283127
+    }
+    weight {
+      feature: "51"
+      weight: 0.97566062
+    }
+    weight {
+      feature: "32"
+      weight: 1.2289721
+    }
+    weight {
+      feature: "40"
+      weight: 1.3262739
+    }
+    weight {
+      feature: "39"
+      weight: 1.3938781
+    }
+    last_iteration {
+      index: 1000
+      weight_stats {
+        size: 114
+        l1: 24.788686871738598
+        l2: 19.04536201908487
+        nonzero_count: 59
+      }
+      delta_weight_stats {
+        size: 114
+        l1: 0
+        l2: 0
+        nonzero_count: 0
+      }
+      training_data_stats {
+        size: 1605
+        loss: 514.82715405072327
+        dloss {
+          size: 114
+          l1: 67.340929809661873
+          l2: 186.62993920722141
+          nonzero_count: 66
+        }
+      }
+      regularization_stats {
+        loss: 34.311367881281022
+      }
+      cpu_operation_count_flat_materialization: 0
+      cpu_operation_count_deep_materialization: 0
+      prev_total_loss: 549.13869273967134
+      total_loss: 549.13852193200432
+    }
+  }
+}
+line {
+  run_command {
+    write_model {
+      set {
+        output_model_path: "../sensei/testdata/regression/t1_sgd.model"
+        format: TEXT
+      }
+    }
+  }
+}
+line {
+  run_command {
+    write_model {
+      write {
+      }
+    }
+  }
+}
+line {
+  write_model {
+    last_iteration {
+      index: 1000
+      weight_stats {
+        size: 114
+        l1: 24.788686871738598
+        l2: 19.04536201908487
+        nonzero_count: 59
+      }
+      delta_weight_stats {
+        size: 114
+        l1: 0
+        l2: 0
+        nonzero_count: 0
+      }
+      training_data_stats {
+        size: 1605
+        loss: 514.82715405072327
+        dloss {
+          size: 114
+          l1: 67.340929809661873
+          l2: 186.62993920722141
+          nonzero_count: 66
+        }
+      }
+      regularization_stats {
+        loss: 34.311367881281022
+      }
+      cpu_operation_count_flat_materialization: 0
+      cpu_operation_count_deep_materialization: 0
+      prev_total_loss: 549.13869273967134
+      total_loss: 549.13852193200432
+    }
+  }
+}

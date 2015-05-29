@@ -1,0 +1,46 @@
+/*
+*  Copyright 2015 Google Inc. All Rights Reserved.
+*  
+*  Licensed under the Apache License, Version 2.0 (the "License");
+*  you may not use this file except in compliance with the License.
+*  You may obtain a copy of the License at
+*  
+*      http://www.apache.org/licenses/LICENSE-2.0
+*  
+*  Unless required by applicable law or agreed to in writing, software
+*  distributed under the License is distributed on an "AS IS" BASIS,
+*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*  See the License for the specific language governing permissions and
+*  limitations under the License.
+*/
+syntax = "proto2";
+
+package sensei.config;
+
+message DataFiles {
+  // First unused id: 9.
+
+  // This message describes data consisting of subset of rows in set of files.
+  message DataSet {
+    // First unused id: 3.
+    // Input data files. Glob syntax supported.
+    repeated string files_glob = 1;
+    // If present, only read rows with those features present.
+    repeated string filter_feature = 2;
+  }
+
+  enum Format {
+    // First unused id: 4.
+    LIBSVM = 2;
+  }
+  optional Format format = 1;
+  // Input data files.
+  optional DataSet training_set = 7;
+  optional DataSet holdout_set = 8;
+
+  // Sensei doesn't accept duplicate features in row.
+  // If set to true, there will be deduplication performed on input features.
+  // Duplicates may occur when splitting delimited values.
+  // This could be set to false in order to increase performance.
+  optional bool remove_duplicate_features_in_each_row = 5;
+}

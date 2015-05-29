@@ -1,0 +1,97 @@
+/*
+*  Copyright 2015 Google Inc. All Rights Reserved.
+*  
+*  Licensed under the Apache License, Version 2.0 (the "License");
+*  you may not use this file except in compliance with the License.
+*  You may obtain a copy of the License at
+*  
+*      http://www.apache.org/licenses/LICENSE-2.0
+*  
+*  Unless required by applicable law or agreed to in writing, software
+*  distributed under the License is distributed on an "AS IS" BASIS,
+*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*  See the License for the specific language governing permissions and
+*  limitations under the License.
+*/
+syntax = "proto2";
+
+package sensei.internal;
+
+
+message Model {
+  repeated double precision = 1;
+  repeated double w = 2;
+  repeated double delta_w = 3;
+  repeated double loss_derivative = 7;
+  repeated uint32 creation_time = 6;
+  optional uint32 current_creation_time = 8;
+  optional double prev_total_loss = 5;
+  optional double total_loss = 9;
+  optional bool synced_with_weights = 10;
+
+  // Next free id: 11.
+}
+
+message DetailedStats {
+  // Dense, indexed by j.
+  repeated uint64 xjbools_count = 1;
+}
+
+message ProductMap {
+  // Feature j is a conjunction of all and_j.
+  message JProduct {
+    optional uint32 j = 1;
+    repeated uint32 and_j = 3;
+    repeated string feature = 4;
+    // As calculated by FeatureScoring.
+    optional double score = 5;
+  }
+}
+
+message Dependees {
+  message Dependee {
+    optional uint32 j = 1;
+    optional uint32 j_child = 2;
+  }
+
+  repeated Dependee dependee = 1;
+}
+
+message Data {
+  message Stats {
+    message JStat {
+      optional uint64 j = 1;
+      optional uint64 positive = 2;
+      optional uint64 negative = 3;
+      optional uint64 hash = 4;
+    }
+    optional uint64 positive_row_count = 1;
+    optional uint64 negative_row_count = 2;
+    // indexed by j
+    repeated JStat j_stat = 3;
+  }
+
+  message Shard {
+    message Row {
+      repeated uint32 j = 1;
+      optional double y = 2;
+      optional uint64 id = 3;
+      optional uint64 user_id = 4;
+    }
+    repeated Row row = 1;
+  }
+
+  message ShardSet {
+    repeated Shard shard = 1;
+    optional Stats stats = 2;
+  }
+
+  optional ShardSet training = 1;
+  optional ShardSet holdout = 2;
+  optional Dependees dependees = 3;
+}
+
+message FeatureScoring {
+  repeated ProductMap.JProduct j_product = 1;
+}
+

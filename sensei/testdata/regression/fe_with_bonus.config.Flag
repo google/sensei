@@ -1,0 +1,116 @@
+command_list {
+  command {
+    set {
+      name: "FE with bonus"
+      regularization {
+        l1: 1
+        l2: 0.5
+      }
+      logging {
+        log_timestamp: false
+        text_log_path: "sensei/testdata/regression/fe_with_bonus.log"
+        clear_log_files: true
+      }
+      inertia_factor: 1
+      deterministic: true
+    }
+  }
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set: {
+          files_glob: "sensei/testdata/a1a.libsvm"
+        }
+        feature_spec {
+          product {
+          }
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+      }
+    }
+  }
+  command {
+    repeat {
+      repetitions: 200
+      command {
+        fit_model_weights {
+          iterations: 1
+        }
+      }
+      command {
+        evaluate_stats {
+          auc: true
+        }
+      }
+    }
+  }
+  command {
+    add_new_product_features {
+      feature_exploration {
+        feature_scoring {
+          feature_ordering: WEIGHT_ABSOLUTE_VALUE
+          logging: true
+        }
+        maximum_features_added: 100
+      }
+    }
+  }
+  command {
+    repeat {
+      repetitions: 200
+      command {
+        fit_model_weights {
+          iterations: 1
+        }
+      }
+      command {
+        evaluate_stats {
+          auc: true
+        }
+      }
+    }
+  }
+  command {
+    add_new_product_features {
+      feature_exploration {
+        feature_scoring {
+          feature_ordering: WEIGHT_ABSOLUTE_VALUE
+          logging: true
+          bonus {
+            feature_set {
+              explicit_list {
+                feature: "11"
+                feature: "39"
+              }
+              from_data {
+                feature_prefix: "1"
+              }
+            }
+            factor: 100
+          }
+        }
+        maximum_features_added: 100
+      }
+    }
+  }
+  command {
+    write_model {
+      set {
+        format: TEXT
+        output_model_path: "sensei/testdata/regression/fe_with_bonus.model"
+      }
+    }
+  }
+  command {
+    write_model {
+      write {
+      }
+    }
+  }
+}

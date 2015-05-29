@@ -1,0 +1,130 @@
+line {
+  timestamp: 1430141528091785054
+  command_list_config {
+    command {
+      set {
+        logging {
+          log_timestamp: false
+          text_log_path: "../sensei/testdata/regression/b17267972.log"
+          clear_log_files: true
+        }
+        inertia_factor: 1
+        allow_undo: true
+        deterministic: true
+      }
+    }
+    command {
+      read_data {
+        data_reader {
+          format: LIBSVM
+          feature_spec {
+            product {
+              prefix: ""
+            }
+          }
+          thread_count: 1
+          training_set {
+            files_glob: ""
+          }
+        }
+      }
+    }
+    command {
+      prune_features {
+        feature_pruning {
+          top_count: 0
+          feature_scoring {
+            feature_ordering: WEIGHT_ABSOLUTE_VALUE
+          }
+        }
+      }
+    }
+    command {
+      prune_features {
+        feature_pruning {
+          top_count: 0
+          feature_scoring {
+            feature_ordering: WEIGHT_ABSOLUTE_VALUE
+          }
+        }
+      }
+    }
+  }
+  run_id: 2093235788171466506
+}
+line {
+  timestamp: 1430141528091973645
+  run_command {
+    set {
+      logging {
+        log_timestamp: false
+        text_log_path: "../sensei/testdata/regression/b17267972.log"
+        clear_log_files: true
+      }
+      inertia_factor: 1
+      allow_undo: true
+      deterministic: true
+    }
+  }
+  run_id: 2093235788171466506
+}
+line {
+  run_command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+        training_set {
+          files_glob: ""
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    prune_features {
+      feature_pruning {
+        top_count: 0
+        feature_scoring {
+          feature_ordering: WEIGHT_ABSOLUTE_VALUE
+        }
+      }
+    }
+  }
+}
+line {
+  feature_pruning {
+    features_removed: 1
+    xjbools_removed: 3
+    xjbools_count: 0
+    blocked_features: 0
+    blocked_xjbools: 0
+  }
+}
+line {
+  run_command {
+    prune_features {
+      feature_pruning {
+        top_count: 0
+        feature_scoring {
+          feature_ordering: WEIGHT_ABSOLUTE_VALUE
+        }
+      }
+    }
+  }
+}
+line {
+  feature_pruning {
+    features_removed: 0
+    xjbools_removed: 0
+    xjbools_count: 0
+    blocked_features: 0
+    blocked_xjbools: 0
+  }
+}

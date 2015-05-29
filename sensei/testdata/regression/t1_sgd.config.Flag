@@ -1,0 +1,64 @@
+command_list {
+  command {
+    set {
+      name: "t1_sgd test :)"
+      regularization {
+        l1: 1
+        l2: 0.5
+      }
+      logging {
+        log_timestamp: false
+        text_log_path: "sensei/testdata/regression/t1_sgd.log"
+        clear_log_files: true
+      }
+      sgd_learning_rate_schedule: {
+        start_learning_rate: 0.5
+      }
+      deterministic: true
+    }
+  }
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set: {
+          files_glob: "sensei/testdata/a1a.libsvm"
+        }
+        feature_spec {
+          product {
+          }
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+      }
+    }
+  }
+  # Test that store / maybe_reduce work with pure sgd
+  command {
+    repeat {
+    repetitions: 20
+      command { sgd { learning_rate { store_total_loss {} } } }
+      command { run_sgd { iterations: 50 } }
+      command { sgd { learning_rate { maybe_reduce {} } } }
+    }
+  }
+  command { get_model {} }
+  command {
+    write_model {
+      set {
+        format: TEXT
+        output_model_path: "sensei/testdata/regression/t1_sgd.model"
+      }
+    }
+  }
+  command {
+    write_model {
+      write {
+      }
+    }
+  }
+}

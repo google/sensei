@@ -1,0 +1,644 @@
+/*
+*  Copyright 2015 Google Inc. All Rights Reserved.
+*  
+*  Licensed under the Apache License, Version 2.0 (the "License");
+*  you may not use this file except in compliance with the License.
+*  You may obtain a copy of the License at
+*  
+*      http://www.apache.org/licenses/LICENSE-2.0
+*  
+*  Unless required by applicable law or agreed to in writing, software
+*  distributed under the License is distributed on an "AS IS" BASIS,
+*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*  See the License for the specific language governing permissions and
+*  limitations under the License.
+*/
+
+
+syntax = "proto2";
+
+package sensei.config;
+
+import "sensei/common_config.proto";
+import "sensei/common.proto";
+
+// Please keep the Process() methods in config.cc and config.h grouped and
+// ordered exactly as here.
+
+// -----------------------------------------------------------------------------
+// Public
+// This must never be serialized.
+// It is used for passing config to Sensei via a command-line flag.
+message Flag {
+  // First unused id: 4.
+  // Sequence of commands to execute.
+  optional CommandList command_list = 3;
+
+  optional BatchTraining batch_training = 1 [deprecated = true];
+}
+
+// -----------------------------------------------------------------------------
+// Experimental.
+
+// -----------------------------------------------------------------------------
+// Data structures for input/output.
+
+// Scoring output format.
+message RowScore {
+  // First unused id: 3.
+  // User-provided row id.
+  optional uint64 row_id = 1;
+  // Please bear in mind that this is wx before sigmoid function is applied,
+  // therefore it is not neccessarily in [0,1].
+  optional float wx = 2;
+}
+
+// -----------------------------------------------------------------------------
+// Data structures for configuring action of commands.
+
+
+// This example of feature spec will create crosses of all the features
+// starting with 'teenager' with all the features starting with 'name:Lu'.
+//
+// feature_spec {
+//  product {
+//    prefix: 'teenager'
+//    prefix: 'name:Lu'
+//  }
+// }
+//
+// Configuration option for DataReader
+message FeatureSpec {
+  // First unused id: 2.
+  // Represents a set of product features.
+  // Each such a feature is a conjunction (logical and) of |prefix| features.
+  // The name of jth factor of a new feature must start with prefix(j).
+  message Product {
+    // First unused id: 2.
+    repeated string prefix = 1;
+  }
+  optional Product product = 1;
+}
+
+// Configuration option for ReadModel and WriteModel
+enum ModelFormat {
+  // First unused id: 4.
+  TEXT = 1;
+  SERIALIZED = 2;
+}
+
+// Configuration option for DataReader
+message ReadModel {
+  // First unused id: 3.
+  optional string model_input_path = 1;
+  optional ModelFormat format = 2;
+}
+
+// Configuration option for ReadData
+message DataReader {
+  // First unused id: 17.
+  // TODO(witoldjarnicki): Deprecate format, training_glob, holdout_glob,
+  //                       and filter_feature in favor of DataFiles.
+  enum Format {
+    // First unused id: 4.
+    LIBSVM = 2;
+  }
+
+  optional Format format = 1;
+  // Model is only based on <training_set>.
+  optional DataFiles.DataSet training_set = 12;
+  // <holdout_set> only used for model evaluation, not training the model.
+  optional DataFiles.DataSet holdout_set = 13;
+  // Exactly one of {feature_spec, read_model} must be present.
+  // If read_model is present, only features used by the model will be read.
+  optional ReadModel read_model = 15;
+
+  // Preprocessing.
+  // Features to put in training data.  Should also include base features and
+  // bias, if needed.  Exactly one of {feature_spec, read_model} must be
+  // present.
+  repeated FeatureSpec feature_spec = 4;
+  // If set to true, include all sub-features of product features feature_spec.
+  // Note that this obviously includes bias feature and requires deduplication.
+  optional bool add_sub_features = 6 [default = false];
+  // This can be used to ignore big product features.
+  // Useful example: max_product_size:2 add_sub_features:true.
+  // This will filter out all product features but these of sizes: 0 (bias),
+  // 1 (base features) and 2.  For instance product feature A*B*C will generate:
+  // bias, A, B, C, A*B, A*C, C*A.
+  optional int32 max_product_size = 7;
+  // Number of threads used in data reading.
+  // TODO(lew): Make default a function of data size.
+  optional int32 thread_count = 5 [default = 100];
+  // See DataFiles in common_config.proto.
+  optional bool remove_duplicate_features_in_each_row = 10;
+
+  // If provided, Sensei will use the specified feature as an id feature for
+  // data scoring.
+  optional string user_id_feature_name = 16;
+
+  // Deprecated
+  optional string filter_feature = 9 [deprecated = true];
+  repeated string training_glob = 2 [deprecated = true];
+  repeated string holdout_glob = 3 [deprecated = true];
+}
+
+// Configuration option for FeatureExploration and FeaturePruning
+message FeatureScoring {
+  // First unused id: 5.
+  // In order to prioritize candidate crosses we caluclate FeatureOrdering
+  // metric for each of their components and sum it.  Candidate crosses with
+  // the biggest sum are explored first.  Also used in FeaturePruning to
+  // prioritize features queued for removal.
+  enum Ordering {
+    // First unused id: 5.
+    // Absolute value of feature weight in model.
+    WEIGHT_ABSOLUTE_VALUE = 0;
+    // Absolute value of feature weight multiplied by the number of training
+    // rows containing the feature.
+    WEIGHT_ABSOLUTE_VALUE_TIMES_ROW_COUNT = 1;
+    // Mutual information of feature and output variable.
+    FEATURE_OUTPUT_MUTUAL_INFORMATION = 2;
+    // Correlation of feature and output variable.
+    FEATURE_OUTPUT_CORRELATION = 3;
+  };
+
+  // Score (as defined by feature_ordering) of features matching <feature_set>
+  // Will be multiplied by <factor>.
+  // Note that a product feature's score with two or more matching
+  // factor feature will be multiplied by factor only once.
+  message Bonus {
+    // First unused id: 3.
+    optional FeatureSet feature_set = 1;
+    optional double factor = 2;
+  }
+
+  optional Ordering feature_ordering = 1;
+  // Bonus is applied before 'take_logarithm' so if take_logarithm == true,
+  // it will be additive instead of multiplicative.
+  optional Bonus bonus = 3;
+  optional bool take_logarithm = 2;
+  // If true, logs will contain a "line { internal_feature_scoring { ... } }"
+  // with the details of feature scoring.
+  optional bool logging = 4;
+}
+
+// Configuration of heuristic exploration function used by
+// AddNewProductFeatures.
+message FeatureExploration {
+  // First unused id: 9.
+  // Scoring function to use.
+  optional FeatureScoring feature_scoring = 8;
+  // Sensei will try to add that many XjBool to data set per one
+  // FeatureExploration.
+  optional int32 expected_xjbools_added = 3;
+  // Each Feature Exploration will add maximum_features_added new features.
+  optional int32 maximum_features_added = 4;
+  // This can be used to ignore big product features.
+  optional int32 max_product_size = 6;
+
+  // DEPRECATED.
+  optional bool materialize_product_features = 5 [deprecated = true];
+  optional FeatureScoring.Ordering feature_ordering = 1 [deprecated = true];
+  optional bool feature_ordering_multiplicative = 2
+      [default = false, deprecated = true];
+}
+
+// Configuration of heuristic pruning fuction used by PruneFeatures.
+message FeaturePruning {
+  // First unused id: 6.
+  // Scoring function to use.
+  optional FeatureScoring feature_scoring = 5;
+
+  // At least one condition must be set.
+  // Removes feature if all the following conditions that are set are met:
+
+  // score <= score_threshold
+  optional double score_threshold = 2;
+  // not in the top <top_count> of feautres
+  optional int32 top_count = 3;
+  // not in the top <top_fraction> * <feature_count> (rounded to nearest)
+  // of features
+  optional double top_fraction = 4;
+
+  // DEPRECATED.
+  optional FeatureScoring.Ordering feature_ordering = 1 [deprecated = true];
+}
+
+// Describes a set of features.
+message FeatureSet {
+  // First unused id: 3.
+  // Corresponds to the set of features in memory that match any of the
+  // criteria.
+  message FromData {
+    // First unused id: 3.
+    // Match by prefix of the feature name.
+    repeated string feature_prefix = 2;
+  }
+
+  // Submessages, any number of the following must be set.
+  optional ExplicitFeatureList explicit_list = 1;
+  optional FromData from_data = 2;
+}
+
+// -----------------------------------------------------------------------------
+// Global configuration shared between commands.
+// Sets appropriate parameter.
+// Initial parameters's value is given in the comment.
+message Set {
+  // First unused id: 17.
+  // Stored in logs, useful for batch processing of logs.
+  // Initial value: ""
+  optional string name = 1;
+
+  message Logging {
+    // First unused id: 7.
+    // Whether to put timestamp in each log entry.
+    // Initial value: true
+    optional bool log_timestamp = 2;
+    // Path to file containing the human-readable text representation of logs.
+    // Initial value: ""
+    optional string text_log_path = 3;
+    // Path to file containing the binary representation of logs.
+    // Initial value: ""
+    optional string recordio_log_path = 5;
+    // Not really a 'set command'.
+    // An option determining whether log files should be cleared before writing.
+    optional bool clear_log_files = 6;
+  }
+  optional Logging logging = 2;
+
+  message Regularization {
+    // First unused id: 4.
+    // Add <l1> times the L1 norm of the weight vector to the regularization.
+    // Initial value: 0.0
+    optional double l1 = 1;
+    // Add <l2> times the squared L2 norm of the weight vector to the
+    // regularization.
+    // Initial value: 0.0
+    optional double l2 = 2;
+    // Additional L1 regularization for features that have 0.0 weight.
+    // Ignored for other features.
+    // Initial value: 0.0
+    optional double l1_at_weight_zero = 3;
+  }
+
+  // Plan regularization.
+  optional Regularization regularization = 3;
+  // Experimental regularizations scaled up/down by square root of the number of
+  // rows containing the feature.
+  optional Regularization regularization_div_sqrt_n = 12;
+  optional Regularization regularization_mul_sqrt_n = 13;
+  // Experimental regularization scaled down by the square root of highest-power
+  // coefficient (next to the given weight) of the majorizer.
+  optional Regularization regularization_confidence = 14;
+
+  // Add <intertia_factor> times previous weight delta to the current one.
+  // This happens only if it doesn't result in moving against the gradient.
+  // Initial value: 1.0
+  optional double inertia_factor = 5;
+  // Multiply weight delta by this number before applying the change.
+  // Initial value: 1.0
+  optional double step_multiplier = 6;
+
+  // List of lift fraction values to log.  More specifically, how many times
+  // the value of the ROC curve at a given point is higher than the one of a
+  // random classifier (diagonal).
+  // Initial value: empty
+  repeated double logged_lift_fraction = 7;
+
+  // Learning rate equation:
+  // start_learning_rate / (1 + decay_speed * iteration_progress)
+  // where iteration_progress is i.e. in the middle of second iteration
+  // equal to 1.5
+  message SgdLearningRateSchedule {
+    // First unused id: 3.
+    // Has to be set before executing RunSgd command
+    optional double start_learning_rate = 1;
+    // Initial value: 0.0
+    optional double decay_speed = 2;
+  }
+  optional SgdLearningRateSchedule sgd_learning_rate_schedule = 9;
+
+  // Should iterations resulting in an increased log-loss be reverted.
+  // Initial value: false
+  optional bool allow_undo = 10;
+
+
+  // Setting to true forces running on single thread.
+  // Initial value: false
+  optional bool deterministic = 15;
+
+  // Number of non-zero features per data shard.
+  // Initial value: 2^20
+  optional uint32 max_shard_size = 16;
+
+  // DEPRECATED
+  optional int32 thread_count = 4 [deprecated = true];
+
+}
+
+// -----------------------------------------------------------------------------
+// Commands that actually perform actions.
+
+// Some of the commands have subcommands.  Unless stated otherwise, exactly one
+// of the subcommands must be set.
+// All the subcommands are "do" commands, except for Set, which is a subcommand
+// to set parameters for a given command group.  Its action is always to
+// proto-merge itself into the stored command configuration.
+
+
+// Read data from file(s)
+message ReadData {
+  // First unused id: 3.
+  // Sets parameters.
+  message Set {
+    // First unused id: 2.
+    // Initial value: ""
+    // If set to "", we will:
+    // - use LIBSVM's leftmost <label> column,
+    optional string output_feature = 1;
+  }
+
+  optional DataReader data_reader = 1;
+  optional Set set = 2;
+}
+
+// Compute the bias weight analytically.
+message InitializeBias {
+  // First unused id: 1.
+}
+
+// Add heuristically highest-scoring new product features to the data.
+message AddNewProductFeatures {
+  // First unused id: 2.
+  optional FeatureExploration feature_exploration = 1;
+}
+
+// Remove heristically lowest-scoring features from the data.
+message PruneFeatures {
+  // First unused id: 2.
+  optional FeaturePruning feature_pruning = 1;
+}
+
+
+// Perform majorization-minimization step(s).
+message FitModelWeights {
+  // First unused id: 4.
+  // Number of iterations.
+  optional int32 iterations = 1;
+
+  optional int32 iterations_between_data_set_stats_computation = 2
+      [default = 1, deprecated = true];
+  optional bool eval_auc = 3 [deprecated = true];
+}
+
+
+// Perform stochastic gradient descent iteration(s).
+message RunSgd {
+  // First unused id: 3.
+  // Number of iterations.
+  optional int32 iterations = 1;
+  // Setting to true prevents changing of weights corresponding to features not
+  // introduced by the most recent feature exploration.
+  optional bool only_new_features = 2;
+}
+
+// SGD-related custom actions.
+message Sgd {
+  // First unused id: 2.
+  message LearningRate {
+    // First unused id: 3.
+    // Store the current total loss for comparison by MaybeReduce.
+    message StoreTotalLoss {
+      // First unused id: 1.
+    }
+    // Learning rate is reduced if total loss decreases.
+    message MaybeReduce {
+      // First unused id: 2.
+      // Multiplicative factor for reduction.
+      optional double factor = 1 [default = 0.2];
+    }
+    // Exactly one must be set.
+    optional StoreTotalLoss store_total_loss = 1;
+    optional MaybeReduce maybe_reduce = 2;
+  }
+  optional LearningRate learning_rate = 1;
+  // TODO(lew): Add message Run here and deprecate RunSgd.
+}
+
+// Compute training and holdout stats of the current data/model combination.
+message EvaluateStats {
+  // First unused id: 2.
+  // Area under the ROC curve.
+  optional bool auc = 1;
+}
+
+// Add the current model to the list of models compared by <select_best_stored>
+// in WriteModel.
+message StoreModel {
+  // First unused id: 1.
+}
+
+message WriteModel {
+  // First unused id: 3.
+  message Set {
+    // First unused id: 5.
+    // If set, select model stored with StoreModel command according to
+    // the criteria in select_best_stored.
+    // If not set, write current model.
+    optional bool select_best_stored = 1;
+    // The best model is the one with the smallest regularized loss.
+    // Apart from the regularization used in the training,
+    // we add regularization_l0 for every non-zero weight in the model.
+    optional double regularization_l0 = 2;
+    // Output path.
+    optional string output_model_path = 3;
+    // Output format.
+    optional ModelFormat format = 4;
+  }
+  // Actual action to write.
+  message Write {
+    // First unused id: 1.
+  }
+  // Exactly one must be set.
+  optional Set set = 1;
+  optional Write write = 2;
+}
+
+// Write current model to logs.
+message GetModel {
+  // First unused id: 1.
+}
+
+
+// Data scoring.
+message ScoreRows {
+  // First unused id: 3.
+  enum Format {
+    // First unused id: 3
+    // The scores will be written in RowScore proto. This specifies whether the
+    // protos should be serialized or in text format.
+    UNKNOWN_FORMAT = 0;
+    SERIALIZED = 1;
+    TEXT = 2;
+  }
+  message Set {
+    // First unused id: 3.
+    // Output filename.
+    optional string output_fname = 1;
+    // Output format.
+    optional Format format = 2;
+  }
+  // Perform the scoring.
+  message WriteScores {
+    // First unused id: 1.
+  }
+  // Exactly one must be set.
+  optional Set set = 1;
+  optional WriteScores write_scores = 2;
+}
+
+// Quits Sensei.
+message Quit {
+  // First unused id: 1.
+}
+
+// Debugging/testing commands.
+message Internal {
+  // First unused id: 6.
+  // Dump model to logs.
+  message GetModel {
+    // First unused id: 1.
+  }
+  // Dump detailed stats for all features to logs.
+  message LogDetailedStats {
+    // First unused id: 1.
+  }
+  // Dump information about virtual features to logs.
+  message LogDependees {
+    // First unused id: 1.
+  }
+  // Dump all data to logs.
+  message GetData {
+    // First unused id: 1.
+  }
+  // Dump all scores to logs.
+  message GetScores {
+    // First unused id: 1.
+  }
+
+  // Exactly one must be set.
+  optional GetModel get_model = 1;
+  optional LogDetailedStats log_detailed_stats = 2;
+  optional LogDependees log_dependees = 3;
+  optional GetData get_data = 4;
+  optional GetScores get_scores = 5;
+}
+
+// Repeat an arbitrary sequence of commands.
+message Repeat {
+  // First unused id: 3.
+  // Repetition count.
+  optional int32 repetitions = 1;
+  // Sequence of commands to repeat.
+  repeated Command command = 2;
+}
+
+// Reads Command from text-proto file and puts it at the end of the queue.
+message FromFile {
+  // First unused id: 2.
+  // Path to file with the command.
+  optional string path = 1;
+}
+
+
+
+// Basic building block a for Sensei program.
+message Command {
+  // First unused id: 31.
+  // Exactly one must be set.
+  optional Set set = 1;
+  optional ReadData read_data = 2;
+  optional InitializeBias initialize_bias = 3;
+  optional AddNewProductFeatures add_new_product_features = 4;
+  optional PruneFeatures prune_features = 5;
+  optional FitModelWeights fit_model_weights = 6;
+  optional RunSgd run_sgd = 12;
+  optional Sgd sgd = 22;
+  optional EvaluateStats evaluate_stats = 15;
+  optional StoreModel store_model = 16;
+  optional WriteModel write_model = 29;
+  optional GetModel get_model = 30;
+  optional Repeat repeat = 11;
+  optional CommandList command_list = 20;
+  optional Internal internal = 13;
+  optional FromFile from_file = 19;
+  optional ScoreRows score_rows = 28;
+
+  optional Quit quit = 10 [deprecated = true];
+}
+
+// Express a sequence of commands as a single command.  Useful e.g. in
+// LoadConfig where exactly one command is expected.
+message CommandList {
+  // First unused id: 2.
+  // The sequence of commands.
+  repeated Command command = 1;
+}
+
+// -----------------------------------------------------------------------------
+// DEPRECATED
+
+message Optimizer {
+  // First unused id: 3.
+  message GradBoost {
+    // First unused id: 4.
+    optional int32 data_passes = 1;
+    // TODO(lew): Implement automatic detection of optimal thread count.
+    optional int32 thread_count = 2 [default = 1];
+    optional double inertia_factor = 3 [default = 1.0];
+  }
+  // Exactly one must be set.
+  optional GradBoost grad_boost = 2;
+  // TODO(lew): Implement common stopping criterion.
+}
+
+message TrainingInterval {
+  // First unused id: 9.
+  optional int32 thread_count = 1;
+  // Feature Exploration parameters.
+  optional FeatureExploration feature_exploration = 2;
+  // Feature Pruning parameters.  Performed after Feature Exploration, but does
+  // not remove freshly-added features.
+  optional FeaturePruning feature_pruning = 3;
+  // Training iterations after FE.
+  optional int32 iterations = 4;
+  optional double inertia_factor = 5;
+  optional double step_multiplier = 6;
+  optional int32 repetitions = 7 [default = 1];
+  optional int32 iterations_between_data_set_stats_computation = 8
+      [default = 1];
+}
+
+message BatchTraining {
+  // First unused id: 12.
+  // Name is visible in logs.
+  optional string name = 1;
+  optional DataReader data_reader = 2;
+  // Compute bias weight analytically at the start of the iteration.
+  optional bool initialize_bias = 11 [default = false];
+  // Optimization schedule including Feature Exploration.
+  // TODO(lew): Handle repeated TrainingInterval.
+  repeated TrainingInterval training_interval = 4;
+  // sensei.RepeatedLog in text format.
+  optional string text_log_path = 7;
+  // sensei.Log in recordio format.
+  optional string recordio_log_path = 8;
+
+  repeated double lift_fraction = 9;
+  // TODO(lew): Implement better stopping criterion.
+
+  // DEPRECATED. Use training_interval instead.
+  optional Optimizer optimizer = 10 [deprecated = true];
+}

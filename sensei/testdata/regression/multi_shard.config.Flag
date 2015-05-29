@@ -1,0 +1,31 @@
+command_list {
+  command {
+    set {
+      logging {
+        log_timestamp: false
+        text_log_path: "sensei/testdata/regression/multi_shard.log"
+        clear_log_files: true
+      }
+      deterministic: true
+      # TODO(lew): Low number here triggers erronous calcualtion of AUC.
+      #   I.e. AUC amounts to ~0.5 instead of ~0.9
+      max_shard_size: 50
+    }
+  }
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set {
+          files_glob: "sensei/testdata/a1a.libsvm"
+        }
+        feature_spec { product {} }
+        feature_spec { product { prefix: "" } }
+        thread_count: 1
+      }
+    }
+  }
+  command { evaluate_stats { auc: true } }
+  command { fit_model_weights { iterations: 1 } }
+  command { evaluate_stats { auc: true } }
+}

@@ -1,0 +1,49 @@
+command_list {
+  command {
+    set {
+      regularization {
+        l1: 1
+        l2: 0.5
+        l1_at_weight_zero: 0.1
+      }
+    }
+  }
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set {
+          files_glob: "input.libsvm"
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        feature_spec {
+          product {
+          }
+        }
+      }
+    }
+  }
+  command {
+    fit_model_weights {
+      iterations: 100
+    }
+  }
+  command {
+    write_model {
+      set {
+        format: TEXT
+        output_model_path: "model.txt"
+      }
+    }
+  }
+  command {
+    write_model {
+      write {
+      }
+    }
+  }
+}

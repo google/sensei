@@ -1,0 +1,41 @@
+command_list {
+  command {
+    set {
+      logging {
+        log_timestamp: false
+        text_log_path: "sensei/testdata/regression/t4_output.log"
+        clear_log_files: true
+      }
+      deterministic: true
+    }
+  }
+  command {
+    read_data {
+      set {
+        output_feature: "cat"
+      }
+    }
+  }
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set: {
+          files_glob: "sensei/testdata/3mouse2dog1cat.libsvm"
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+      }
+    }
+  }
+  command {
+    internal {
+      get_data {
+      }
+    }
+  }
+}

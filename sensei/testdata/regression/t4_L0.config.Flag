@@ -1,0 +1,60 @@
+command_list {
+  command {
+    set {
+      logging {
+        log_timestamp: false
+        text_log_path: "sensei/testdata/regression/t4_L0.log"
+        clear_log_files: true
+      }
+      deterministic: true
+    }
+  }
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set: {
+          files_glob: "sensei/testdata/3mouse2dog1cat.libsvm"
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+      }
+    }
+  }
+
+  command { set { regularization { l1: 0.1 } } }
+  command { fit_model_weights { iterations: 100 } }
+  command { internal { get_model {} } }
+
+  command { set { regularization { l1: 1.0 } } }
+  command { fit_model_weights { iterations: 100 } }
+  command { internal { get_model {} } }
+
+  # Hack to zero all weights.
+  command { set { regularization { l1: 10000.0 } } }
+  command { fit_model_weights { iterations: 2 } }
+  command { internal { get_model {} } }
+
+  command { set { regularization { l1: 0.1 l1_at_weight_zero: 0.9 } } }
+  command { fit_model_weights { iterations: 100 } }
+  command { internal { get_model {} } }
+
+  command {
+    write_model {
+      set {
+        format: TEXT
+        output_model_path: "sensei/testdata/regression/t4_L0.model"
+      }
+    }
+  }
+  command {
+    write_model {
+      write {
+      }
+    }
+  }
+}

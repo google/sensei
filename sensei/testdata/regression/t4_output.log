@@ -1,0 +1,201 @@
+line {
+  timestamp: 1430141594681622598
+  command_list_config {
+    command {
+      set {
+        logging {
+          log_timestamp: false
+          text_log_path: "../sensei/testdata/regression/t4_output.log"
+          clear_log_files: true
+        }
+        deterministic: true
+      }
+    }
+    command {
+      read_data {
+        set {
+          output_feature: "cat"
+        }
+      }
+    }
+    command {
+      read_data {
+        data_reader {
+          format: LIBSVM
+          feature_spec {
+            product {
+              prefix: ""
+            }
+          }
+          thread_count: 1
+          training_set {
+            files_glob: ""
+          }
+        }
+      }
+    }
+    command {
+      internal {
+        get_data {
+        }
+      }
+    }
+  }
+  run_id: 722612642224282304
+}
+line {
+  timestamp: 1430141594681822074
+  run_command {
+    set {
+      logging {
+        log_timestamp: false
+        text_log_path: "../sensei/testdata/regression/t4_output.log"
+        clear_log_files: true
+      }
+      deterministic: true
+    }
+  }
+  run_id: 722612642224282304
+}
+line {
+  run_command {
+    read_data {
+      set {
+        output_feature: "cat"
+      }
+    }
+  }
+}
+line {
+  run_command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+        training_set {
+          files_glob: ""
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_data {
+      }
+    }
+  }
+}
+line {
+  internal_data {
+    training {
+      shard {
+        row {
+          j: 0
+          y: -1
+          id: 0
+        }
+        row {
+          j: 0
+          y: -1
+          id: 1
+        }
+        row {
+          j: 0
+          y: -1
+          id: 2
+        }
+        row {
+          j: 0
+          y: -1
+          id: 3
+        }
+        row {
+          j: 0
+          y: -1
+          id: 4
+        }
+        row {
+          j: 1
+          y: -1
+          id: 5
+        }
+        row {
+          j: 1
+          y: -1
+          id: 6
+        }
+        row {
+          j: 1
+          y: -1
+          id: 7
+        }
+        row {
+          j: 1
+          y: -1
+          id: 8
+        }
+        row {
+          j: 1
+          y: -1
+          id: 9
+        }
+        row {
+          j: 2
+          y: 1
+          id: 10
+        }
+        row {
+          j: 2
+          y: 1
+          id: 11
+        }
+        row {
+          j: 2
+          y: 1
+          id: 12
+        }
+        row {
+          j: 2
+          y: 1
+          id: 13
+        }
+        row {
+          j: 2
+          y: 1
+          id: 14
+        }
+      }
+      stats {
+        positive_row_count: 5
+        negative_row_count: 10
+        j_stat {
+          j: 0
+          positive: 0
+          negative: 5
+          hash: 8461134051623653523
+        }
+        j_stat {
+          j: 1
+          positive: 0
+          negative: 5
+          hash: 17278953038004087065
+        }
+        j_stat {
+          j: 2
+          positive: 5
+          negative: 0
+          hash: 13303998103547125187
+        }
+      }
+    }
+    dependees {
+    }
+  }
+}

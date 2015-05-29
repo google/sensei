@@ -1,0 +1,52 @@
+command_list {
+  command {
+    set {
+      logging {
+        log_timestamp: false
+        text_log_path: "sensei/testdata/regression/t5_sgd.log"
+        clear_log_files: true
+      }
+      sgd_learning_rate_schedule: {
+        start_learning_rate: 0.05
+      }
+      deterministic: true
+    }
+  }
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set: {
+          files_glob: "sensei/testdata/simplest.libsvm"
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+      }
+    }
+  }
+  command {
+    repeat {
+      repetitions: 5
+      command { run_sgd { iterations: 100 } }
+      command { internal { get_model {} } }
+    }
+  }
+  command {
+    write_model {
+      set {
+        format: TEXT
+        output_model_path: "sensei/testdata/regression/t5_sgd.model"
+      }
+    }
+  }
+  command {
+    write_model {
+      write {
+      }
+    }
+  }
+}

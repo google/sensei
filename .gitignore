@@ -1,0 +1,21 @@
+# Build files
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+Makefile
+*.a
+*.o
+*.so
+Testing/
+
+# Binaries
+regression_test
+sensei_bin
+
+# Gtest
+gtest-1.7.0/
+gtest-1.7.0.zip
+
+# Protoc generated files
+*.pb.cc
+*.pb.h

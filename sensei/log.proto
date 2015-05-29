@@ -1,0 +1,166 @@
+/*
+*  Copyright 2015 Google Inc. All Rights Reserved.
+*  
+*  Licensed under the Apache License, Version 2.0 (the "License");
+*  you may not use this file except in compliance with the License.
+*  You may obtain a copy of the License at
+*  
+*      http://www.apache.org/licenses/LICENSE-2.0
+*  
+*  Unless required by applicable law or agreed to in writing, software
+*  distributed under the License is distributed on an "AS IS" BASIS,
+*  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*  See the License for the specific language governing permissions and
+*  limitations under the License.
+*/
+syntax = "proto2";
+
+package sensei.logs;
+
+import "sensei/common.proto";
+import "sensei/config.proto";
+import "sensei/internal.proto";
+
+message VectorStats {
+  optional uint32 size = 1;
+  optional double l1 = 2;  // L1 norm.
+  optional double l2 = 3;  // Squared L2 norm.
+  optional uint32 nonzero_count = 4;
+}
+
+message Lift {
+  optional double lift_fraction = 1;
+  optional double lift_value = 2;
+}
+
+message DataSetStats {
+  optional uint32 size = 1;
+  optional double loss = 2;
+  optional VectorStats dloss = 3;
+  optional double auc = 4;
+  repeated Lift lift = 5;
+}
+
+message FeatureExploration {
+  // In most cases this is
+  // xjbools_added / (empty_features_skipped + features_added)
+  // (based on previous feature exploration).
+  optional double xjbools_per_candidate_feature_estimate = 1;
+  optional int64 empty_features_skipped = 2;
+  optional int64 present_features_skipped = 3;
+  optional int64 features_added = 4;
+  optional int64 xjbools_added = 5;
+  optional int64 features_removed = 6;  // deprecated
+  optional int64 xjbools_removed = 7;   // deprecated
+  optional int64 xjbools_count = 8;
+  // The number of features with zero weight that the algorithm attempted to
+  // remove but did not because they were factors in features with nonzero
+  // weight.
+  optional int64 blocked_features = 9;  // deprecated
+  optional int64 blocked_xjbools = 10;  // deprecated
+}
+
+message FeaturePruning {
+  optional int64 features_removed = 1;
+  optional int64 xjbools_removed = 2;
+  optional int64 xjbools_count = 3;
+  // The number of features with zero weight that the algorithm attempted to
+  // remove but did not because they were factors in features with nonzero
+  // weight.
+  optional int64 blocked_features = 4;
+  optional int64 blocked_xjbools = 5;
+}
+
+
+message Iteration {
+  // How many iterations were before this one.
+  optional int32 index = 1;
+  optional VectorStats weight_stats = 2;
+  optional VectorStats delta_weight_stats = 3;
+  optional DataSetStats training_data_stats = 4;
+  optional DataSetStats holdout_data_stats = 5;
+  optional DataSetStats regularization_stats = 6;
+
+  // Some convergence stats.
+  optional double prev_total_loss = 13;
+  optional double total_loss = 14;
+
+  // Number of CPU operations in the current model where each product feature
+  // is represented as a product of two features.
+  optional int64 cpu_operation_count_flat_materialization = 7;
+
+  // DEPRECATED:
+  optional int64 cpu_operation_count_deep_materialization = 8;
+  optional double dot_inertia_gradient = 9 [deprecated = true];
+  optional double cos_angle_inertia_gradient = 10 [deprecated = true];
+  optional bool restart_iteration = 11 [deprecated = true];
+  optional bool undo_iteration = 12 [deprecated = true];
+
+  // TODO(lew): Implement more stats:
+  // optional VectorStats d_sum_loss // Must converge to zero.
+  // Also: inertia stats, angle, etc.
+
+  // First unused id: 15
+}
+
+message GradBoostUpdateMinimum {
+  optional double dot_loss_derivative_vs_delta_weight = 1;
+  optional double cos_angle_loss_derivative_vs_delta_weight = 2;
+  optional bool restart_iteration = 3;  // dot_inertia_gradient positive
+  optional bool undo_iteration = 4;     // training_data_stats.loss increase
+}
+
+message Sgd {
+  message LearningRate {
+    message MaybeReduce {
+      optional double previous_total_loss = 1;
+      optional double current_total_loss = 2;
+      optional double previous_learning_rate = 3;
+      optional double current_learning_rate = 4;
+    }
+    optional MaybeReduce maybe_reduce = 1;
+  }
+  optional LearningRate learning_rate = 1;
+}
+
+message Model {
+  repeated ModelWeight weight = 1;
+  optional Iteration last_iteration = 2;
+}
+
+message WriteModel {
+  optional Iteration last_iteration = 1;
+}
+
+
+message DataScore {
+  repeated config.RowScore row_score = 1;
+}
+
+message Line {
+  // Nanoseconds since epoch.
+  optional int64 timestamp = 1;
+  optional uint64 run_id = 14;
+  // TODO(lew): Add thread_id.
+  optional config.BatchTraining batch_training_config = 2;
+  optional config.CommandList command_list_config = 6;
+  optional config.Command run_command = 7;
+  optional FeatureExploration feature_exploration = 3;
+  optional Iteration iteration = 4;
+  optional GradBoostUpdateMinimum grad_boost_update_minimum = 10;
+  optional Sgd sgd = 16;
+  optional FeaturePruning feature_pruning = 5;
+  optional WriteModel write_model = 25;
+  optional Model model = 26;
+  optional internal.Model internal_model = 9;
+  optional internal.DetailedStats internal_detailed_stats = 12;
+  optional internal.Dependees internal_dependees = 13;
+  optional internal.Data internal_data = 19;
+  optional internal.FeatureScoring internal_feature_scoring = 21;
+  optional DataScore data_score = 24;
+  // First unused id: 27
+}
+
+message Lines {
+  repeated Line line = 1;
+}

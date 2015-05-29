@@ -1,0 +1,39 @@
+command_list {
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set {
+          files_glob: "input.libsvm"
+        }
+        feature_spec {
+          product {
+            prefix: "a"
+            prefix: "b"
+          }
+        }
+      }
+    }
+  }
+  command {
+    fit_model_weights {
+      iterations: 100
+    }
+  }
+  command {
+    write_model {
+      set {
+        format: TEXT
+        output_model_path: "model.txt"
+      }
+    }
+  }
+  command {
+    write_model {
+      write {
+      }
+    }
+  }
+}
+
+

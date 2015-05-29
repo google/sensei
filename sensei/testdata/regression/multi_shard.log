@@ -1,0 +1,198 @@
+line {
+  timestamp: 1430141610463216691
+  command_list_config {
+    command {
+      set {
+        logging {
+          log_timestamp: false
+          text_log_path: "../sensei/testdata/regression/multi_shard.log"
+          clear_log_files: true
+        }
+        deterministic: true
+        max_shard_size: 50
+      }
+    }
+    command {
+      read_data {
+        data_reader {
+          format: LIBSVM
+          feature_spec {
+            product {
+            }
+          }
+          feature_spec {
+            product {
+              prefix: ""
+            }
+          }
+          thread_count: 1
+          training_set {
+            files_glob: ""
+          }
+        }
+      }
+    }
+    command {
+      evaluate_stats {
+        auc: true
+      }
+    }
+    command {
+      fit_model_weights {
+        iterations: 1
+      }
+    }
+    command {
+      evaluate_stats {
+        auc: true
+      }
+    }
+  }
+  run_id: 2877281112563302248
+}
+line {
+  timestamp: 1430141610463426652
+  run_command {
+    set {
+      logging {
+        log_timestamp: false
+        text_log_path: "../sensei/testdata/regression/multi_shard.log"
+        clear_log_files: true
+      }
+      deterministic: true
+      max_shard_size: 50
+    }
+  }
+  run_id: 2877281112563302248
+}
+line {
+  run_command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        feature_spec {
+          product {
+          }
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+        training_set {
+          files_glob: ""
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    index: 0
+    weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 1112.5012247986658
+      dloss {
+        size: 114
+        l1: 6124
+        l2: 1289163.5
+        nonzero_count: 110
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: inf
+    total_loss: 1112.5012247986658
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.5
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -500.45354464551309
+    cos_angle_loss_derivative_vs_delta_weight: -0.44715759491521062
+  }
+}
+line {
+  iteration {
+    index: 1
+    weight_stats {
+      size: 114
+      l1: 9.3498460958854
+      l2: 0.97162418237563453
+      nonzero_count: 110
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 9.3498460958854
+      l2: 0.97162418237563453
+      nonzero_count: 110
+    }
+    training_data_stats {
+      size: 1605
+      loss: 815.92136973587856
+      dloss {
+        size: 114
+        l1: 1840.7600005491859
+        l2: 89229.945381918238
+        nonzero_count: 114
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 1112.5012247986658
+    total_loss: 815.92136973587856
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.89085783031697874
+    }
+  }
+}

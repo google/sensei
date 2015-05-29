@@ -1,0 +1,6599 @@
+line {
+  timestamp: 1430141593006202082
+  command_list_config {
+    command {
+      set {
+        logging {
+          log_timestamp: false
+          text_log_path: "../sensei/testdata/regression/t4.log"
+          clear_log_files: true
+        }
+        deterministic: true
+      }
+    }
+    command {
+      read_data {
+        data_reader {
+          format: LIBSVM
+          feature_spec {
+            product {
+              prefix: ""
+            }
+          }
+          thread_count: 1
+          training_set {
+            files_glob: ""
+          }
+        }
+      }
+    }
+    command {
+      repeat {
+        repetitions: 100
+        command {
+          fit_model_weights {
+            iterations: 1
+          }
+        }
+        command {
+          evaluate_stats {
+            auc: true
+          }
+        }
+      }
+    }
+    command {
+      get_model {
+      }
+    }
+    command {
+      prune_features {
+        feature_pruning {
+          top_count: 2
+          feature_scoring {
+            feature_ordering: WEIGHT_ABSOLUTE_VALUE
+          }
+        }
+      }
+    }
+    command {
+      get_model {
+      }
+    }
+    command {
+      fit_model_weights {
+        iterations: 1
+      }
+    }
+    command {
+      evaluate_stats {
+        auc: true
+      }
+    }
+    command {
+      get_model {
+      }
+    }
+    command {
+      write_model {
+        set {
+          output_model_path: "../sensei/testdata/regression/t4.model"
+          format: TEXT
+        }
+      }
+    }
+    command {
+      write_model {
+        write {
+        }
+      }
+    }
+  }
+  run_id: 2522897100246793224
+}
+line {
+  timestamp: 1430141593006549249
+  run_command {
+    set {
+      logging {
+        log_timestamp: false
+        text_log_path: "../sensei/testdata/regression/t4.log"
+        clear_log_files: true
+      }
+      deterministic: true
+    }
+  }
+  run_id: 2522897100246793224
+}
+line {
+  run_command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+        training_set {
+          files_glob: ""
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    repeat {
+      repetitions: 100
+      command {
+        fit_model_weights {
+          iterations: 1
+        }
+      }
+      command {
+        evaluate_stats {
+          auc: true
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  iteration {
+    index: 0
+    weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 10.397207708399179
+      dloss {
+        size: 3
+        l1: 2.5
+        l2: 2.75
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: inf
+    total_loss: 10.397207708399179
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -2.1999999999999997
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999999999978
+  }
+}
+line {
+  iteration {
+    index: 1
+    weight_stats {
+      size: 3
+      l1: 2
+      l2: 1.76
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 2
+      l2: 1.76
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2465648606896842
+      dloss {
+        size: 3
+        l1: 0.17049948138039173
+        l2: 0.024853343143615265
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 10.397207708399179
+    total_loss: 9.2465648606896842
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.21630672817275737
+    cos_angle_loss_derivative_vs_delta_weight: -0.94102881569008578
+  }
+}
+line {
+  iteration {
+    index: 2
+    weight_stats {
+      size: 3
+      l1: 4.1512967055487158
+      l2: 7.7520228957567356
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 2.1512967055487158
+      l2: 2.1259321306803236
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.8357949006028189
+      dloss {
+        size: 3
+        l1: 1.5458286274411992
+        l2: 0.81792791163280065
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2465648606896842
+    total_loss: 9.8357949006028189
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.39095009912849221
+    cos_angle_loss_derivative_vs_delta_weight: 0.73764730720377436
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 3
+    weight_stats {
+      size: 3
+      l1: 4.1512967055487158
+      l2: 7.7520228957567356
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.8357949006028189
+      dloss {
+        size: 3
+        l1: 1.5458286274411992
+        l2: 0.81792791163280065
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.8357949006028189
+    total_loss: 9.8357949006028189
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.82927967855288953
+    cos_angle_loss_derivative_vs_delta_weight: -0.98564396122521214
+  }
+}
+line {
+  iteration {
+    index: 4
+    weight_stats {
+      size: 3
+      l1: 2.6280181186689839
+      l2: 3.542225946487231
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 1.5232785868797316
+      l2: 0.86545977358105075
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2910844617233188
+      dloss {
+        size: 3
+        l1: 0.319867982060801
+        l2: 0.080091146968991514
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.8357949006028189
+    total_loss: 9.2910844617233188
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.30757141258017873
+    cos_angle_loss_derivative_vs_delta_weight: -0.91988117984761941
+  }
+}
+line {
+  iteration {
+    index: 5
+    weight_stats {
+      size: 3
+      l1: 0.79149409229172807
+      l2: 0.55980200842037131
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 1.836524026377256
+      l2: 1.3958667237041129
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.5959410676157031
+      dloss {
+        size: 3
+        l1: 1.551849583431872
+        l2: 0.81475828948054674
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2910844617233188
+    total_loss: 9.5959410676157031
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.3417101200647007
+    cos_angle_loss_derivative_vs_delta_weight: 0.71329102052791349
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 6
+    weight_stats {
+      size: 3
+      l1: 0.79149409229172807
+      l2: 0.55980200842037131
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.5959410676157031
+      dloss {
+        size: 3
+        l1: 1.551849583431872
+        l2: 0.81475828948054674
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.5959410676157031
+    total_loss: 9.5959410676157031
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.66541150167586061
+    cos_angle_loss_derivative_vs_delta_weight: -0.99974754135052846
+  }
+}
+line {
+  iteration {
+    index: 7
+    weight_stats {
+      size: 3
+      l1: 2.0554021750066624
+      l2: 1.8959795706830511
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 1.2639080827149343
+      l2: 0.54371476847707645
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2392006887138347
+      dloss {
+        size: 3
+        l1: 0.12194449822387993
+        l2: 0.011936051710882994
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.5959410676157031
+    total_loss: 9.2392006887138347
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.070990665232880487
+    cos_angle_loss_derivative_vs_delta_weight: -0.79909878989062066
+  }
+}
+line {
+  iteration {
+    index: 8
+    weight_stats {
+      size: 3
+      l1: 3.428152700668754
+      l2: 4.6922136836242121
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 1.3727505256620918
+      l2: 0.661212193797723
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.480213875280219
+      dloss {
+        size: 3
+        l1: 1.191362907360304
+        l2: 0.48042495403644486
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2392006887138347
+    total_loss: 9.480213875280219
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.10671743456269883
+    cos_angle_loss_derivative_vs_delta_weight: 0.56165721334786545
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 9
+    weight_stats {
+      size: 3
+      l1: 3.428152700668754
+      l2: 4.6922136836242121
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.480213875280219
+      dloss {
+        size: 3
+        l1: 1.191362907360304
+        l2: 0.48042495403644486
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.480213875280219
+    total_loss: 9.480213875280219
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.42288415848671762
+    cos_angle_loss_derivative_vs_delta_weight: -0.99646935156841809
+  }
+}
+line {
+  iteration {
+    index: 10
+    weight_stats {
+      size: 3
+      l1: 2.3684975317880683
+      l2: 2.6880001990984166
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 1.0596551688806859
+      l2: 0.37487750815294613
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2401960141915644
+      dloss {
+        size: 3
+        l1: 0.14399565525127406
+        l2: 0.012414369622449465
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.480213875280219
+    total_loss: 9.2401960141915644
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.060769264748433784
+    cos_angle_loss_derivative_vs_delta_weight: -0.79087575455250125
+  }
+}
+line {
+  iteration {
+    index: 11
+    weight_stats {
+      size: 3
+      l1: 1.1769542978005103
+      l2: 1.1949133917932739
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 1.191543233987558
+      l2: 0.47558348848968396
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.42984099247226
+      dloss {
+        size: 3
+        l1: 1.1498617998952629
+        l2: 0.464752880273192
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2401960141915644
+    total_loss: 9.42984099247226
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.072245132067185386
+    cos_angle_loss_derivative_vs_delta_weight: 0.49730742974154518
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 12
+    weight_stats {
+      size: 3
+      l1: 1.1769542978005103
+      l2: 1.1949133917932739
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.42984099247226
+      dloss {
+        size: 3
+        l1: 1.1498617998952629
+        l2: 0.464752880273192
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.42984099247226
+    total_loss: 9.42984099247226
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.37698421079477762
+    cos_angle_loss_derivative_vs_delta_weight: -0.99944121320533541
+  }
+}
+line {
+  iteration {
+    index: 13
+    weight_stats {
+      size: 3
+      l1: 2.1169476078302512
+      l2: 2.0541275582110057
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.939993310029741
+      l2: 0.30613270140773768
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2341210463173571
+      dloss {
+        size: 3
+        l1: 0.069711466891489826
+        l2: 0.0033029992732058022
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.42984099247226
+    total_loss: 9.2341210463173571
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.020428562833426617
+    cos_angle_loss_derivative_vs_delta_weight: -0.60985167505301741
+  }
+}
+line {
+  iteration {
+    index: 14
+    weight_stats {
+      size: 3
+      l1: 3.1192247566472249
+      l2: 3.7039382706404207
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 1.0022771488169733
+      l2: 0.33971811785853817
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3974332589407723
+      dloss {
+        size: 3
+        l1: 0.97510926736929382
+        l2: 0.3598728146515815
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2341210463173571
+    total_loss: 9.3974332589407723
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.035491621866645028
+    cos_angle_loss_derivative_vs_delta_weight: 0.45527195142569016
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 15
+    weight_stats {
+      size: 3
+      l1: 3.1192247566472249
+      l2: 3.7039382706404207
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3974332589407723
+      dloss {
+        size: 3
+        l1: 0.97510926736929382
+        l2: 0.3598728146515815
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3974332589407723
+    total_loss: 9.3974332589407723
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.30473614942929816
+    cos_angle_loss_derivative_vs_delta_weight: -0.99932339108556067
+  }
+}
+line {
+  iteration {
+    index: 16
+    weight_stats {
+      size: 3
+      l1: 2.2823292956119685
+      l2: 2.4363834585849391
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.836895461035256
+      l2: 0.25839660574958523
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2336682915781125
+      dloss {
+        size: 3
+        l1: 0.078231116444235749
+        l2: 0.0025948855170193855
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3974332589407723
+    total_loss: 9.2336682915781125
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.02046256178393098
+    cos_angle_loss_derivative_vs_delta_weight: -0.74388146963637858
+  }
+}
+line {
+  iteration {
+    index: 17
+    weight_stats {
+      size: 3
+      l1: 1.3763750642677224
+      l2: 1.5741628258324023
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.905954231344246
+      l2: 0.29160456905805282
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3833974779256959
+      dloss {
+        size: 3
+        l1: 0.95617816435405589
+        l2: 0.36876219965472429
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2336682915781125
+    total_loss: 9.3833974779256959
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.026329395526026339
+    cos_angle_loss_derivative_vs_delta_weight: 0.45575023012259153
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 18
+    weight_stats {
+      size: 3
+      l1: 1.3763750642677224
+      l2: 1.5741628258324023
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3833974779256959
+      dloss {
+        size: 3
+        l1: 0.95617816435405589
+        l2: 0.36876219965472429
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3833974779256959
+    total_loss: 9.3833974779256959
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.29638287627016024
+    cos_angle_loss_derivative_vs_delta_weight: -0.99973715481130743
+  }
+}
+line {
+  iteration {
+    index: 19
+    weight_stats {
+      size: 3
+      l1: 2.1529544295546437
+      l2: 2.1499908621226194
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.7765793652869214
+      l2: 0.2383351812115988
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2326175676506352
+      dloss {
+        size: 3
+        l1: 0.039962260137483607
+        l2: 0.00081923321425332477
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3833974779256959
+    total_loss: 9.2326175676506352
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0078164110625607557
+    cos_angle_loss_derivative_vs_delta_weight: -0.54501216373824779
+  }
+}
+line {
+  iteration {
+    index: 20
+    weight_stats {
+      size: 3
+      l1: 2.9648551938643006
+      l2: 3.2909964318288685
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.81190076430965652
+      l2: 0.25107000985079708
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3686213408520373
+      dloss {
+        size: 3
+        l1: 0.84853937946692326
+        l2: 0.30672908361074158
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2326175676506352
+    total_loss: 9.3686213408520373
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.018263320439797427
+    cos_angle_loss_derivative_vs_delta_weight: 0.5170842471907996
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 21
+    weight_stats {
+      size: 3
+      l1: 2.9648551938643006
+      l2: 3.2909964318288685
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3686213408520373
+      dloss {
+        size: 3
+        l1: 0.84853937946692326
+        l2: 0.30672908361074158
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3686213408520373
+    total_loss: 9.3686213408520373
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.25711012157094587
+    cos_angle_loss_derivative_vs_delta_weight: -0.99987170929981206
+  }
+}
+line {
+  iteration {
+    index: 22
+    weight_stats {
+      size: 3
+      l1: 2.2475745561223528
+      l2: 2.3410515124787636
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.71728063774194761
+      l2: 0.21557323019902347
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2325692889343873
+      dloss {
+        size: 3
+        l1: 0.050309901611457541
+        l2: 0.00085655806696240133
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3686213408520373
+    total_loss: 9.2325692889343873
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.01201639259298351
+    cos_angle_loss_derivative_vs_delta_weight: -0.84726130148778678
+  }
+}
+line {
+  iteration {
+    index: 23
+    weight_stats {
+      size: 3
+      l1: 1.48715802480863
+      l2: 1.7691091467096087
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.76041653131372278
+      l2: 0.23483167033011093
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3621883445228438
+      dloss {
+        size: 3
+        l1: 0.84740817906555854
+        l2: 0.32055133586686635
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2325692889343873
+    total_loss: 9.3621883445228438
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.016385369312337243
+    cos_angle_loss_derivative_vs_delta_weight: 0.60551016610841535
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 24
+    weight_stats {
+      size: 3
+      l1: 1.48715802480863
+      l2: 1.7691091467096087
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3621883445228438
+      dloss {
+        size: 3
+        l1: 0.84740817906555854
+        l2: 0.32055133586686635
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3621883445228438
+    total_loss: 9.3621883445228438
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.25686268066489631
+    cos_angle_loss_derivative_vs_delta_weight: -0.99992313822994749
+  }
+}
+line {
+  iteration {
+    index: 25
+    weight_stats {
+      size: 3
+      l1: 2.1711025217371871
+      l2: 2.1990727458708244
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.683944496928557
+      l2: 0.20585963289853465
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2322598442804065
+      dloss {
+        size: 3
+        l1: 0.025159966717077487
+        l2: 0.00023715944109055676
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3621883445228438
+    total_loss: 9.2322598442804065
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0048030274493728641
+    cos_angle_loss_derivative_vs_delta_weight: -0.67479871343366926
+  }
+}
+line {
+  iteration {
+    index: 26
+    weight_stats {
+      size: 3
+      l1: 2.8768353774945661
+      l2: 3.0884234327480842
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.70573285575737921
+      l2: 0.21361966384590628
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3519483903537584
+      dloss {
+        size: 3
+        l1: 0.76881149809594129
+        l2: 0.27195331514299009
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2322598442804065
+    total_loss: 9.3519483903537584
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.013478205822712237
+    cos_angle_loss_derivative_vs_delta_weight: 0.71866670720301618
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 27
+    weight_stats {
+      size: 3
+      l1: 2.8768353774945661
+      l2: 3.0884234327480842
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3519483903537584
+      dloss {
+        size: 3
+        l1: 0.76881149809594129
+        l2: 0.27195331514299009
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3519483903537584
+    total_loss: 9.3519483903537584
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.22710176368439683
+    cos_angle_loss_derivative_vs_delta_weight: -0.99997357651292207
+  }
+}
+line {
+  iteration {
+    index: 28
+    weight_stats {
+      size: 3
+      l1: 2.2319408546891166
+      l2: 2.3006556888256227
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.64489452280544945
+      l2: 0.18965731946795453
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.23234594603542
+      dloss {
+        size: 3
+        l1: 0.03721560025903492
+        l2: 0.00048189274792331203
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3519483903537584
+    total_loss: 9.23234594603542
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.00941578477175948
+    cos_angle_loss_derivative_vs_delta_weight: -0.94806482234863865
+  }
+}
+line {
+  iteration {
+    index: 29
+    weight_stats {
+      size: 3
+      l1: 1.5558427684780871
+      l2: 1.8653345704421878
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.67609808621102974
+      l2: 0.20468526986570082
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3473362436509628
+      dloss {
+        size: 3
+        l1: 0.77600103433950174
+        l2: 0.284521985078811
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.23234594603542
+    total_loss: 9.3473362436509628
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.013233847783610218
+    cos_angle_loss_derivative_vs_delta_weight: 0.82375650063090622
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 30
+    weight_stats {
+      size: 3
+      l1: 1.5558427684780871
+      l2: 1.8653345704421878
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3473362436509628
+      dloss {
+        size: 3
+        l1: 0.77600103433950174
+        l2: 0.284521985078811
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3473362436509628
+    total_loss: 9.3473362436509628
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.22786110962776779
+    cos_angle_loss_derivative_vs_delta_weight: -0.99998078961427161
+  }
+}
+line {
+  iteration {
+    index: 31
+    weight_stats {
+      size: 3
+      l1: 2.1797967234884377
+      l2: 2.2225696615392438
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.62395395501035045
+      l2: 0.18249092475817683
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321809690274783
+      dloss {
+        size: 3
+        l1: 0.018073714929466078
+        l2: 0.00010901758693891963
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3473362436509628
+    total_loss: 9.2321809690274783
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0039342817592067014
+    cos_angle_loss_derivative_vs_delta_weight: -0.8671369172348018
+  }
+}
+line {
+  iteration {
+    index: 32
+    weight_stats {
+      size: 3
+      l1: 2.8190455935576928
+      l2: 2.97371730800998
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.6392488700692549
+      l2: 0.188824786135357
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3388721445636182
+      dloss {
+        size: 3
+        l1: 0.71232613280591539
+        l2: 0.24346313653391824
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321809690274783
+    total_loss: 9.3388721445636182
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.011479743151468207
+    cos_angle_loss_derivative_vs_delta_weight: 0.89887305678906215
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 33
+    weight_stats {
+      size: 3
+      l1: 2.8190455935576928
+      l2: 2.97371730800998
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3388721445636182
+      dloss {
+        size: 3
+        l1: 0.71232613280591539
+        l2: 0.24346313653391824
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3388721445636182
+    total_loss: 9.3388721445636182
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.202838577279065
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999419772746378
+  }
+}
+line {
+  iteration {
+    index: 34
+    weight_stats {
+      size: 3
+      l1: 2.2242388855805175
+      l2: 2.2823861090455448
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.594806707977175
+      l2: 0.16899464318896865
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2322850689684053
+      dloss {
+        size: 3
+        l1: 0.030425361057997702
+        l2: 0.00036687288127417578
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3388721445636182
+    total_loss: 9.2322850689684053
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.00805733462091378
+    cos_angle_loss_derivative_vs_delta_weight: -0.98647317460275186
+  }
+}
+line {
+  iteration {
+    index: 35
+    weight_stats {
+      size: 3
+      l1: 1.6042974710440747
+      l2: 1.9139085346077671
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.6199414145364428
+      l2: 0.18184301783646181
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3348938591591555
+      dloss {
+        size: 3
+        l1: 0.7222326798356935
+        l2: 0.25371876742616761
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2322850689684053
+    total_loss: 9.3348938591591555
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.011536708724908371
+    cos_angle_loss_derivative_vs_delta_weight: 0.94813553799870443
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 36
+    weight_stats {
+      size: 3
+      l1: 1.6042974710440747
+      l2: 1.9139085346077671
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3348938591591555
+      dloss {
+        size: 3
+        l1: 0.7222326798356935
+        l2: 0.25371876742616761
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3348938591591555
+    total_loss: 9.3348938591591555
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.20321179605616962
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999546824028007
+  }
+}
+line {
+  iteration {
+    index: 37
+    weight_stats {
+      size: 3
+      l1: 2.1839377713993047
+      l2: 2.2335428978204228
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.57964030035523
+      l2: 0.16276055869331557
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321632748812856
+      dloss {
+        size: 3
+        l1: 0.014655991365498278
+        l2: 7.9461032755605564e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3348938591591555
+    total_loss: 9.2321632748812856
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.003528661498852947
+    cos_angle_loss_derivative_vs_delta_weight: -0.96453233119343207
+  }
+}
+line {
+  iteration {
+    index: 38
+    weight_stats {
+      size: 3
+      l1: 2.7757523969699274
+      l2: 2.8988350864374963
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.5918146255706227
+      l2: 0.16843495036275286
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.327541797219
+      dloss {
+        size: 3
+        l1: 0.66754859370059116
+        l2: 0.21840257522202586
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321632748812856
+    total_loss: 9.327541797219
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.010165080033513092
+    cos_angle_loss_derivative_vs_delta_weight: 0.97333700438535109
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 39
+    weight_stats {
+      size: 3
+      l1: 2.7757523969699274
+      l2: 2.8988350864374963
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.327541797219
+      dloss {
+        size: 3
+        l1: 0.66754859370059116
+        l2: 0.21840257522202586
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.327541797219
+    total_loss: 9.327541797219
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.18161445137568077
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999868201426589
+  }
+}
+line {
+  iteration {
+    index: 40
+    weight_stats {
+      size: 3
+      l1: 2.2200288121811749
+      l2: 2.2736328519321338
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.5557235847887525
+      l2: 0.15102338358194545
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2322580416572535
+      dloss {
+        size: 3
+        l1: 0.026459999708288773
+        l2: 0.00030824125249683237
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.327541797219
+    total_loss: 9.2322580416572535
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0070492003156728275
+    cos_angle_loss_derivative_vs_delta_weight: -0.99674456092015029
+  }
+}
+line {
+  iteration {
+    index: 41
+    weight_stats {
+      size: 3
+      l1: 1.6426346639219713
+      l2: 1.9405403612966072
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.57739414825920332
+      l2: 0.16226363262062324
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3239414840067383
+      dloss {
+        size: 3
+        l1: 0.67751471745888669
+        l2: 0.22648525471891998
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2322580416572535
+    total_loss: 9.3239414840067383
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.010244560312612625
+    cos_angle_loss_derivative_vs_delta_weight: 0.987347636327939
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 42
+    weight_stats {
+      size: 3
+      l1: 1.6426346639219713
+      l2: 1.9405403612966072
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3239414840067383
+      dloss {
+        size: 3
+        l1: 0.67751471745888669
+        l2: 0.22648525471891998
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3239414840067383
+    total_loss: 9.3239414840067383
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.18144967910880486
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999895559431262
+  }
+}
+line {
+  iteration {
+    index: 43
+    weight_stats {
+      size: 3
+      l1: 2.1859722501356798
+      l2: 2.23866610505561
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.5433375862137082
+      l2: 0.14536952907443371
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321583904962452
+      dloss {
+        size: 3
+        l1: 0.01292278668926955
+        l2: 7.0404570941965891e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3239414840067383
+    total_loss: 9.2321583904962452
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0032296827330992924
+    cos_angle_loss_derivative_vs_delta_weight: -0.99198131080273244
+  }
+}
+line {
+  iteration {
+    index: 44
+    weight_stats {
+      size: 3
+      l1: 2.7399188052831178
+      l2: 2.8433549380932335
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.55394655514743807
+      l2: 0.15056079078017198
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.317475681653697
+      dloss {
+        size: 3
+        l1: 0.62906323315153223
+        l2: 0.19597099518490096
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321583904962452
+    total_loss: 9.317475681653697
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.00908377155957856
+    cos_angle_loss_derivative_vs_delta_weight: 0.993704939537847
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 45
+    weight_stats {
+      size: 3
+      l1: 2.7399188052831178
+      l2: 2.8433549380932335
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.317475681653697
+      dloss {
+        size: 3
+        l1: 0.62906323315153223
+        l2: 0.19597099518490096
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.317475681653697
+    total_loss: 9.317475681653697
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.16268416305772762
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999969606377259
+  }
+}
+line {
+  iteration {
+    index: 46
+    weight_stats {
+      size: 3
+      l1: 2.2174219365226255
+      l2: 2.2691180327944993
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.52249686876049239
+      l2: 0.13505137825556854
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2322398077115082
+      dloss {
+        size: 3
+        l1: 0.023819136794854978
+        l2: 0.00026579265065355018
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.317475681653697
+    total_loss: 9.2322398077115082
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0062020449550590625
+    cos_angle_loss_derivative_vs_delta_weight: -0.99923121832873962
+  }
+}
+line {
+  iteration {
+    index: 47
+    weight_stats {
+      size: 3
+      l1: 1.6755077515247738
+      l2: 1.9573355393579903
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.54191418499785149
+      l2: 0.14494220487968848
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3141861926191822
+      dloss {
+        size: 3
+        l1: 0.63798704805361994
+        l2: 0.20222243678671453
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2322398077115082
+    total_loss: 9.3141861926191822
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0091361203588792191
+    cos_angle_loss_derivative_vs_delta_weight: 0.99707394380573289
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 48
+    weight_stats {
+      size: 3
+      l1: 1.6755077515247738
+      l2: 1.9573355393579903
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3141861926191822
+      dloss {
+        size: 3
+        l1: 0.63798704805361994
+        l2: 0.20222243678671453
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3141861926191822
+    total_loss: 9.3141861926191822
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.16206524058766666
+    cos_angle_loss_derivative_vs_delta_weight: -0.999999761702103
+  }
+}
+line {
+  iteration {
+    index: 49
+    weight_stats {
+      size: 3
+      l1: 2.1870509646040648
+      l2: 2.2411137892834136
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.511543213079291
+      l2: 0.12988249544387159
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321561151819154
+      dloss {
+        size: 3
+        l1: 0.011949224763914468
+        l2: 6.548692179341554e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3141861926191822
+    total_loss: 9.2321561151819154
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0029642660286094652
+    cos_angle_loss_derivative_vs_delta_weight: -0.99825955119255594
+  }
+}
+line {
+  iteration {
+    index: 50
+    weight_stats {
+      size: 3
+      l1: 2.7083411589455419
+      l2: 2.7981953337623962
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.52129019434147716
+      l2: 0.13464580543352056
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3084811668481375
+      dloss {
+        size: 3
+        l1: 0.59435065968242928
+        l2: 0.17581825371691867
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321561151819154
+    total_loss: 9.3084811668481375
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0081337051601857221
+    cos_angle_loss_derivative_vs_delta_weight: 0.99855642718082982
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 51
+    weight_stats {
+      size: 3
+      l1: 2.7083411589455419
+      l2: 2.7981953337623962
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3084811668481375
+      dloss {
+        size: 3
+        l1: 0.59435065968242928
+        l2: 0.17581825371691867
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3084811668481375
+    total_loss: 9.3084811668481375
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.14572645241521989
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999992950902161
+  }
+}
+line {
+  iteration {
+    index: 52
+    weight_stats {
+      size: 3
+      l1: 2.215585437039
+      l2: 2.2665389123692088
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.492755721906542
+      l2: 0.12078496673979322
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2322251028844224
+      dloss {
+        size: 3
+        l1: 0.021835609828716462
+        l2: 0.00023081498713874645
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3084811668481375
+    total_loss: 9.2322251028844224
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0054663214586299974
+    cos_angle_loss_derivative_vs_delta_weight: -0.99981929752677712
+  }
+}
+line {
+  iteration {
+    index: 53
+    weight_stats {
+      size: 3
+      l1: 1.7050717583007042
+      l2: 1.9698131390141529
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.5105136787382959
+      l2: 0.12950403528596063
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3054735925624978
+      dloss {
+        size: 3
+        l1: 0.60186371338677569
+        l2: 0.18056957425689213
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2322251028844224
+    total_loss: 9.3054735925624978
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.00815583075547191
+    cos_angle_loss_derivative_vs_delta_weight: 0.99933180892892615
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 54
+    weight_stats {
+      size: 3
+      l1: 1.7050717583007042
+      l2: 1.9698131390141529
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3054735925624978
+      dloss {
+        size: 3
+        l1: 0.60186371338677569
+        l2: 0.18056957425689213
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3054735925624978
+    total_loss: 9.3054735925624978
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.14476365410210945
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999994587189911
+  }
+}
+line {
+  iteration {
+    index: 55
+    weight_stats {
+      size: 3
+      l1: 2.1877010655187479
+      l2: 2.24235031980899
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.48262930721804359
+      l2: 0.11605785694467996
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321543619817472
+      dloss {
+        size: 3
+        l1: 0.011313960019767477
+        l2: 6.1387138368707931e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.3054735925624978
+    total_loss: 9.2321543619817472
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0027178947983929787
+    cos_angle_loss_derivative_vs_delta_weight: -0.999624624821855
+  }
+}
+line {
+  iteration {
+    index: 56
+    weight_stats {
+      size: 3
+      l1: 2.6795295034297686
+      l2: 2.7591793359744932
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.49182843791102071
+      l2: 0.12042426496329621
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.30043412358068
+      dloss {
+        size: 3
+        l1: 0.56222593805974208
+        l2: 0.15770370694837385
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321543619817472
+    total_loss: 9.30043412358068
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0072855636289721349
+    cos_angle_loss_derivative_vs_delta_weight: 0.99967129086840467
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 57
+    weight_stats {
+      size: 3
+      l1: 2.6795295034297686
+      l2: 2.7591793359744932
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.30043412358068
+      dloss {
+        size: 3
+        l1: 0.56222593805974208
+        l2: 0.15770370694837385
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.30043412358068
+    total_loss: 9.30043412358068
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.13052339360741441
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999998362803522
+  }
+}
+line {
+  iteration {
+    index: 58
+    weight_stats {
+      size: 3
+      l1: 2.2141441446229244
+      l2: 2.2648697056679055
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.4653853588068439
+      l2: 0.10802762450099127
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2322126148871391
+      dloss {
+        size: 3
+        l1: 0.020206389155492332
+        l2: 0.00020094645480775946
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.30043412358068
+    total_loss: 9.2322126148871391
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0048219932334671242
+    cos_angle_loss_derivative_vs_delta_weight: -0.99995760157371438
+  }
+}
+line {
+  iteration {
+    index: 59
+    weight_stats {
+      size: 3
+      l1: 1.7323455382475537
+      l2: 1.9804352192989005
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.48179860637537081
+      l2: 0.11572033234095017
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2976874780742627
+      dloss {
+        size: 3
+        l1: 0.56828449728289088
+        l2: 0.161239107215862
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2322126148871391
+    total_loss: 9.2976874780742627
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0072826478072983945
+    cos_angle_loss_derivative_vs_delta_weight: 0.9998478432890352
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 60
+    weight_stats {
+      size: 3
+      l1: 1.7323455382475537
+      l2: 1.9804352192989005
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2976874780742627
+      dloss {
+        size: 3
+        l1: 0.56828449728289088
+        l2: 0.161239107215862
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2976874780742627
+    total_loss: 9.2976874780742627
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.12931391646837581
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999998773053012
+  }
+}
+line {
+  iteration {
+    index: 61
+    weight_stats {
+      size: 3
+      l1: 2.1881606163615368
+      l2: 2.2430416457385776
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.45581507811398331
+      l2: 0.10370988584267836
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321527223828745
+      dloss {
+        size: 3
+        l1: 0.010827701415377589
+        l2: 5.7471305134403827e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2976874780742627
+    total_loss: 9.2321527223828745
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0024877672974043274
+    cos_angle_loss_derivative_vs_delta_weight: -0.99991891826106194
+  }
+}
+line {
+  iteration {
+    index: 62
+    weight_stats {
+      size: 3
+      l1: 2.6527658362759707
+      l2: 2.7243094338639167
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.46460521991443354
+      l2: 0.10770574743604805
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2932331187590957
+      dloss {
+        size: 3
+        l1: 0.5321125711060265
+        l2: 0.14142443014839703
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321527223828745
+    total_loss: 9.2932331187590957
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0065257533191825862
+    cos_angle_loss_derivative_vs_delta_weight: 0.99992527883744831
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 63
+    weight_stats {
+      size: 3
+      l1: 2.6527658362759707
+      l2: 2.7243094338639167
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2932331187590957
+      dloss {
+        size: 3
+        l1: 0.5321125711060265
+        l2: 0.14142443014839703
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2932331187590957
+    total_loss: 9.2932331187590957
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.11689311014995739
+    cos_angle_loss_derivative_vs_delta_weight: -0.9999999961990963
+  }
+}
+line {
+  iteration {
+    index: 64
+    weight_stats {
+      size: 3
+      l1: 2.2129258308079258
+      l2: 2.2636477364653422
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.43984000546804453
+      l2: 0.096616965612401559
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2322018626573072
+      dloss {
+        size: 3
+        l1: 0.018790644772541942
+        l2: 0.00017519340809613428
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2932331187590957
+    total_loss: 9.2322018626573072
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0042563018786106162
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999006503454013
+  }
+}
+line {
+  iteration {
+    index: 65
+    weight_stats {
+      size: 3
+      l1: 1.7578318027676185
+      l2: 1.99027325193872
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.45509402804030752
+      l2: 0.10340837506315333
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2907283858545853
+      dloss {
+        size: 3
+        l1: 0.53680696412858364
+        l2: 0.1439809364355287
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2322018626573072
+    total_loss: 9.2907283858545853
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0065035664621679867
+    cos_angle_loss_derivative_vs_delta_weight: 0.99996537364323956
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 66
+    weight_stats {
+      size: 3
+      l1: 1.7578318027676185
+      l2: 1.99027325193872
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2907283858545853
+      dloss {
+        size: 3
+        l1: 0.53680696412858364
+        l2: 0.1439809364355287
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2907283858545853
+    total_loss: 9.2907283858545853
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.11551623005179637
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999722154809
+  }
+}
+line {
+  iteration {
+    index: 67
+    weight_stats {
+      size: 3
+      l1: 2.1885359188893738
+      l2: 2.2434882819290141
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.43070411612175535
+      l2: 0.092678932432877975
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321511283271747
+      dloss {
+        size: 3
+        l1: 0.010406576056924632
+        l2: 5.3646856885883817e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2907283858545853
+    total_loss: 9.2321511283271747
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0022732340554522672
+    cos_angle_loss_derivative_vs_delta_weight: -0.99998243216909843
+  }
+}
+line {
+  iteration {
+    index: 68
+    weight_stats {
+      size: 3
+      l1: 2.6276821489730473
+      l2: 2.6925732398925617
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.43914623008367337
+      l2: 0.0963294951920092
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2867892163850687
+      dloss {
+        size: 3
+        l1: 0.50371080352918174
+        l2: 0.12679932895004686
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321511283271747
+    total_loss: 9.2867892163850687
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0058446366110338948
+    cos_angle_loss_derivative_vs_delta_weight: 0.99998302176752352
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 69
+    weight_stats {
+      size: 3
+      l1: 2.6276821489730473
+      l2: 2.6925732398925617
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2867892163850687
+      dloss {
+        size: 3
+        l1: 0.50371080352918174
+        l2: 0.12679932895004686
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2867892163850687
+    total_loss: 9.2867892163850687
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.10467465523337316
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999911858728
+  }
+}
+line {
+  iteration {
+    index: 70
+    weight_stats {
+      size: 3
+      l1: 2.2118493577335254
+      l2: 2.2626619078710766
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.41583279123952172
+      l2: 0.086410421555597527
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321925655680417
+      dloss {
+        size: 3
+        l1: 0.017520610014642723
+        l2: 0.00015291644664280969
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2867892163850687
+    total_loss: 9.2321925655680417
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0037591041245994311
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999767495101055
+  }
+}
+line {
+  iteration {
+    index: 71
+    weight_stats {
+      size: 3
+      l1: 1.78179796505137
+      l2: 1.9997741688091091
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.43005139268215553
+      l2: 0.09240948138638537
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.284508291732628
+      dloss {
+        size: 3
+        l1: 0.50717936441305167
+        l2: 0.1285728839384328
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321925655680417
+    total_loss: 9.284508291732628
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0058081548228291592
+    cos_angle_loss_derivative_vs_delta_weight: 0.99999212137235494
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 72
+    weight_stats {
+      size: 3
+      l1: 1.78179796505137
+      l2: 1.9997741688091091
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.284508291732628
+      dloss {
+        size: 3
+        l1: 0.50717936441305167
+        l2: 0.1285728839384328
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.284508291732628
+    total_loss: 9.284508291732628
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.10319346356597307
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999937110973
+  }
+}
+line {
+  iteration {
+    index: 73
+    weight_stats {
+      size: 3
+      l1: 2.1888737458345582
+      l2: 2.2438250089969891
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.40707578078318807
+      l2: 0.082823769755643081
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321495779332068
+      dloss {
+        size: 3
+        l1: 0.010014201610525353
+        l2: 4.9923712726981047e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.284508291732628
+    total_loss: 9.2321495779332068
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0020739034572575189
+    cos_angle_loss_derivative_vs_delta_weight: -0.9999961812789806
+  }
+}
+line {
+  iteration {
+    index: 74
+    weight_stats {
+      size: 3
+      l1: 2.6040705989904658
+      l2: 2.6634110994388283
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.41519685315590776
+      l2: 0.086153616477797651
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2810231023753467
+      dloss {
+        size: 3
+        l1: 0.47684722801830653
+        l2: 0.11366476548325131
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321495779332068
+    total_loss: 9.2810231023753467
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0052340616446053881
+    cos_angle_loss_derivative_vs_delta_weight: 0.99999614258158109
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 75
+    weight_stats {
+      size: 3
+      l1: 2.6040705989904658
+      l2: 2.6634110994388283
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2810231023753467
+      dloss {
+        size: 3
+        l1: 0.47684722801830653
+        l2: 0.11366476548325131
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2810231023753467
+    total_loss: 9.2810231023753467
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.093723658329555648
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999979588294
+  }
+}
+line {
+  iteration {
+    index: 76
+    weight_stats {
+      size: 3
+      l1: 2.2108748292357019
+      l2: 2.2618143066477012
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.39319576975476384
+      l2: 0.077280977063693662
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321845109891854
+      dloss {
+        size: 3
+        l1: 0.016361750624563298
+        l2: 0.00013361337265308334
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2810231023753467
+    total_loss: 9.2321845109891854
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0033217725577388314
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999945656572964
+  }
+}
+line {
+  iteration {
+    index: 77
+    weight_stats {
+      size: 3
+      l1: 1.8044031167143109
+      l2: 2.0091081378714706
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.4064717125213913
+      l2: 0.082582938361277475
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.27894868553028
+      dloss {
+        size: 3
+        l1: 0.47923855513592223
+        l2: 0.11481666061060651
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321845109891854
+    total_loss: 9.27894868553028
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0051873445060862545
+    cos_angle_loss_derivative_vs_delta_weight: 0.99999820748495427
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 78
+    weight_stats {
+      size: 3
+      l1: 1.8044031167143109
+      l2: 2.0091081378714706
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.27894868553028
+      dloss {
+        size: 3
+        l1: 0.47923855513592223
+        l2: 0.11481666061060651
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.27894868553028
+    total_loss: 9.27894868553028
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.092187688621582928
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999985768551
+  }
+}
+line {
+  iteration {
+    index: 79
+    weight_stats {
+      size: 3
+      l1: 2.1891941512480626
+      l2: 2.244111805255939
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.38479103453375196
+      l2: 0.074018612722340324
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321480799450928
+      dloss {
+        size: 3
+        l1: 0.0096354252058796219
+        l2: 4.6325807800907052e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.27894868553028
+    total_loss: 9.2321480799450928
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0018893038265796619
+    cos_angle_loss_derivative_vs_delta_weight: -0.999999167370516
+  }
+}
+line {
+  iteration {
+    index: 80
+    weight_stats {
+      size: 3
+      l1: 2.5817978958023211
+      l2: 2.6364765027905213
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.39260374455425839
+      l2: 0.077051541304289262
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2758637770557257
+      dloss {
+        size: 3
+        l1: 0.45140682901142154
+        l2: 0.10187259284732139
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321480799450928
+    total_loss: 9.2758637770557257
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0046867951642805628
+    cos_angle_loss_derivative_vs_delta_weight: 0.99999912361886156
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 81
+    weight_stats {
+      size: 3
+      l1: 2.5817978958023211
+      l2: 2.6364765027905213
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2758637770557257
+      dloss {
+        size: 3
+        l1: 0.45140682901142154
+        l2: 0.10187259284732139
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2758637770557257
+    total_loss: 9.2758637770557257
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.083910271639686368
+    cos_angle_loss_derivative_vs_delta_weight: -0.9999999999527962
+  }
+}
+line {
+  iteration {
+    index: 82
+    weight_stats {
+      size: 3
+      l1: 2.2099812100913852
+      l2: 2.2610582037201605
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.37181668571093579
+      l2: 0.0691150925927945
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321775231751388
+      dloss {
+        size: 3
+        l1: 0.015294850857323739
+        l2: 0.00011686499405083047
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2758637770557257
+    total_loss: 9.2321775231751388
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0029368393983503754
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999987314185812
+  }
+}
+line {
+  iteration {
+    index: 83
+    weight_stats {
+      size: 3
+      l1: 1.8257554370944638
+      l2: 2.0183253161712589
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.38422577299692146
+      l2: 0.073803348128879454
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.27397942074125
+      dloss {
+        size: 3
+        l1: 0.45286395000262825
+        l2: 0.10253515237565691
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321775231751388
+    total_loss: 9.27397942074125
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0046330943423548675
+    cos_angle_loss_derivative_vs_delta_weight: 0.99999959219660073
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 84
+    weight_stats {
+      size: 3
+      l1: 1.8257554370944638
+      l2: 2.0183253161712589
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.27397942074125
+      dloss {
+        size: 3
+        l1: 0.45286395000262825
+        l2: 0.10253515237565691
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.27397942074125
+    total_loss: 9.27397942074125
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.082357925439879118
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999996779843
+  }
+}
+line {
+  iteration {
+    index: 85
+    weight_stats {
+      size: 3
+      l1: 2.1895052944660174
+      l2: 2.2443750102224178
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.36374985737155369
+      l2: 0.066151243998227582
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321466428379875
+      dloss {
+        size: 3
+        l1: 0.0092644759501558926
+        l2: 4.2874088006544059e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.27397942074125
+    total_loss: 9.2321466428379875
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0017188532168176081
+    cos_angle_loss_derivative_vs_delta_weight: -0.999999817936611
+  }
+}
+line {
+  iteration {
+    index: 86
+    weight_stats {
+      size: 3
+      l1: 2.5607665877583372
+      l2: 2.6115274458373756
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.37126129329231955
+      l2: 0.068910094514669659
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2712476381041657
+      dloss {
+        size: 3
+        l1: 0.42730232242423666
+        l2: 0.091288742576132773
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321466428379875
+    total_loss: 9.2712476381041657
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0041963483684434545
+    cos_angle_loss_derivative_vs_delta_weight: 0.99999980089053353
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 87
+    weight_stats {
+      size: 3
+      l1: 2.5607665877583372
+      l2: 2.6115274458373756
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2712476381041657
+      dloss {
+        size: 3
+        l1: 0.42730232242423666
+        l2: 0.091288742576132773
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2712476381041657
+    total_loss: 9.2712476381041657
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.075117684879485433
+    cos_angle_loss_derivative_vs_delta_weight: -0.999999999989098
+  }
+}
+line {
+  iteration {
+    index: 88
+    weight_stats {
+      size: 3
+      l1: 2.2091562328434158
+      l2: 2.2603701626343011
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.35161035491492137
+      l2: 0.061811198429760912
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321714533685579
+      dloss {
+        size: 3
+        l1: 0.014307919875346631
+        l2: 0.00010231557780034395
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2712476381041657
+    total_loss: 9.2321714533685579
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0025978096159937855
+    cos_angle_loss_derivative_vs_delta_weight: -0.9999999704226058
+  }
+}
+line {
+  iteration {
+    index: 89
+    weight_stats {
+      size: 3
+      l1: 1.8459381946882005
+      l2: 2.0274260450308996
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.36321803815521536
+      l2: 0.065958824113096018
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2695378010117722
+      dloss {
+        size: 3
+        l1: 0.42795666101843216
+        l2: 0.091570160286407076
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321714533685579
+    total_loss: 9.2695378010117722
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0041382410427041457
+    cos_angle_loss_derivative_vs_delta_weight: 0.999999907228148
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 90
+    weight_stats {
+      size: 3
+      l1: 1.8459381946882005
+      l2: 2.0274260450308996
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2695378010117722
+      dloss {
+        size: 3
+        l1: 0.42795666101843216
+        l2: 0.091570160286407076
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2695378010117722
+    total_loss: 9.2695378010117722
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.073578295756624834
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999999271372
+  }
+}
+line {
+  iteration {
+    index: 91
+    weight_stats {
+      size: 3
+      l1: 2.1898101139727233
+      l2: 2.24462590387126
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.34387191928452321
+      l2: 0.05912150409691793
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321452729835425
+      dloss {
+        size: 3
+        l1: 0.0088996409285565514
+        l2: 3.9583968866288769e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2695378010117722
+    total_loss: 9.2321452729835425
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0015618839909558621
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999996008522574
+  }
+}
+line {
+  iteration {
+    index: 92
+    weight_stats {
+      size: 3
+      l1: 2.5408974831299291
+      l2: 2.5883766850808354
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.35108736915720523
+      l2: 0.061628024319322225
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2671177079273175
+      dloss {
+        size: 3
+        l1: 0.40446032661736447
+        l2: 0.081791989200483847
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321452729835425
+    total_loss: 9.2671177079273175
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0037568878493572941
+    cos_angle_loss_derivative_vs_delta_weight: 0.99999995476268289
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 93
+    weight_stats {
+      size: 3
+      l1: 2.5408974831299291
+      l2: 2.5883766850808354
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2671177079273175
+      dloss {
+        size: 3
+        l1: 0.40446032661736447
+        l2: 0.081791989200483847
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2671177079273175
+    total_loss: 9.2671177079273175
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.067240849423971544
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999999748534
+  }
+}
+line {
+  iteration {
+    index: 94
+    weight_stats {
+      size: 3
+      l1: 2.2083918268657938
+      l2: 2.2597374590612622
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.33250565626413492
+      l2: 0.055278418772742206
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321661747876558
+      dloss {
+        size: 3
+        l1: 0.013392515635622992
+        l2: 8.966171343296652e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2671177079273175
+    total_loss: 9.2321661747876558
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0022990243576639195
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999311206444
+  }
+}
+line {
+  iteration {
+    index: 95
+    weight_stats {
+      size: 3
+      l1: 1.8650215755166486
+      l2: 2.036391986404682
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.34337025134914539
+      l2: 0.058949498816974241
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2655677859845174
+      dloss {
+        size: 3
+        l1: 0.40442998334918984
+        l2: 0.081780403407495122
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321661747876558
+    total_loss: 9.2655677859845174
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.00369639653336481
+    cos_angle_loss_derivative_vs_delta_weight: 0.99999997889623526
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 96
+    weight_stats {
+      size: 3
+      l1: 1.8650215755166486
+      l2: 2.036391986404682
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2655677859845174
+      dloss {
+        size: 3
+        l1: 0.40442998334918984
+        l2: 0.081780403407495122
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2655677859845174
+    total_loss: 9.2655677859845174
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.065736404023357453
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999999835121
+  }
+}
+line {
+  iteration {
+    index: 97
+    weight_stats {
+      size: 3
+      l1: 2.1901093204024029
+      l2: 2.2448690759465642
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.32508774488575426
+      l2: 0.052839979186753351
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.232143974619401
+      dloss {
+        size: 3
+        l1: 0.008540885164637968
+        l2: 3.6465642052937377e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2655677859845174
+    total_loss: 9.232143974619401
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0014176721154208177
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999122807526
+  }
+}
+line {
+  iteration {
+    index: 98
+    weight_stats {
+      size: 3
+      l1: 2.5221216032843725
+      l2: 2.5668685808831126
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.33201228288196977
+      l2: 0.055114736748187093
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2634229492722557
+      dloss {
+        size: 3
+        l1: 0.3828151172646781
+        l2: 0.073272815781038753
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.232143974619401
+    total_loss: 9.2634229492722557
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 0.0033631686190893047
+    cos_angle_loss_derivative_vs_delta_weight: 0.99999998972199045
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 99
+    weight_stats {
+      size: 3
+      l1: 2.5221216032843725
+      l2: 2.5668685808831126
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2634229492722557
+      dloss {
+        size: 3
+        l1: 0.3828151172646781
+        l2: 0.073272815781038753
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2634229492722557
+    total_loss: 9.2634229492722557
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.060185332167877914
+    cos_angle_loss_derivative_vs_delta_weight: -0.99999999999942057
+  }
+}
+line {
+  iteration {
+    index: 100
+    weight_stats {
+      size: 3
+      l1: 2.2076820354366138
+      l2: 2.2591523914266687
+      nonzero_count: 3
+    }
+    delta_weight_stats {
+      size: 3
+      l1: 0.31443956784775867
+      l2: 0.049435444367068468
+      nonzero_count: 3
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.2321615790871974
+      dloss {
+        size: 3
+        l1: 0.012542060639033459
+        l2: 7.8644032530773974e-05
+        nonzero_count: 3
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2634229492722557
+    total_loss: 9.2321615790871974
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    get_model {
+    }
+  }
+}
+line {
+  model {
+    weight {
+      feature: "cat"
+      weight: -1.3862951
+    }
+    weight {
+      feature: "dog"
+      weight: -0.41069347
+    }
+    weight {
+      feature: "mouse"
+      weight: 0.41069347
+    }
+    last_iteration {
+      index: 100
+      weight_stats {
+        size: 3
+        l1: 2.2076820354366138
+        l2: 2.2591523914266687
+        nonzero_count: 3
+      }
+      delta_weight_stats {
+        size: 3
+        l1: 0.31443956784775867
+        l2: 0.049435444367068468
+        nonzero_count: 3
+      }
+      training_data_stats {
+        size: 15
+        loss: 9.2321615790871974
+        dloss {
+          size: 3
+          l1: 0.012542060639033459
+          l2: 7.8644032530773974e-05
+          nonzero_count: 3
+        }
+      }
+      regularization_stats {
+        loss: 0
+      }
+      cpu_operation_count_flat_materialization: 0
+      cpu_operation_count_deep_materialization: 0
+      prev_total_loss: 9.2634229492722557
+      total_loss: 9.2321615790871974
+    }
+  }
+}
+line {
+  run_command {
+    prune_features {
+      feature_pruning {
+        top_count: 2
+        feature_scoring {
+          feature_ordering: WEIGHT_ABSOLUTE_VALUE
+        }
+      }
+    }
+  }
+}
+line {
+  feature_pruning {
+    features_removed: 1
+    xjbools_removed: 5
+    xjbools_count: 10
+    blocked_features: 0
+    blocked_xjbools: 0
+  }
+}
+line {
+  run_command {
+    get_model {
+    }
+  }
+}
+line {
+  model {
+    weight {
+      feature: "cat"
+      weight: -1.3862951
+    }
+    weight {
+      feature: "dog"
+      weight: -0.41069347
+    }
+    last_iteration {
+      index: 100
+      weight_stats {
+        size: 3
+        l1: 2.2076820354366138
+        l2: 2.2591523914266687
+        nonzero_count: 3
+      }
+      delta_weight_stats {
+        size: 3
+        l1: 0.31443956784775867
+        l2: 0.049435444367068468
+        nonzero_count: 3
+      }
+      training_data_stats {
+        size: 15
+        loss: 9.2321615790871974
+        dloss {
+          size: 3
+          l1: 0.012542060639033459
+          l2: 7.8644032530773974e-05
+          nonzero_count: 3
+        }
+      }
+      regularization_stats {
+        loss: 0
+      }
+      cpu_operation_count_flat_materialization: 0
+      cpu_operation_count_deep_materialization: 0
+      prev_total_loss: 9.2634229492722557
+      total_loss: 9.2321615790871974
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -0.0010177741221498095
+    cos_angle_loss_derivative_vs_delta_weight: -0.999999996795541
+  }
+}
+line {
+  iteration {
+    index: 101
+    weight_stats {
+      size: 2
+      l1: 1.6346802610198023
+      l2: 1.9835031641856848
+      nonzero_count: 2
+    }
+    delta_weight_stats {
+      size: 2
+      l1: 0.16230831651031727
+      l2: 0.026343109125318395
+      nonzero_count: 2
+    }
+    training_data_stats {
+      size: 15
+      loss: 9.3477516043068345
+      dloss {
+        size: 2
+        l1: 0.19110327777799035
+        l2: 0.036519865341249763
+        nonzero_count: 2
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 9.2321615790871974
+    total_loss: 9.3477516043068345
+  }
+}
+line {
+  run_command {
+    evaluate_stats {
+      auc: true
+    }
+  }
+}
+line {
+  iteration {
+    training_data_stats {
+      auc: 0.68518518518518523
+    }
+  }
+}
+line {
+  run_command {
+    get_model {
+    }
+  }
+}
+line {
+  model {
+    weight {
+      feature: "cat"
+      weight: -1.3862925
+    }
+    weight {
+      feature: "dog"
+      weight: -0.24838786
+    }
+    last_iteration {
+      index: 101
+      weight_stats {
+        size: 2
+        l1: 1.6346802610198023
+        l2: 1.9835031641856848
+        nonzero_count: 2
+      }
+      delta_weight_stats {
+        size: 2
+        l1: 0.16230831651031727
+        l2: 0.026343109125318395
+        nonzero_count: 2
+      }
+      training_data_stats {
+        size: 15
+        loss: 9.3477516043068345
+        dloss {
+          size: 2
+          l1: 0.19110327777799035
+          l2: 0.036519865341249763
+          nonzero_count: 2
+        }
+      }
+      regularization_stats {
+        loss: 0
+      }
+      cpu_operation_count_flat_materialization: 0
+      cpu_operation_count_deep_materialization: 0
+      prev_total_loss: 9.2321615790871974
+      total_loss: 9.3477516043068345
+    }
+  }
+}
+line {
+  run_command {
+    write_model {
+      set {
+        output_model_path: "../sensei/testdata/regression/t4.model"
+        format: TEXT
+      }
+    }
+  }
+}
+line {
+  run_command {
+    write_model {
+      write {
+      }
+    }
+  }
+}
+line {
+  write_model {
+    last_iteration {
+      index: 101
+      weight_stats {
+        size: 2
+        l1: 1.6346802610198023
+        l2: 1.9835031641856848
+        nonzero_count: 2
+      }
+      delta_weight_stats {
+        size: 2
+        l1: 0.16230831651031727
+        l2: 0.026343109125318395
+        nonzero_count: 2
+      }
+      training_data_stats {
+        size: 15
+        loss: 9.3477516043068345
+        dloss {
+          size: 2
+          l1: 0.19110327777799035
+          l2: 0.036519865341249763
+          nonzero_count: 2
+        }
+      }
+      regularization_stats {
+        loss: 0
+      }
+      cpu_operation_count_flat_materialization: 0
+      cpu_operation_count_deep_materialization: 0
+      prev_total_loss: 9.2321615790871974
+      total_loss: 9.3477516043068345
+    }
+  }
+}

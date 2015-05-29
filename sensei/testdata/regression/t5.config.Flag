@@ -1,0 +1,39 @@
+command_list {
+  command {
+    set {
+      logging {
+        log_timestamp: false
+        text_log_path: "sensei/testdata/regression/t5.log"
+        clear_log_files: true
+      }
+      inertia_factor: 1.0
+      allow_undo: true
+      deterministic: true
+    }
+  }
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set: {
+          files_glob: "sensei/testdata/simplest.libsvm"
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+      }
+    }
+  }
+  command { internal { get_model {} } }
+  command {
+    repeat {
+      repetitions: 9
+      command { fit_model_weights { iterations: 1 } }
+      command { evaluate_stats { auc: true } }
+      command { internal { get_model {} } }
+    }
+  }
+}

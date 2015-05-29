@@ -1,0 +1,7128 @@
+line {
+  timestamp: 1432556452940065722
+  command_list_config {
+    command {
+      set {
+        name: "libsvm scoring test"
+        logging {
+          log_timestamp: false
+          text_log_path: "../sensei/testdata/regression/libsvm_scoring.log"
+          clear_log_files: true
+        }
+        regularization {
+          l1: 1
+          l2: 0.5
+        }
+        inertia_factor: 1
+        deterministic: true
+      }
+    }
+    command {
+      read_data {
+        data_reader {
+          format: LIBSVM
+          feature_spec {
+            product {
+            }
+          }
+          feature_spec {
+            product {
+              prefix: ""
+            }
+          }
+          thread_count: 1
+          training_set {
+            files_glob: ""
+          }
+          user_id_feature_name: "id"
+        }
+      }
+    }
+    command {
+      command_list {
+        command {
+          command_list {
+            command {
+              repeat {
+                repetitions: 10
+                command {
+                  fit_model_weights {
+                    iterations: 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    command {
+      score_rows {
+        set {
+          output_fname: "../sensei/testdata/regression/libsvm_scoring.scores"
+          format: SERIALIZED
+        }
+      }
+    }
+    command {
+      score_rows {
+        write_scores {
+        }
+      }
+    }
+    command {
+      internal {
+        get_scores {
+        }
+      }
+    }
+  }
+  run_id: 4341301836377757578
+}
+line {
+  timestamp: 1432556452940639124
+  run_command {
+    set {
+      name: "libsvm scoring test"
+      logging {
+        log_timestamp: false
+        text_log_path: "../sensei/testdata/regression/libsvm_scoring.log"
+        clear_log_files: true
+      }
+      regularization {
+        l1: 1
+        l2: 0.5
+      }
+      inertia_factor: 1
+      deterministic: true
+    }
+  }
+  run_id: 4341301836377757578
+}
+line {
+  run_command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        feature_spec {
+          product {
+          }
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+        training_set {
+          files_glob: ""
+        }
+        user_id_feature_name: "id"
+      }
+    }
+  }
+}
+line {
+  run_command {
+    command_list {
+      command {
+        command_list {
+          command {
+            repeat {
+              repetitions: 10
+              command {
+                fit_model_weights {
+                  iterations: 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    command_list {
+      command {
+        repeat {
+          repetitions: 10
+          command {
+            fit_model_weights {
+              iterations: 1
+            }
+          }
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    repeat {
+      repetitions: 10
+      command {
+        fit_model_weights {
+          iterations: 1
+        }
+      }
+    }
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  iteration {
+    index: 0
+    weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 1112.5012247986658
+      dloss {
+        size: 114
+        l1: 6108.5
+        l2: 1289151.25
+        nonzero_count: 88
+      }
+    }
+    regularization_stats {
+      loss: 0
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: inf
+    total_loss: 1112.5012247986658
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -491.17394451141274
+    cos_angle_loss_derivative_vs_delta_weight: -0.58195945754336864
+  }
+}
+line {
+  iteration {
+    index: 1
+    weight_stats {
+      size: 114
+      l1: 6.2946814753710933
+      l2: 0.55256237069825331
+      nonzero_count: 88
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 6.2946814753710933
+      l2: 0.55256237069825331
+      nonzero_count: 88
+    }
+    training_data_stats {
+      size: 1605
+      loss: 819.309395497906
+      dloss {
+        size: 114
+        l1: 1821.3475142460884
+        l2: 89999.479226174284
+        nonzero_count: 93
+      }
+    }
+    regularization_stats {
+      loss: 6.5709626607202214
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 1112.5012247986658
+    total_loss: 825.88035815862622
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -173.98739453902439
+    cos_angle_loss_derivative_vs_delta_weight: -0.56868097037984011
+  }
+}
+line {
+  iteration {
+    index: 2
+    weight_stats {
+      size: 114
+      l1: 14.516493735172505
+      l2: 3.0477764488003927
+      nonzero_count: 92
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 8.4135121330302312
+      l2: 1.0400594901577747
+      nonzero_count: 93
+    }
+    training_data_stats {
+      size: 1605
+      loss: 793.79311353681646
+      dloss {
+        size: 114
+        l1: 3097.4269350403561
+        l2: 350031.31268752686
+        nonzero_count: 93
+      }
+    }
+    regularization_stats {
+      loss: 16.040381959572702
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 825.88035815862622
+    total_loss: 809.83349549638922
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -83.447400892171743
+    cos_angle_loss_derivative_vs_delta_weight: -0.12335444720246869
+  }
+}
+line {
+  iteration {
+    index: 3
+    weight_stats {
+      size: 114
+      l1: 22.390840457936484
+      l2: 7.5907592422518535
+      nonzero_count: 90
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 8.9741148104992288
+      l2: 1.3074018926519033
+      nonzero_count: 93
+    }
+    training_data_stats {
+      size: 1605
+      loss: 726.54663399291928
+      dloss {
+        size: 114
+        l1: 3216.0587115519079
+        l2: 370214.44079389179
+        nonzero_count: 91
+      }
+    }
+    regularization_stats {
+      loss: 26.186220079062412
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 809.83349549638922
+    total_loss: 752.73285407198171
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -228.1769034272113
+    cos_angle_loss_derivative_vs_delta_weight: -0.27429397076479523
+  }
+}
+line {
+  iteration {
+    index: 4
+    weight_stats {
+      size: 114
+      l1: 30.237049102379217
+      l2: 14.845438651392957
+      nonzero_count: 87
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 9.8731295116345414
+      l2: 1.86920737552731
+      nonzero_count: 91
+    }
+    training_data_stats {
+      size: 1605
+      loss: 566.98997466692265
+      dloss {
+        size: 114
+        l1: 1235.8436531033403
+        l2: 52785.982648927929
+        nonzero_count: 88
+      }
+    }
+    regularization_stats {
+      loss: 37.659768428075708
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 752.73285407198171
+    total_loss: 604.64974309499837
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -96.397090508653349
+    cos_angle_loss_derivative_vs_delta_weight: -0.28767272973686109
+  }
+}
+line {
+  iteration {
+    index: 5
+    weight_stats {
+      size: 114
+      l1: 38.169282173469746
+      l2: 25.762623262169189
+      nonzero_count: 88
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 10.258759360058884
+      l2: 2.127217282091971
+      nonzero_count: 89
+    }
+    training_data_stats {
+      size: 1605
+      loss: 573.42610670436716
+      dloss {
+        size: 114
+        l1: 1472.9189190405416
+        l2: 82546.397266796441
+        nonzero_count: 91
+      }
+    }
+    regularization_stats {
+      loss: 51.050593804554346
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 604.64974309499837
+    total_loss: 624.47670050892145
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 81.737221129729662
+    cos_angle_loss_derivative_vs_delta_weight: 0.21176025268492613
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 6
+    weight_stats {
+      size: 114
+      l1: 38.169282173469746
+      l2: 25.762623262169189
+      nonzero_count: 88
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 573.42610670436716
+      dloss {
+        size: 114
+        l1: 1472.9189190405416
+        l2: 82546.397266796441
+        nonzero_count: 91
+      }
+    }
+    regularization_stats {
+      loss: 51.050593804554346
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 624.47670050892145
+    total_loss: 624.47670050892145
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -42.639044940687441
+    cos_angle_loss_derivative_vs_delta_weight: -0.45033256946279504
+  }
+}
+line {
+  iteration {
+    index: 7
+    weight_stats {
+      size: 114
+      l1: 37.264967513008862
+      l2: 24.860377282805086
+      nonzero_count: 89
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 2.4730076876865343
+      l2: 0.10860506965213471
+      nonzero_count: 91
+    }
+    training_data_stats {
+      size: 1605
+      loss: 544.00177985830487
+      dloss {
+        size: 114
+        l1: 626.01062576770119
+        l2: 14575.234842882332
+        nonzero_count: 90
+      }
+    }
+    regularization_stats {
+      loss: 49.695156154411372
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 624.47670050892145
+    total_loss: 593.69693601271626
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -28.428700797748903
+    cos_angle_loss_derivative_vs_delta_weight: -0.51166370916979775
+  }
+}
+line {
+  iteration {
+    index: 8
+    weight_stats {
+      size: 114
+      l1: 36.336994626088746
+      l2: 23.540799574625908
+      nonzero_count: 86
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 3.4379956516521171
+      l2: 0.21180159914119723
+      nonzero_count: 91
+    }
+    training_data_stats {
+      size: 1605
+      loss: 539.577029325115
+      dloss {
+        size: 114
+        l1: 748.76688473343859
+        l2: 18139.512064946433
+        nonzero_count: 86
+      }
+    }
+    regularization_stats {
+      loss: 48.107394413401671
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 593.69693601271626
+    total_loss: 587.68442373851667
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: 5.0863217617638812
+    cos_angle_loss_derivative_vs_delta_weight: 0.081372436582897112
+    restart_iteration: true
+  }
+}
+line {
+  iteration {
+    index: 9
+    weight_stats {
+      size: 114
+      l1: 36.336994626088746
+      l2: 23.540799574625908
+      nonzero_count: 86
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 0
+      l2: 0
+      nonzero_count: 0
+    }
+    training_data_stats {
+      size: 1605
+      loss: 539.577029325115
+      dloss {
+        size: 114
+        l1: 748.7668847334387
+        l2: 18139.512064946437
+        nonzero_count: 86
+      }
+    }
+    regularization_stats {
+      loss: 48.107394413401671
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 587.68442373851667
+    total_loss: 587.68442373851667
+  }
+}
+line {
+  run_command {
+    fit_model_weights {
+      iterations: 1
+    }
+  }
+}
+line {
+  grad_boost_update_minimum {
+    dot_loss_derivative_vs_delta_weight: -11.311335694608468
+    cos_angle_loss_derivative_vs_delta_weight: -0.485283391145515
+  }
+}
+line {
+  iteration {
+    index: 10
+    weight_stats {
+      size: 114
+      l1: 35.464992802780593
+      l2: 22.989947751857329
+      nonzero_count: 83
+    }
+    delta_weight_stats {
+      size: 114
+      l1: 1.3311843346761407
+      l2: 0.029950999954785593
+      nonzero_count: 86
+    }
+    training_data_stats {
+      size: 1605
+      loss: 531.96314818122039
+      dloss {
+        size: 114
+        l1: 384.90703996684636
+        l2: 4193.3717144842949
+        nonzero_count: 83
+      }
+    }
+    regularization_stats {
+      loss: 46.959966678709264
+    }
+    cpu_operation_count_flat_materialization: 0
+    cpu_operation_count_deep_materialization: 0
+    prev_total_loss: 587.68442373851667
+    total_loss: 578.92311485992968
+  }
+}
+line {
+  run_command {
+    score_rows {
+      set {
+        output_fname: "../sensei/testdata/regression/libsvm_scoring.scores"
+        format: SERIALIZED
+      }
+    }
+  }
+}
+line {
+  run_command {
+    score_rows {
+      write_scores {
+      }
+    }
+  }
+}
+line {
+  run_command {
+    internal {
+      get_scores {
+      }
+    }
+  }
+}
+line {
+  data_score {
+    row_score {
+      row_id: 0
+      wx: -0.95469469
+    }
+    row_score {
+      row_id: 1
+      wx: -2.8299751
+    }
+    row_score {
+      row_id: 2
+      wx: -0.867026
+    }
+    row_score {
+      row_id: 3
+      wx: -3.4877985
+    }
+    row_score {
+      row_id: 4
+      wx: -0.52460897
+    }
+    row_score {
+      row_id: 5
+      wx: -3.27775
+    }
+    row_score {
+      row_id: 6
+      wx: -5.1452403
+    }
+    row_score {
+      row_id: 7
+      wx: -3.3305717
+    }
+    row_score {
+      row_id: 8
+      wx: -4.3474493
+    }
+    row_score {
+      row_id: 9
+      wx: 1.658066
+    }
+    row_score {
+      row_id: 10
+      wx: -3.2457495
+    }
+    row_score {
+      row_id: 11
+      wx: 0.3638643
+    }
+    row_score {
+      row_id: 12
+      wx: 0.15324299
+    }
+    row_score {
+      row_id: 13
+      wx: -5.6661272
+    }
+    row_score {
+      row_id: 14
+      wx: 0.5336653
+    }
+    row_score {
+      row_id: 15
+      wx: -1.916862
+    }
+    row_score {
+      row_id: 16
+      wx: -4.2059364
+    }
+    row_score {
+      row_id: 17
+      wx: -2.4341474
+    }
+    row_score {
+      row_id: 18
+      wx: -3.2590778
+    }
+    row_score {
+      row_id: 19
+      wx: 0.59220171
+    }
+    row_score {
+      row_id: 20
+      wx: -3.3033688
+    }
+    row_score {
+      row_id: 21
+      wx: -4.4114604
+    }
+    row_score {
+      row_id: 22
+      wx: -4.5834818
+    }
+    row_score {
+      row_id: 23
+      wx: -1.4837427
+    }
+    row_score {
+      row_id: 24
+      wx: -3.9895759
+    }
+    row_score {
+      row_id: 25
+      wx: -2.3497548
+    }
+    row_score {
+      row_id: 26
+      wx: 1.3922691
+    }
+    row_score {
+      row_id: 27
+      wx: -0.89660418
+    }
+    row_score {
+      row_id: 28
+      wx: -1.5524868
+    }
+    row_score {
+      row_id: 29
+      wx: -1.8243237
+    }
+    row_score {
+      row_id: 30
+      wx: -0.2443037
+    }
+    row_score {
+      row_id: 31
+      wx: -4.5855622
+    }
+    row_score {
+      row_id: 32
+      wx: -4.5524373
+    }
+    row_score {
+      row_id: 33
+      wx: -2.7336302
+    }
+    row_score {
+      row_id: 34
+      wx: -3.988167
+    }
+    row_score {
+      row_id: 35
+      wx: 0.18389851
+    }
+    row_score {
+      row_id: 36
+      wx: -3.3609872
+    }
+    row_score {
+      row_id: 37
+      wx: -2.2431469
+    }
+    row_score {
+      row_id: 38
+      wx: 0.073920563
+    }
+    row_score {
+      row_id: 39
+      wx: -3.7848673
+    }
+    row_score {
+      row_id: 40
+      wx: -1.0401142
+    }
+    row_score {
+      row_id: 41
+      wx: -4.1396961
+    }
+    row_score {
+      row_id: 42
+      wx: -1.6840565
+    }
+    row_score {
+      row_id: 43
+      wx: -4.6617055
+    }
+    row_score {
+      row_id: 44
+      wx: -5.6910863
+    }
+    row_score {
+      row_id: 45
+      wx: -0.34705552
+    }
+    row_score {
+      row_id: 46
+      wx: -1.8737532
+    }
+    row_score {
+      row_id: 47
+      wx: -6.8404479
+    }
+    row_score {
+      row_id: 48
+      wx: -2.8268788
+    }
+    row_score {
+      row_id: 49
+      wx: -3.0975568
+    }
+    row_score {
+      row_id: 50
+      wx: 3.1564357
+    }
+    row_score {
+      row_id: 51
+      wx: 0.36946833
+    }
+    row_score {
+      row_id: 52
+      wx: -3.8783011
+    }
+    row_score {
+      row_id: 53
+      wx: -4.8475051
+    }
+    row_score {
+      row_id: 54
+      wx: 0.42472026
+    }
+    row_score {
+      row_id: 55
+      wx: 0.24889259
+    }
+    row_score {
+      row_id: 56
+      wx: -2.6952384
+    }
+    row_score {
+      row_id: 57
+      wx: -3.6179714
+    }
+    row_score {
+      row_id: 58
+      wx: 1.9280323
+    }
+    row_score {
+      row_id: 59
+      wx: 0.1876698
+    }
+    row_score {
+      row_id: 60
+      wx: -0.55727929
+    }
+    row_score {
+      row_id: 61
+      wx: -3.7662084
+    }
+    row_score {
+      row_id: 62
+      wx: 2.4702296
+    }
+    row_score {
+      row_id: 63
+      wx: -0.51854181
+    }
+    row_score {
+      row_id: 64
+      wx: -0.95664811
+    }
+    row_score {
+      row_id: 65
+      wx: -1.0463736
+    }
+    row_score {
+      row_id: 66
+      wx: -6.7296295
+    }
+    row_score {
+      row_id: 67
+      wx: -1.3014539
+    }
+    row_score {
+      row_id: 68
+      wx: -4.461751
+    }
+    row_score {
+      row_id: 69
+      wx: -0.44258305
+    }
+    row_score {
+      row_id: 70
+      wx: -4.3124714
+    }
+    row_score {
+      row_id: 71
+      wx: -4.4115534
+    }
+    row_score {
+      row_id: 72
+      wx: -0.61037982
+    }
+    row_score {
+      row_id: 73
+      wx: -5.5690546
+    }
+    row_score {
+      row_id: 74
+      wx: -1.714046
+    }
+    row_score {
+      row_id: 75
+      wx: -0.32238874
+    }
+    row_score {
+      row_id: 76
+      wx: -0.29606408
+    }
+    row_score {
+      row_id: 77
+      wx: -6.9281487
+    }
+    row_score {
+      row_id: 78
+      wx: -4.0282412
+    }
+    row_score {
+      row_id: 79
+      wx: -0.070334345
+    }
+    row_score {
+      row_id: 80
+      wx: -4.3639965
+    }
+    row_score {
+      row_id: 81
+      wx: -0.3058103
+    }
+    row_score {
+      row_id: 82
+      wx: -3.2512589
+    }
+    row_score {
+      row_id: 83
+      wx: -6.7560725
+    }
+    row_score {
+      row_id: 84
+      wx: -3.7003846
+    }
+    row_score {
+      row_id: 85
+      wx: -1.4903421
+    }
+    row_score {
+      row_id: 86
+      wx: -2.4501033
+    }
+    row_score {
+      row_id: 87
+      wx: -4.3936257
+    }
+    row_score {
+      row_id: 88
+      wx: -5.0259252
+    }
+    row_score {
+      row_id: 89
+      wx: -5.2007117
+    }
+    row_score {
+      row_id: 90
+      wx: -4.346509
+    }
+    row_score {
+      row_id: 91
+      wx: 1.6866488
+    }
+    row_score {
+      row_id: 92
+      wx: -0.02884873
+    }
+    row_score {
+      row_id: 93
+      wx: -1.9514015
+    }
+    row_score {
+      row_id: 94
+      wx: -5.1061115
+    }
+    row_score {
+      row_id: 95
+      wx: -2.6781161
+    }
+    row_score {
+      row_id: 96
+      wx: -4.406179
+    }
+    row_score {
+      row_id: 97
+      wx: -5.5770073
+    }
+    row_score {
+      row_id: 98
+      wx: -1.0769216
+    }
+    row_score {
+      row_id: 99
+      wx: 1.4882079
+    }
+    row_score {
+      row_id: 100
+      wx: -4.9004626
+    }
+    row_score {
+      row_id: 101
+      wx: -3.8469257
+    }
+    row_score {
+      row_id: 102
+      wx: -5.5455704
+    }
+    row_score {
+      row_id: 103
+      wx: -4.5857725
+    }
+    row_score {
+      row_id: 104
+      wx: -1.4418861
+    }
+    row_score {
+      row_id: 105
+      wx: -2.5496187
+    }
+    row_score {
+      row_id: 106
+      wx: -0.394037
+    }
+    row_score {
+      row_id: 107
+      wx: -5.377738
+    }
+    row_score {
+      row_id: 108
+      wx: -6.8458476
+    }
+    row_score {
+      row_id: 109
+      wx: -3.5296822
+    }
+    row_score {
+      row_id: 110
+      wx: -1.2862481
+    }
+    row_score {
+      row_id: 111
+      wx: -3.622299
+    }
+    row_score {
+      row_id: 112
+      wx: 0.51029438
+    }
+    row_score {
+      row_id: 113
+      wx: 0.47508553
+    }
+    row_score {
+      row_id: 114
+      wx: -3.6833038
+    }
+    row_score {
+      row_id: 115
+      wx: -2.8223734
+    }
+    row_score {
+      row_id: 116
+      wx: -3.5575988
+    }
+    row_score {
+      row_id: 117
+      wx: -7.1107063
+    }
+    row_score {
+      row_id: 118
+      wx: -1.6942573
+    }
+    row_score {
+      row_id: 119
+      wx: 1.7330295
+    }
+    row_score {
+      row_id: 120
+      wx: -2.0487843
+    }
+    row_score {
+      row_id: 121
+      wx: -3.4647703
+    }
+    row_score {
+      row_id: 122
+      wx: 3.1969516
+    }
+    row_score {
+      row_id: 123
+      wx: -3.7092297
+    }
+    row_score {
+      row_id: 124
+      wx: -0.80434853
+    }
+    row_score {
+      row_id: 125
+      wx: 2.4279242
+    }
+    row_score {
+      row_id: 126
+      wx: 1.211291
+    }
+    row_score {
+      row_id: 127
+      wx: -5.8240728
+    }
+    row_score {
+      row_id: 128
+      wx: -5.7985539
+    }
+    row_score {
+      row_id: 129
+      wx: -3.3260934
+    }
+    row_score {
+      row_id: 130
+      wx: 2.0538816
+    }
+    row_score {
+      row_id: 131
+      wx: -2.1326618
+    }
+    row_score {
+      row_id: 132
+      wx: -5.8836346
+    }
+    row_score {
+      row_id: 133
+      wx: -4.464066
+    }
+    row_score {
+      row_id: 134
+      wx: -0.71109283
+    }
+    row_score {
+      row_id: 135
+      wx: -1.958608
+    }
+    row_score {
+      row_id: 136
+      wx: -2.8642309
+    }
+    row_score {
+      row_id: 137
+      wx: 2.531312
+    }
+    row_score {
+      row_id: 138
+      wx: -5.6689711
+    }
+    row_score {
+      row_id: 139
+      wx: -0.50224334
+    }
+    row_score {
+      row_id: 140
+      wx: -1.6064887
+    }
+    row_score {
+      row_id: 141
+      wx: 1.3461578
+    }
+    row_score {
+      row_id: 142
+      wx: -0.56119508
+    }
+    row_score {
+      row_id: 143
+      wx: -4.516325
+    }
+    row_score {
+      row_id: 144
+      wx: -2.0722649
+    }
+    row_score {
+      row_id: 145
+      wx: -3.6309478
+    }
+    row_score {
+      row_id: 146
+      wx: -2.5218396
+    }
+    row_score {
+      row_id: 147
+      wx: -6.148366
+    }
+    row_score {
+      row_id: 148
+      wx: -5.3273244
+    }
+    row_score {
+      row_id: 149
+      wx: -1.7431027
+    }
+    row_score {
+      row_id: 150
+      wx: -2.8307285
+    }
+    row_score {
+      row_id: 151
+      wx: -4.4681516
+    }
+    row_score {
+      row_id: 152
+      wx: -5.4586258
+    }
+    row_score {
+      row_id: 153
+      wx: -5.6839581
+    }
+    row_score {
+      row_id: 154
+      wx: -0.84644675
+    }
+    row_score {
+      row_id: 155
+      wx: -0.36722636
+    }
+    row_score {
+      row_id: 156
+      wx: 0.78687173
+    }
+    row_score {
+      row_id: 157
+      wx: -3.5013347
+    }
+    row_score {
+      row_id: 158
+      wx: 1.1047019
+    }
+    row_score {
+      row_id: 159
+      wx: -0.669514
+    }
+    row_score {
+      row_id: 160
+      wx: -1.7138809
+    }
+    row_score {
+      row_id: 161
+      wx: -3.0142694
+    }
+    row_score {
+      row_id: 162
+      wx: -0.77337396
+    }
+    row_score {
+      row_id: 163
+      wx: -3.2581952
+    }
+    row_score {
+      row_id: 164
+      wx: -4.8995318
+    }
+    row_score {
+      row_id: 165
+      wx: 0.764616
+    }
+    row_score {
+      row_id: 166
+      wx: -0.50531626
+    }
+    row_score {
+      row_id: 167
+      wx: -5.6449656
+    }
+    row_score {
+      row_id: 168
+      wx: -0.82842129
+    }
+    row_score {
+      row_id: 169
+      wx: -1.5804818
+    }
+    row_score {
+      row_id: 170
+      wx: -1.7245574
+    }
+    row_score {
+      row_id: 171
+      wx: 2.9991364
+    }
+    row_score {
+      row_id: 172
+      wx: -2.2426958
+    }
+    row_score {
+      row_id: 173
+      wx: 0.10512952
+    }
+    row_score {
+      row_id: 174
+      wx: 0.98290652
+    }
+    row_score {
+      row_id: 175
+      wx: -4.46059
+    }
+    row_score {
+      row_id: 176
+      wx: -1.2188127
+    }
+    row_score {
+      row_id: 177
+      wx: -1.5340536
+    }
+    row_score {
+      row_id: 178
+      wx: -2.1089025
+    }
+    row_score {
+      row_id: 179
+      wx: -6.32338
+    }
+    row_score {
+      row_id: 180
+      wx: 0.9164167
+    }
+    row_score {
+      row_id: 181
+      wx: -6.3302293
+    }
+    row_score {
+      row_id: 182
+      wx: 0.11655531
+    }
+    row_score {
+      row_id: 183
+      wx: -0.54864275
+    }
+    row_score {
+      row_id: 184
+      wx: -0.806566
+    }
+    row_score {
+      row_id: 185
+      wx: -4.65342
+    }
+    row_score {
+      row_id: 186
+      wx: -2.3195424
+    }
+    row_score {
+      row_id: 187
+      wx: -3.8423779
+    }
+    row_score {
+      row_id: 188
+      wx: -1.6780905
+    }
+    row_score {
+      row_id: 189
+      wx: -0.71193159
+    }
+    row_score {
+      row_id: 190
+      wx: -2.323848
+    }
+    row_score {
+      row_id: 191
+      wx: -3.2823365
+    }
+    row_score {
+      row_id: 192
+      wx: 0.32526478
+    }
+    row_score {
+      row_id: 193
+      wx: -0.49291942
+    }
+    row_score {
+      row_id: 194
+      wx: -2.783499
+    }
+    row_score {
+      row_id: 195
+      wx: 1.7892306
+    }
+    row_score {
+      row_id: 196
+      wx: 1.2083176
+    }
+    row_score {
+      row_id: 197
+      wx: -3.5021679
+    }
+    row_score {
+      row_id: 198
+      wx: -0.41615292
+    }
+    row_score {
+      row_id: 199
+      wx: -0.53039908
+    }
+    row_score {
+      row_id: 200
+      wx: -5.4741273
+    }
+    row_score {
+      row_id: 201
+      wx: -1.4945179
+    }
+    row_score {
+      row_id: 202
+      wx: -1.7173256
+    }
+    row_score {
+      row_id: 203
+      wx: -3.6483967
+    }
+    row_score {
+      row_id: 204
+      wx: -1.0941919
+    }
+    row_score {
+      row_id: 205
+      wx: -5.4959559
+    }
+    row_score {
+      row_id: 206
+      wx: -4.3430724
+    }
+    row_score {
+      row_id: 207
+      wx: -5.1829796
+    }
+    row_score {
+      row_id: 208
+      wx: -0.44653526
+    }
+    row_score {
+      row_id: 209
+      wx: -1.2803725
+    }
+    row_score {
+      row_id: 210
+      wx: -5.3700252
+    }
+    row_score {
+      row_id: 211
+      wx: -0.53183055
+    }
+    row_score {
+      row_id: 212
+      wx: -0.076494291
+    }
+    row_score {
+      row_id: 213
+      wx: 0.61376834
+    }
+    row_score {
+      row_id: 214
+      wx: -2.604568
+    }
+    row_score {
+      row_id: 215
+      wx: -0.097790189
+    }
+    row_score {
+      row_id: 216
+      wx: 1.0424027
+    }
+    row_score {
+      row_id: 217
+      wx: -2.3205884
+    }
+    row_score {
+      row_id: 218
+      wx: -5.1812682
+    }
+    row_score {
+      row_id: 219
+      wx: -0.0638946
+    }
+    row_score {
+      row_id: 220
+      wx: -5.3729649
+    }
+    row_score {
+      row_id: 221
+      wx: -5.2609138
+    }
+    row_score {
+      row_id: 222
+      wx: -3.3478553
+    }
+    row_score {
+      row_id: 223
+      wx: -4.2752619
+    }
+    row_score {
+      row_id: 224
+      wx: -4.2971892
+    }
+    row_score {
+      row_id: 225
+      wx: -5.0424786
+    }
+    row_score {
+      row_id: 226
+      wx: -6.1142731
+    }
+    row_score {
+      row_id: 227
+      wx: -3.0130863
+    }
+    row_score {
+      row_id: 228
+      wx: -0.91740811
+    }
+    row_score {
+      row_id: 229
+      wx: -3.5682232
+    }
+    row_score {
+      row_id: 230
+      wx: -1.2472808
+    }
+    row_score {
+      row_id: 231
+      wx: -0.26659378
+    }
+    row_score {
+      row_id: 232
+      wx: -2.230082
+    }
+    row_score {
+      row_id: 233
+      wx: -0.19735615
+    }
+    row_score {
+      row_id: 234
+      wx: 1.7428482
+    }
+    row_score {
+      row_id: 235
+      wx: -0.482882
+    }
+    row_score {
+      row_id: 236
+      wx: -5.1790924
+    }
+    row_score {
+      row_id: 237
+      wx: -1.8172605
+    }
+    row_score {
+      row_id: 238
+      wx: -5.7554007
+    }
+    row_score {
+      row_id: 239
+      wx: -3.2122529
+    }
+    row_score {
+      row_id: 240
+      wx: -5.3433514
+    }
+    row_score {
+      row_id: 241
+      wx: 1.7724124
+    }
+    row_score {
+      row_id: 242
+      wx: -2.5321174
+    }
+    row_score {
+      row_id: 243
+      wx: -1.1806436
+    }
+    row_score {
+      row_id: 244
+      wx: -4.7503595
+    }
+    row_score {
+      row_id: 245
+      wx: -0.13084799
+    }
+    row_score {
+      row_id: 246
+      wx: -0.74020684
+    }
+    row_score {
+      row_id: 247
+      wx: -3.9707255
+    }
+    row_score {
+      row_id: 248
+      wx: -3.8785734
+    }
+    row_score {
+      row_id: 249
+      wx: -0.94729388
+    }
+    row_score {
+      row_id: 250
+      wx: -2.4918296
+    }
+    row_score {
+      row_id: 251
+      wx: -6.4295583
+    }
+    row_score {
+      row_id: 252
+      wx: 1.9997661
+    }
+    row_score {
+      row_id: 253
+      wx: -4.2089844
+    }
+    row_score {
+      row_id: 254
+      wx: -5.1186371
+    }
+    row_score {
+      row_id: 255
+      wx: -6.4295583
+    }
+    row_score {
+      row_id: 256
+      wx: -0.60430956
+    }
+    row_score {
+      row_id: 257
+      wx: -3.5608
+    }
+    row_score {
+      row_id: 258
+      wx: -2.4486132
+    }
+    row_score {
+      row_id: 259
+      wx: -3.3144453
+    }
+    row_score {
+      row_id: 260
+      wx: -5.4412274
+    }
+    row_score {
+      row_id: 261
+      wx: -2.2832778
+    }
+    row_score {
+      row_id: 262
+      wx: 1.2504412
+    }
+    row_score {
+      row_id: 263
+      wx: -4.4284582
+    }
+    row_score {
+      row_id: 264
+      wx: -5.598906
+    }
+    row_score {
+      row_id: 265
+      wx: -0.56762111
+    }
+    row_score {
+      row_id: 266
+      wx: -6.414556
+    }
+    row_score {
+      row_id: 267
+      wx: 0.46842358
+    }
+    row_score {
+      row_id: 268
+      wx: -1.4961812
+    }
+    row_score {
+      row_id: 269
+      wx: -4.1804013
+    }
+    row_score {
+      row_id: 270
+      wx: 2.5358949
+    }
+    row_score {
+      row_id: 271
+      wx: -1.6761968
+    }
+    row_score {
+      row_id: 272
+      wx: 0.60701776
+    }
+    row_score {
+      row_id: 273
+      wx: 0.5635525
+    }
+    row_score {
+      row_id: 274
+      wx: -3.6743581
+    }
+    row_score {
+      row_id: 275
+      wx: 0.88963157
+    }
+    row_score {
+      row_id: 276
+      wx: -1.3451886
+    }
+    row_score {
+      row_id: 277
+      wx: -5.6040411
+    }
+    row_score {
+      row_id: 278
+      wx: 2.1089659
+    }
+    row_score {
+      row_id: 279
+      wx: -1.1082228
+    }
+    row_score {
+      row_id: 280
+      wx: 0.05702661
+    }
+    row_score {
+      row_id: 281
+      wx: -0.64858574
+    }
+    row_score {
+      row_id: 282
+      wx: -0.67887831
+    }
+    row_score {
+      row_id: 283
+      wx: -5.6074915
+    }
+    row_score {
+      row_id: 284
+      wx: -2.0179684
+    }
+    row_score {
+      row_id: 285
+      wx: -3.7681344
+    }
+    row_score {
+      row_id: 286
+      wx: -0.19665648
+    }
+    row_score {
+      row_id: 287
+      wx: -4.85085
+    }
+    row_score {
+      row_id: 288
+      wx: -4.8634229
+    }
+    row_score {
+      row_id: 289
+      wx: -3.3387156
+    }
+    row_score {
+      row_id: 290
+      wx: -3.4523709
+    }
+    row_score {
+      row_id: 291
+      wx: -5.5763083
+    }
+    row_score {
+      row_id: 292
+      wx: -3.3643448
+    }
+    row_score {
+      row_id: 293
+      wx: 1.1310757
+    }
+    row_score {
+      row_id: 294
+      wx: -1.9832469
+    }
+    row_score {
+      row_id: 295
+      wx: -1.9774514
+    }
+    row_score {
+      row_id: 296
+      wx: -4.3481226
+    }
+    row_score {
+      row_id: 297
+      wx: -6.111577
+    }
+    row_score {
+      row_id: 298
+      wx: -1.2199574
+    }
+    row_score {
+      row_id: 299
+      wx: -1.2531828
+    }
+    row_score {
+      row_id: 300
+      wx: -1.3751144
+    }
+    row_score {
+      row_id: 301
+      wx: -3.1774402
+    }
+    row_score {
+      row_id: 302
+      wx: -1.2043447
+    }
+    row_score {
+      row_id: 303
+      wx: -4.3798733
+    }
+    row_score {
+      row_id: 304
+      wx: 2.4795244
+    }
+    row_score {
+      row_id: 305
+      wx: -5.0987144
+    }
+    row_score {
+      row_id: 306
+      wx: -2.3374753
+    }
+    row_score {
+      row_id: 307
+      wx: -4.227334
+    }
+    row_score {
+      row_id: 308
+      wx: -2.9277184
+    }
+    row_score {
+      row_id: 309
+      wx: -6.9281487
+    }
+    row_score {
+      row_id: 310
+      wx: -5.9330492
+    }
+    row_score {
+      row_id: 311
+      wx: -2.0255282
+    }
+    row_score {
+      row_id: 312
+      wx: 1.0489498
+    }
+    row_score {
+      row_id: 313
+      wx: -2.4876211
+    }
+    row_score {
+      row_id: 314
+      wx: -5.8465171
+    }
+    row_score {
+      row_id: 315
+      wx: -6.1162882
+    }
+    row_score {
+      row_id: 316
+      wx: -5.1965942
+    }
+    row_score {
+      row_id: 317
+      wx: 0.6095193
+    }
+    row_score {
+      row_id: 318
+      wx: -1.5879641
+    }
+    row_score {
+      row_id: 319
+      wx: -3.9826293
+    }
+    row_score {
+      row_id: 320
+      wx: -3.2438045
+    }
+    row_score {
+      row_id: 321
+      wx: -4.1548138
+    }
+    row_score {
+      row_id: 322
+      wx: -3.9933844
+    }
+    row_score {
+      row_id: 323
+      wx: -5.608511
+    }
+    row_score {
+      row_id: 324
+      wx: -1.933835
+    }
+    row_score {
+      row_id: 325
+      wx: 0.8148337
+    }
+    row_score {
+      row_id: 326
+      wx: -3.1712563
+    }
+    row_score {
+      row_id: 327
+      wx: -1.534777
+    }
+    row_score {
+      row_id: 328
+      wx: 0.044308566
+    }
+    row_score {
+      row_id: 329
+      wx: -0.54738313
+    }
+    row_score {
+      row_id: 330
+      wx: -3.2320168
+    }
+    row_score {
+      row_id: 331
+      wx: 0.64767545
+    }
+    row_score {
+      row_id: 332
+      wx: -3.9410355
+    }
+    row_score {
+      row_id: 333
+      wx: 0.64970469
+    }
+    row_score {
+      row_id: 334
+      wx: 1.5605596
+    }
+    row_score {
+      row_id: 335
+      wx: -1.2648778
+    }
+    row_score {
+      row_id: 336
+      wx: -2.7057011
+    }
+    row_score {
+      row_id: 337
+      wx: -4.2514091
+    }
+    row_score {
+      row_id: 338
+      wx: -2.6435089
+    }
+    row_score {
+      row_id: 339
+      wx: -1.734138
+    }
+    row_score {
+      row_id: 340
+      wx: -4.5130343
+    }
+    row_score {
+      row_id: 341
+      wx: 1.2325751
+    }
+    row_score {
+      row_id: 342
+      wx: -3.7701173
+    }
+    row_score {
+      row_id: 343
+      wx: -4.0843487
+    }
+    row_score {
+      row_id: 344
+      wx: -5.3247614
+    }
+    row_score {
+      row_id: 345
+      wx: -1.8351737
+    }
+    row_score {
+      row_id: 346
+      wx: 0.11298135
+    }
+    row_score {
+      row_id: 347
+      wx: -2.0899625
+    }
+    row_score {
+      row_id: 348
+      wx: -1.958608
+    }
+    row_score {
+      row_id: 349
+      wx: -2.6705186
+    }
+    row_score {
+      row_id: 350
+      wx: -6.0144682
+    }
+    row_score {
+      row_id: 351
+      wx: -0.74452734
+    }
+    row_score {
+      row_id: 352
+      wx: -6.1960192
+    }
+    row_score {
+      row_id: 353
+      wx: -1.5614932
+    }
+    row_score {
+      row_id: 354
+      wx: 0.38773045
+    }
+    row_score {
+      row_id: 355
+      wx: -1.2911488
+    }
+    row_score {
+      row_id: 356
+      wx: -1.0366067
+    }
+    row_score {
+      row_id: 357
+      wx: -2.1580451
+    }
+    row_score {
+      row_id: 358
+      wx: 0.70465446
+    }
+    row_score {
+      row_id: 359
+      wx: -4.1187572
+    }
+    row_score {
+      row_id: 360
+      wx: -5.6792107
+    }
+    row_score {
+      row_id: 361
+      wx: 0.5793584
+    }
+    row_score {
+      row_id: 362
+      wx: -4.1566534
+    }
+    row_score {
+      row_id: 363
+      wx: -3.7612984
+    }
+    row_score {
+      row_id: 364
+      wx: -6.4295583
+    }
+    row_score {
+      row_id: 365
+      wx: -2.1482975
+    }
+    row_score {
+      row_id: 366
+      wx: -5.7085352
+    }
+    row_score {
+      row_id: 367
+      wx: -4.9108157
+    }
+    row_score {
+      row_id: 368
+      wx: -5.5270925
+    }
+    row_score {
+      row_id: 369
+      wx: -1.0174513
+    }
+    row_score {
+      row_id: 370
+      wx: -3.8755989
+    }
+    row_score {
+      row_id: 371
+      wx: -2.9063296
+    }
+    row_score {
+      row_id: 372
+      wx: -0.53743458
+    }
+    row_score {
+      row_id: 373
+      wx: 0.53706145
+    }
+    row_score {
+      row_id: 374
+      wx: -4.0106091
+    }
+    row_score {
+      row_id: 375
+      wx: -2.7686839
+    }
+    row_score {
+      row_id: 376
+      wx: 0.42812315
+    }
+    row_score {
+      row_id: 377
+      wx: -0.86722094
+    }
+    row_score {
+      row_id: 378
+      wx: -4.2067809
+    }
+    row_score {
+      row_id: 379
+      wx: -1.3467528
+    }
+    row_score {
+      row_id: 380
+      wx: -0.37635297
+    }
+    row_score {
+      row_id: 381
+      wx: 0.98124915
+    }
+    row_score {
+      row_id: 382
+      wx: -2.7744186
+    }
+    row_score {
+      row_id: 383
+      wx: 0.58640444
+    }
+    row_score {
+      row_id: 384
+      wx: 1.3461578
+    }
+    row_score {
+      row_id: 385
+      wx: -0.29273051
+    }
+    row_score {
+      row_id: 386
+      wx: -2.8189397
+    }
+    row_score {
+      row_id: 387
+      wx: 0.65570885
+    }
+    row_score {
+      row_id: 388
+      wx: -5.003552
+    }
+    row_score {
+      row_id: 389
+      wx: -3.9539058
+    }
+    row_score {
+      row_id: 390
+      wx: -1.0497195
+    }
+    row_score {
+      row_id: 391
+      wx: -2.9323983
+    }
+    row_score {
+      row_id: 392
+      wx: 4.2540474
+    }
+    row_score {
+      row_id: 393
+      wx: -1.7423966
+    }
+    row_score {
+      row_id: 394
+      wx: -0.63810378
+    }
+    row_score {
+      row_id: 395
+      wx: -5.8189278
+    }
+    row_score {
+      row_id: 396
+      wx: -5.1544852
+    }
+    row_score {
+      row_id: 397
+      wx: -2.1705768
+    }
+    row_score {
+      row_id: 398
+      wx: -2.0397019
+    }
+    row_score {
+      row_id: 399
+      wx: -5.02406
+    }
+    row_score {
+      row_id: 400
+      wx: -0.13435547
+    }
+    row_score {
+      row_id: 401
+      wx: -1.0070525
+    }
+    row_score {
+      row_id: 402
+      wx: -6.6221638
+    }
+    row_score {
+      row_id: 403
+      wx: 0.13743587
+    }
+    row_score {
+      row_id: 404
+      wx: -2.8618188
+    }
+    row_score {
+      row_id: 405
+      wx: -0.043787371
+    }
+    row_score {
+      row_id: 406
+      wx: -4.3531637
+    }
+    row_score {
+      row_id: 407
+      wx: -0.11368133
+    }
+    row_score {
+      row_id: 408
+      wx: 0.12161409
+    }
+    row_score {
+      row_id: 409
+      wx: -3.5365436
+    }
+    row_score {
+      row_id: 410
+      wx: -3.4617441
+    }
+    row_score {
+      row_id: 411
+      wx: -2.1673727
+    }
+    row_score {
+      row_id: 412
+      wx: -4.3470426
+    }
+    row_score {
+      row_id: 413
+      wx: -0.23960817
+    }
+    row_score {
+      row_id: 414
+      wx: -0.43680629
+    }
+    row_score {
+      row_id: 415
+      wx: -2.831347
+    }
+    row_score {
+      row_id: 416
+      wx: -1.8571413
+    }
+    row_score {
+      row_id: 417
+      wx: 2.4192147
+    }
+    row_score {
+      row_id: 418
+      wx: -3.4934013
+    }
+    row_score {
+      row_id: 419
+      wx: 0.93135595
+    }
+    row_score {
+      row_id: 420
+      wx: 3.5863981
+    }
+    row_score {
+      row_id: 421
+      wx: -2.4075541
+    }
+    row_score {
+      row_id: 422
+      wx: -1.4136709
+    }
+    row_score {
+      row_id: 423
+      wx: -0.54832596
+    }
+    row_score {
+      row_id: 424
+      wx: -5.0553775
+    }
+    row_score {
+      row_id: 425
+      wx: 1.7697394
+    }
+    row_score {
+      row_id: 426
+      wx: -4.6148839
+    }
+    row_score {
+      row_id: 427
+      wx: -5.051259
+    }
+    row_score {
+      row_id: 428
+      wx: -4.9210076
+    }
+    row_score {
+      row_id: 429
+      wx: -0.67347819
+    }
+    row_score {
+      row_id: 430
+      wx: -3.6448832
+    }
+    row_score {
+      row_id: 431
+      wx: -0.13131768
+    }
+    row_score {
+      row_id: 432
+      wx: 1.4299345
+    }
+    row_score {
+      row_id: 433
+      wx: -0.024826346
+    }
+    row_score {
+      row_id: 434
+      wx: -2.2447226
+    }
+    row_score {
+      row_id: 435
+      wx: 2.790875
+    }
+    row_score {
+      row_id: 436
+      wx: 1.1484793
+    }
+    row_score {
+      row_id: 437
+      wx: -5.5085363
+    }
+    row_score {
+      row_id: 438
+      wx: -6.9396639
+    }
+    row_score {
+      row_id: 439
+      wx: -4.4165311
+    }
+    row_score {
+      row_id: 440
+      wx: 0.10532942
+    }
+    row_score {
+      row_id: 441
+      wx: -6.0996504
+    }
+    row_score {
+      row_id: 442
+      wx: -0.8566156
+    }
+    row_score {
+      row_id: 443
+      wx: -3.1394858
+    }
+    row_score {
+      row_id: 444
+      wx: -4.1960368
+    }
+    row_score {
+      row_id: 445
+      wx: -5.8103523
+    }
+    row_score {
+      row_id: 446
+      wx: -4.4849672
+    }
+    row_score {
+      row_id: 447
+      wx: -1.5484856
+    }
+    row_score {
+      row_id: 448
+      wx: -1.9667085
+    }
+    row_score {
+      row_id: 449
+      wx: -1.4953153
+    }
+    row_score {
+      row_id: 450
+      wx: -1.933835
+    }
+    row_score {
+      row_id: 451
+      wx: -4.2076845
+    }
+    row_score {
+      row_id: 452
+      wx: 0.98858333
+    }
+    row_score {
+      row_id: 453
+      wx: -4.468102
+    }
+    row_score {
+      row_id: 454
+      wx: -0.2463457
+    }
+    row_score {
+      row_id: 455
+      wx: -4.5317025
+    }
+    row_score {
+      row_id: 456
+      wx: -5.8931684
+    }
+    row_score {
+      row_id: 457
+      wx: -1.9740554
+    }
+    row_score {
+      row_id: 458
+      wx: -0.1837118
+    }
+    row_score {
+      row_id: 459
+      wx: 1.0554676
+    }
+    row_score {
+      row_id: 460
+      wx: -3.962467
+    }
+    row_score {
+      row_id: 461
+      wx: 0.16723758
+    }
+    row_score {
+      row_id: 462
+      wx: -5.6055593
+    }
+    row_score {
+      row_id: 463
+      wx: 3.4002244
+    }
+    row_score {
+      row_id: 464
+      wx: -3.9855275
+    }
+    row_score {
+      row_id: 465
+      wx: -5.5299678
+    }
+    row_score {
+      row_id: 466
+      wx: 2.5008321
+    }
+    row_score {
+      row_id: 467
+      wx: -1.3907641
+    }
+    row_score {
+      row_id: 468
+      wx: -3.9958775
+    }
+    row_score {
+      row_id: 469
+      wx: -6.5557
+    }
+    row_score {
+      row_id: 470
+      wx: -2.6377864
+    }
+    row_score {
+      row_id: 471
+      wx: -0.91872942
+    }
+    row_score {
+      row_id: 472
+      wx: -1.1688218
+    }
+    row_score {
+      row_id: 473
+      wx: -0.54118723
+    }
+    row_score {
+      row_id: 474
+      wx: -3.9543722
+    }
+    row_score {
+      row_id: 475
+      wx: -3.9034312
+    }
+    row_score {
+      row_id: 476
+      wx: -3.417413
+    }
+    row_score {
+      row_id: 477
+      wx: 0.040484164
+    }
+    row_score {
+      row_id: 478
+      wx: -7.4714274
+    }
+    row_score {
+      row_id: 479
+      wx: 2.705807
+    }
+    row_score {
+      row_id: 480
+      wx: -2.3251281
+    }
+    row_score {
+      row_id: 481
+      wx: 2.1478488
+    }
+    row_score {
+      row_id: 482
+      wx: -2.4874063
+    }
+    row_score {
+      row_id: 483
+      wx: -1.8486528
+    }
+    row_score {
+      row_id: 484
+      wx: -0.84176666
+    }
+    row_score {
+      row_id: 485
+      wx: -5.3736949
+    }
+    row_score {
+      row_id: 486
+      wx: -3.4054382
+    }
+    row_score {
+      row_id: 487
+      wx: 1.3741403
+    }
+    row_score {
+      row_id: 488
+      wx: -1.8131299
+    }
+    row_score {
+      row_id: 489
+      wx: 0.18480384
+    }
+    row_score {
+      row_id: 490
+      wx: -1.9969021
+    }
+    row_score {
+      row_id: 491
+      wx: 1.0772482
+    }
+    row_score {
+      row_id: 492
+      wx: -4.3771672
+    }
+    row_score {
+      row_id: 493
+      wx: -5.5783243
+    }
+    row_score {
+      row_id: 494
+      wx: -1.1398553
+    }
+    row_score {
+      row_id: 495
+      wx: -0.64422566
+    }
+    row_score {
+      row_id: 496
+      wx: -4.4830637
+    }
+    row_score {
+      row_id: 497
+      wx: -0.80434853
+    }
+    row_score {
+      row_id: 498
+      wx: 0.056975204
+    }
+    row_score {
+      row_id: 499
+      wx: -6.37119
+    }
+    row_score {
+      row_id: 500
+      wx: -3.2828894
+    }
+    row_score {
+      row_id: 501
+      wx: -5.3906674
+    }
+    row_score {
+      row_id: 502
+      wx: -5.8401957
+    }
+    row_score {
+      row_id: 503
+      wx: -1.0420159
+    }
+    row_score {
+      row_id: 504
+      wx: 0.071813472
+    }
+    row_score {
+      row_id: 505
+      wx: 0.044500761
+    }
+    row_score {
+      row_id: 506
+      wx: -1.6150357
+    }
+    row_score {
+      row_id: 507
+      wx: -0.64200193
+    }
+    row_score {
+      row_id: 508
+      wx: -4.4238973
+    }
+    row_score {
+      row_id: 509
+      wx: -2.611527
+    }
+    row_score {
+      row_id: 510
+      wx: -3.656399
+    }
+    row_score {
+      row_id: 511
+      wx: -3.4247625
+    }
+    row_score {
+      row_id: 512
+      wx: 0.057060353
+    }
+    row_score {
+      row_id: 513
+      wx: -0.77116537
+    }
+    row_score {
+      row_id: 514
+      wx: -0.89406008
+    }
+    row_score {
+      row_id: 515
+      wx: -1.1564645
+    }
+    row_score {
+      row_id: 516
+      wx: -4.9880819
+    }
+    row_score {
+      row_id: 517
+      wx: 1.2353692
+    }
+    row_score {
+      row_id: 518
+      wx: -5.7833385
+    }
+    row_score {
+      row_id: 519
+      wx: -0.65438849
+    }
+    row_score {
+      row_id: 520
+      wx: -0.63612163
+    }
+    row_score {
+      row_id: 521
+      wx: -3.5831938
+    }
+    row_score {
+      row_id: 522
+      wx: -0.25180727
+    }
+    row_score {
+      row_id: 523
+      wx: -0.59787947
+    }
+    row_score {
+      row_id: 524
+      wx: -1.6094445
+    }
+    row_score {
+      row_id: 525
+      wx: -0.54143465
+    }
+    row_score {
+      row_id: 526
+      wx: -1.2895271
+    }
+    row_score {
+      row_id: 527
+      wx: -1.1011441
+    }
+    row_score {
+      row_id: 528
+      wx: -4.3503022
+    }
+    row_score {
+      row_id: 529
+      wx: -2.2186074
+    }
+    row_score {
+      row_id: 530
+      wx: -3.6955647
+    }
+    row_score {
+      row_id: 531
+      wx: -3.1741955
+    }
+    row_score {
+      row_id: 532
+      wx: -0.53198588
+    }
+    row_score {
+      row_id: 533
+      wx: -7.04878
+    }
+    row_score {
+      row_id: 534
+      wx: -0.53275454
+    }
+    row_score {
+      row_id: 535
+      wx: -0.80087376
+    }
+    row_score {
+      row_id: 536
+      wx: 3.2650416
+    }
+    row_score {
+      row_id: 537
+      wx: -4.1591678
+    }
+    row_score {
+      row_id: 538
+      wx: -3.9327521
+    }
+    row_score {
+      row_id: 539
+      wx: 0.86839759
+    }
+    row_score {
+      row_id: 540
+      wx: -3.5648179
+    }
+    row_score {
+      row_id: 541
+      wx: -5.320703
+    }
+    row_score {
+      row_id: 542
+      wx: -5.775413
+    }
+    row_score {
+      row_id: 543
+      wx: -1.0378852
+    }
+    row_score {
+      row_id: 544
+      wx: -2.8306692
+    }
+    row_score {
+      row_id: 545
+      wx: -4.8863611
+    }
+    row_score {
+      row_id: 546
+      wx: -6.0188255
+    }
+    row_score {
+      row_id: 547
+      wx: -5.6003036
+    }
+    row_score {
+      row_id: 548
+      wx: -1.9400549
+    }
+    row_score {
+      row_id: 549
+      wx: 2.0514531
+    }
+    row_score {
+      row_id: 550
+      wx: -0.85154355
+    }
+    row_score {
+      row_id: 551
+      wx: -3.026
+    }
+    row_score {
+      row_id: 552
+      wx: -0.9865824
+    }
+    row_score {
+      row_id: 553
+      wx: -2.7364576
+    }
+    row_score {
+      row_id: 554
+      wx: -4.48924
+    }
+    row_score {
+      row_id: 555
+      wx: -2.185642
+    }
+    row_score {
+      row_id: 556
+      wx: -6.1346507
+    }
+    row_score {
+      row_id: 557
+      wx: -6.7410388
+    }
+    row_score {
+      row_id: 558
+      wx: -3.040772
+    }
+    row_score {
+      row_id: 559
+      wx: -1.3646666
+    }
+    row_score {
+      row_id: 560
+      wx: 0.59220171
+    }
+    row_score {
+      row_id: 561
+      wx: -4.8319192
+    }
+    row_score {
+      row_id: 562
+      wx: -2.2213929
+    }
+    row_score {
+      row_id: 563
+      wx: -1.3508835
+    }
+    row_score {
+      row_id: 564
+      wx: -5.1014781
+    }
+    row_score {
+      row_id: 565
+      wx: 1.595222
+    }
+    row_score {
+      row_id: 566
+      wx: -5.272007
+    }
+    row_score {
+      row_id: 567
+      wx: -2.1960821
+    }
+    row_score {
+      row_id: 568
+      wx: -0.72948217
+    }
+    row_score {
+      row_id: 569
+      wx: -2.0487843
+    }
+    row_score {
+      row_id: 570
+      wx: -0.20020989
+    }
+    row_score {
+      row_id: 571
+      wx: -1.1839042
+    }
+    row_score {
+      row_id: 572
+      wx: -0.22429553
+    }
+    row_score {
+      row_id: 573
+      wx: -1.1943123
+    }
+    row_score {
+      row_id: 574
+      wx: -0.77094018
+    }
+    row_score {
+      row_id: 575
+      wx: -1.5723329
+    }
+    row_score {
+      row_id: 576
+      wx: -6.2169194
+    }
+    row_score {
+      row_id: 577
+      wx: -2.0486662
+    }
+    row_score {
+      row_id: 578
+      wx: 0.03929818
+    }
+    row_score {
+      row_id: 579
+      wx: -0.62761068
+    }
+    row_score {
+      row_id: 580
+      wx: -3.3366969
+    }
+    row_score {
+      row_id: 581
+      wx: -2.3416963
+    }
+    row_score {
+      row_id: 582
+      wx: -1.0463736
+    }
+    row_score {
+      row_id: 583
+      wx: -1.5296959
+    }
+    row_score {
+      row_id: 584
+      wx: -1.5520265
+    }
+    row_score {
+      row_id: 585
+      wx: -4.1172953
+    }
+    row_score {
+      row_id: 586
+      wx: -0.23274067
+    }
+    row_score {
+      row_id: 587
+      wx: -4.2751632
+    }
+    row_score {
+      row_id: 588
+      wx: -4.4914141
+    }
+    row_score {
+      row_id: 589
+      wx: -4.2888622
+    }
+    row_score {
+      row_id: 590
+      wx: -1.2600907
+    }
+    row_score {
+      row_id: 591
+      wx: -6.1404524
+    }
+    row_score {
+      row_id: 592
+      wx: 1.3219408
+    }
+    row_score {
+      row_id: 593
+      wx: -3.3285415
+    }
+    row_score {
+      row_id: 594
+      wx: -1.3485854
+    }
+    row_score {
+      row_id: 595
+      wx: -0.4416067
+    }
+    row_score {
+      row_id: 596
+      wx: -4.1390128
+    }
+    row_score {
+      row_id: 597
+      wx: -2.1241131
+    }
+    row_score {
+      row_id: 598
+      wx: -4.5750036
+    }
+    row_score {
+      row_id: 599
+      wx: 0.0814934
+    }
+    row_score {
+      row_id: 600
+      wx: -1.4532292
+    }
+    row_score {
+      row_id: 601
+      wx: -2.4118698
+    }
+    row_score {
+      row_id: 602
+      wx: -1.4759464
+    }
+    row_score {
+      row_id: 603
+      wx: -4.6392241
+    }
+    row_score {
+      row_id: 604
+      wx: -3.8479114
+    }
+    row_score {
+      row_id: 605
+      wx: -1.1990452
+    }
+    row_score {
+      row_id: 606
+      wx: -4.9714885
+    }
+    row_score {
+      row_id: 607
+      wx: -1.8645921
+    }
+    row_score {
+      row_id: 608
+      wx: -3.3394113
+    }
+    row_score {
+      row_id: 609
+      wx: -0.90645158
+    }
+    row_score {
+      row_id: 610
+      wx: -1.9733933
+    }
+    row_score {
+      row_id: 611
+      wx: -2.6375072
+    }
+    row_score {
+      row_id: 612
+      wx: -2.6960664
+    }
+    row_score {
+      row_id: 613
+      wx: -0.92291349
+    }
+    row_score {
+      row_id: 614
+      wx: -1.9125266
+    }
+    row_score {
+      row_id: 615
+      wx: -0.042180508
+    }
+    row_score {
+      row_id: 616
+      wx: 2.739995
+    }
+    row_score {
+      row_id: 617
+      wx: 1.3880942
+    }
+    row_score {
+      row_id: 618
+      wx: 1.9228449
+    }
+    row_score {
+      row_id: 619
+      wx: 0.54924363
+    }
+    row_score {
+      row_id: 620
+      wx: 0.31070751
+    }
+    row_score {
+      row_id: 621
+      wx: -4.584486
+    }
+    row_score {
+      row_id: 622
+      wx: -5.1001587
+    }
+    row_score {
+      row_id: 623
+      wx: 0.86551404
+    }
+    row_score {
+      row_id: 624
+      wx: -3.5063932
+    }
+    row_score {
+      row_id: 625
+      wx: -0.89279824
+    }
+    row_score {
+      row_id: 626
+      wx: 2.2770183
+    }
+    row_score {
+      row_id: 627
+      wx: -1.7664284
+    }
+    row_score {
+      row_id: 628
+      wx: -1.4759464
+    }
+    row_score {
+      row_id: 629
+      wx: -3.6571589
+    }
+    row_score {
+      row_id: 630
+      wx: -4.2152424
+    }
+    row_score {
+      row_id: 631
+      wx: -1.6935692
+    }
+    row_score {
+      row_id: 632
+      wx: -2.8156598
+    }
+    row_score {
+      row_id: 633
+      wx: -5.0854197
+    }
+    row_score {
+      row_id: 634
+      wx: 0.28247765
+    }
+    row_score {
+      row_id: 635
+      wx: -1.3111145
+    }
+    row_score {
+      row_id: 636
+      wx: -2.8827558
+    }
+    row_score {
+      row_id: 637
+      wx: -4.4253864
+    }
+    row_score {
+      row_id: 638
+      wx: -5.1338978
+    }
+    row_score {
+      row_id: 639
+      wx: 0.3033703
+    }
+    row_score {
+      row_id: 640
+      wx: -5.7947769
+    }
+    row_score {
+      row_id: 641
+      wx: -5.9658723
+    }
+    row_score {
+      row_id: 642
+      wx: -1.0771611
+    }
+    row_score {
+      row_id: 643
+      wx: -1.6126199
+    }
+    row_score {
+      row_id: 644
+      wx: -1.3323745
+    }
+    row_score {
+      row_id: 645
+      wx: -3.6844945
+    }
+    row_score {
+      row_id: 646
+      wx: -3.7950909
+    }
+    row_score {
+      row_id: 647
+      wx: -3.1773851
+    }
+    row_score {
+      row_id: 648
+      wx: -6.0144682
+    }
+    row_score {
+      row_id: 649
+      wx: -3.6861372
+    }
+    row_score {
+      row_id: 650
+      wx: 0.30840734
+    }
+    row_score {
+      row_id: 651
+      wx: -6.3554645
+    }
+    row_score {
+      row_id: 652
+      wx: 1.3646891
+    }
+    row_score {
+      row_id: 653
+      wx: -0.10095777
+    }
+    row_score {
+      row_id: 654
+      wx: -4.4412394
+    }
+    row_score {
+      row_id: 655
+      wx: -5.3063912
+    }
+    row_score {
+      row_id: 656
+      wx: -4.4264288
+    }
+    row_score {
+      row_id: 657
+      wx: -0.1729995
+    }
+    row_score {
+      row_id: 658
+      wx: -4.6274853
+    }
+    row_score {
+      row_id: 659
+      wx: 0.43762368
+    }
+    row_score {
+      row_id: 660
+      wx: -6.3862772
+    }
+    row_score {
+      row_id: 661
+      wx: -6.4295583
+    }
+    row_score {
+      row_id: 662
+      wx: -0.46558243
+    }
+    row_score {
+      row_id: 663
+      wx: 0.6238414
+    }
+    row_score {
+      row_id: 664
+      wx: -0.98926276
+    }
+    row_score {
+      row_id: 665
+      wx: -0.2282605
+    }
+    row_score {
+      row_id: 666
+      wx: 0.079374842
+    }
+    row_score {
+      row_id: 667
+      wx: -5.7804093
+    }
+    row_score {
+      row_id: 668
+      wx: -4.7772317
+    }
+    row_score {
+      row_id: 669
+      wx: -5.5643458
+    }
+    row_score {
+      row_id: 670
+      wx: -4.2000732
+    }
+    row_score {
+      row_id: 671
+      wx: -0.91351634
+    }
+    row_score {
+      row_id: 672
+      wx: 2.3106513
+    }
+    row_score {
+      row_id: 673
+      wx: -4.7198706
+    }
+    row_score {
+      row_id: 674
+      wx: -0.34367898
+    }
+    row_score {
+      row_id: 675
+      wx: 2.1392951
+    }
+    row_score {
+      row_id: 676
+      wx: -4.4383459
+    }
+    row_score {
+      row_id: 677
+      wx: -1.681818
+    }
+    row_score {
+      row_id: 678
+      wx: -4.2813015
+    }
+    row_score {
+      row_id: 679
+      wx: -6.6718903
+    }
+    row_score {
+      row_id: 680
+      wx: -1.2630719
+    }
+    row_score {
+      row_id: 681
+      wx: -3.7258306
+    }
+    row_score {
+      row_id: 682
+      wx: 0.27559897
+    }
+    row_score {
+      row_id: 683
+      wx: -1.9609277
+    }
+    row_score {
+      row_id: 684
+      wx: -4.5655847
+    }
+    row_score {
+      row_id: 685
+      wx: 0.27566627
+    }
+    row_score {
+      row_id: 686
+      wx: -3.3550863
+    }
+    row_score {
+      row_id: 687
+      wx: -1.5029862
+    }
+    row_score {
+      row_id: 688
+      wx: -3.8361919
+    }
+    row_score {
+      row_id: 689
+      wx: -5.9291134
+    }
+    row_score {
+      row_id: 690
+      wx: -0.058018018
+    }
+    row_score {
+      row_id: 691
+      wx: -5.1356816
+    }
+    row_score {
+      row_id: 692
+      wx: -1.5969471
+    }
+    row_score {
+      row_id: 693
+      wx: -1.2690929
+    }
+    row_score {
+      row_id: 694
+      wx: -0.89961928
+    }
+    row_score {
+      row_id: 695
+      wx: -3.8989153
+    }
+    row_score {
+      row_id: 696
+      wx: -0.96324241
+    }
+    row_score {
+      row_id: 697
+      wx: -4.6211228
+    }
+    row_score {
+      row_id: 698
+      wx: -6.3529139
+    }
+    row_score {
+      row_id: 699
+      wx: -4.920157
+    }
+    row_score {
+      row_id: 700
+      wx: -5.6219406
+    }
+    row_score {
+      row_id: 701
+      wx: 1.4914687
+    }
+    row_score {
+      row_id: 702
+      wx: -1.6889366
+    }
+    row_score {
+      row_id: 703
+      wx: 0.12297729
+    }
+    row_score {
+      row_id: 704
+      wx: -0.24913041
+    }
+    row_score {
+      row_id: 705
+      wx: 3.3979549
+    }
+    row_score {
+      row_id: 706
+      wx: -6.0962138
+    }
+    row_score {
+      row_id: 707
+      wx: 1.5205604
+    }
+    row_score {
+      row_id: 708
+      wx: 0.022167357
+    }
+    row_score {
+      row_id: 709
+      wx: 0.98124915
+    }
+    row_score {
+      row_id: 710
+      wx: -0.04357646
+    }
+    row_score {
+      row_id: 711
+      wx: -1.5216869
+    }
+    row_score {
+      row_id: 712
+      wx: -0.056128103
+    }
+    row_score {
+      row_id: 713
+      wx: -1.3979796
+    }
+    row_score {
+      row_id: 714
+      wx: -1.7250918
+    }
+    row_score {
+      row_id: 715
+      wx: -5.8611946
+    }
+    row_score {
+      row_id: 716
+      wx: 2.7650104
+    }
+    row_score {
+      row_id: 717
+      wx: -2.7435486
+    }
+    row_score {
+      row_id: 718
+      wx: -6.4277668
+    }
+    row_score {
+      row_id: 719
+      wx: -2.928941
+    }
+    row_score {
+      row_id: 720
+      wx: -1.4666593
+    }
+    row_score {
+      row_id: 721
+      wx: -2.9573631
+    }
+    row_score {
+      row_id: 722
+      wx: 0.0052120136
+    }
+    row_score {
+      row_id: 723
+      wx: -3.8110576
+    }
+    row_score {
+      row_id: 724
+      wx: -1.6934812
+    }
+    row_score {
+      row_id: 725
+      wx: -4.7058396
+    }
+    row_score {
+      row_id: 726
+      wx: -4.8558707
+    }
+    row_score {
+      row_id: 727
+      wx: -1.5492651
+    }
+    row_score {
+      row_id: 728
+      wx: 0.014104148
+    }
+    row_score {
+      row_id: 729
+      wx: -2.723753
+    }
+    row_score {
+      row_id: 730
+      wx: -2.061583
+    }
+    row_score {
+      row_id: 731
+      wx: -2.2854731
+    }
+    row_score {
+      row_id: 732
+      wx: -2.0486662
+    }
+    row_score {
+      row_id: 733
+      wx: 2.8127885
+    }
+    row_score {
+      row_id: 734
+      wx: 0.60692888
+    }
+    row_score {
+      row_id: 735
+      wx: -1.8216182
+    }
+    row_score {
+      row_id: 736
+      wx: 0.37626722
+    }
+    row_score {
+      row_id: 737
+      wx: -1.8032641
+    }
+    row_score {
+      row_id: 738
+      wx: -0.086838521
+    }
+    row_score {
+      row_id: 739
+      wx: -2.3767338
+    }
+    row_score {
+      row_id: 740
+      wx: 0.28247765
+    }
+    row_score {
+      row_id: 741
+      wx: -0.80150461
+    }
+    row_score {
+      row_id: 742
+      wx: -0.30954543
+    }
+    row_score {
+      row_id: 743
+      wx: 1.5497366
+    }
+    row_score {
+      row_id: 744
+      wx: -5.1783757
+    }
+    row_score {
+      row_id: 745
+      wx: -2.7569666
+    }
+    row_score {
+      row_id: 746
+      wx: -1.7977035
+    }
+    row_score {
+      row_id: 747
+      wx: -3.6947064
+    }
+    row_score {
+      row_id: 748
+      wx: -1.695855
+    }
+    row_score {
+      row_id: 749
+      wx: -6.56119
+    }
+    row_score {
+      row_id: 750
+      wx: -0.5951094
+    }
+    row_score {
+      row_id: 751
+      wx: -3.9967935
+    }
+    row_score {
+      row_id: 752
+      wx: -0.91841984
+    }
+    row_score {
+      row_id: 753
+      wx: -1.8216182
+    }
+    row_score {
+      row_id: 754
+      wx: 1.2439121
+    }
+    row_score {
+      row_id: 755
+      wx: -0.69821638
+    }
+    row_score {
+      row_id: 756
+      wx: -2.3128464
+    }
+    row_score {
+      row_id: 757
+      wx: 2.3715453
+    }
+    row_score {
+      row_id: 758
+      wx: -0.835779
+    }
+    row_score {
+      row_id: 759
+      wx: -4.1157408
+    }
+    row_score {
+      row_id: 760
+      wx: 0.911822
+    }
+    row_score {
+      row_id: 761
+      wx: -1.0583005
+    }
+    row_score {
+      row_id: 762
+      wx: -3.4070764
+    }
+    row_score {
+      row_id: 763
+      wx: -7.73193
+    }
+    row_score {
+      row_id: 764
+      wx: 0.30145738
+    }
+    row_score {
+      row_id: 765
+      wx: -0.024987781
+    }
+    row_score {
+      row_id: 766
+      wx: -2.2916856
+    }
+    row_score {
+      row_id: 767
+      wx: -2.4536393
+    }
+    row_score {
+      row_id: 768
+      wx: -0.41821268
+    }
+    row_score {
+      row_id: 769
+      wx: -2.2898242
+    }
+    row_score {
+      row_id: 770
+      wx: -4.4020061
+    }
+    row_score {
+      row_id: 771
+      wx: -4.6471992
+    }
+    row_score {
+      row_id: 772
+      wx: 0.014892921
+    }
+    row_score {
+      row_id: 773
+      wx: 2.170701
+    }
+    row_score {
+      row_id: 774
+      wx: -3.8608358
+    }
+    row_score {
+      row_id: 775
+      wx: -3.7657139
+    }
+    row_score {
+      row_id: 776
+      wx: -4.4056582
+    }
+    row_score {
+      row_id: 777
+      wx: 0.10437235
+    }
+    row_score {
+      row_id: 778
+      wx: -5.1798234
+    }
+    row_score {
+      row_id: 779
+      wx: -4.0800838
+    }
+    row_score {
+      row_id: 780
+      wx: -2.5547788
+    }
+    row_score {
+      row_id: 781
+      wx: -4.3066282
+    }
+    row_score {
+      row_id: 782
+      wx: 0.82113922
+    }
+    row_score {
+      row_id: 783
+      wx: -2.8500736
+    }
+    row_score {
+      row_id: 784
+      wx: -4.0145087
+    }
+    row_score {
+      row_id: 785
+      wx: -1.4961008
+    }
+    row_score {
+      row_id: 786
+      wx: 1.7303424
+    }
+    row_score {
+      row_id: 787
+      wx: -5.0331144
+    }
+    row_score {
+      row_id: 788
+      wx: -2.4599209
+    }
+    row_score {
+      row_id: 789
+      wx: -5.4114828
+    }
+    row_score {
+      row_id: 790
+      wx: -0.17255419
+    }
+    row_score {
+      row_id: 791
+      wx: -2.8421633
+    }
+    row_score {
+      row_id: 792
+      wx: -5.3834987
+    }
+    row_score {
+      row_id: 793
+      wx: 0.54436946
+    }
+    row_score {
+      row_id: 794
+      wx: -4.2262983
+    }
+    row_score {
+      row_id: 795
+      wx: 0.32591754
+    }
+    row_score {
+      row_id: 796
+      wx: -1.3715268
+    }
+    row_score {
+      row_id: 797
+      wx: -0.95578223
+    }
+    row_score {
+      row_id: 798
+      wx: -5.1790419
+    }
+    row_score {
+      row_id: 799
+      wx: -4.7956395
+    }
+    row_score {
+      row_id: 800
+      wx: -4.4959493
+    }
+    row_score {
+      row_id: 801
+      wx: -2.4834278
+    }
+    row_score {
+      row_id: 802
+      wx: 3.7161682
+    }
+    row_score {
+      row_id: 803
+      wx: -2.9793663
+    }
+    row_score {
+      row_id: 804
+      wx: 0.92995912
+    }
+    row_score {
+      row_id: 805
+      wx: -1.3545511
+    }
+    row_score {
+      row_id: 806
+      wx: -4.5772886
+    }
+    row_score {
+      row_id: 807
+      wx: -4.9620132
+    }
+    row_score {
+      row_id: 808
+      wx: -1.1688218
+    }
+    row_score {
+      row_id: 809
+      wx: 1.12122
+    }
+    row_score {
+      row_id: 810
+      wx: -6.5725741
+    }
+    row_score {
+      row_id: 811
+      wx: -2.12256
+    }
+    row_score {
+      row_id: 812
+      wx: -3.4137793
+    }
+    row_score {
+      row_id: 813
+      wx: -3.6598532
+    }
+    row_score {
+      row_id: 814
+      wx: -1.8898274
+    }
+    row_score {
+      row_id: 815
+      wx: -5.7899938
+    }
+    row_score {
+      row_id: 816
+      wx: -4.0140491
+    }
+    row_score {
+      row_id: 817
+      wx: -2.1090431
+    }
+    row_score {
+      row_id: 818
+      wx: -3.0980415
+    }
+    row_score {
+      row_id: 819
+      wx: -0.841699
+    }
+    row_score {
+      row_id: 820
+      wx: -1.3756227
+    }
+    row_score {
+      row_id: 821
+      wx: -5.6219406
+    }
+    row_score {
+      row_id: 822
+      wx: -1.8676773
+    }
+    row_score {
+      row_id: 823
+      wx: -3.2932718
+    }
+    row_score {
+      row_id: 824
+      wx: -2.3433595
+    }
+    row_score {
+      row_id: 825
+      wx: -2.6967266
+    }
+    row_score {
+      row_id: 826
+      wx: -2.0702424
+    }
+    row_score {
+      row_id: 827
+      wx: 1.1897738
+    }
+    row_score {
+      row_id: 828
+      wx: 1.7780967
+    }
+    row_score {
+      row_id: 829
+      wx: -3.9614677
+    }
+    row_score {
+      row_id: 830
+      wx: -5.3350616
+    }
+    row_score {
+      row_id: 831
+      wx: -0.271452
+    }
+    row_score {
+      row_id: 832
+      wx: -4.2269011
+    }
+    row_score {
+      row_id: 833
+      wx: -1.3951219
+    }
+    row_score {
+      row_id: 834
+      wx: -0.22870001
+    }
+    row_score {
+      row_id: 835
+      wx: -3.8595366
+    }
+    row_score {
+      row_id: 836
+      wx: -5.2684379
+    }
+    row_score {
+      row_id: 837
+      wx: -3.2383654
+    }
+    row_score {
+      row_id: 838
+      wx: -3.3119521
+    }
+    row_score {
+      row_id: 839
+      wx: -3.8749454
+    }
+    row_score {
+      row_id: 840
+      wx: -5.171248
+    }
+    row_score {
+      row_id: 841
+      wx: 1.2097431
+    }
+    row_score {
+      row_id: 842
+      wx: -2.5939436
+    }
+    row_score {
+      row_id: 843
+      wx: -5.2758393
+    }
+    row_score {
+      row_id: 844
+      wx: -5.2174869
+    }
+    row_score {
+      row_id: 845
+      wx: -2.5263526
+    }
+    row_score {
+      row_id: 846
+      wx: -1.06799
+    }
+    row_score {
+      row_id: 847
+      wx: -1.861499
+    }
+    row_score {
+      row_id: 848
+      wx: 0.63607252
+    }
+    row_score {
+      row_id: 849
+      wx: -3.0141532
+    }
+    row_score {
+      row_id: 850
+      wx: -2.7812583
+    }
+    row_score {
+      row_id: 851
+      wx: 0.56599891
+    }
+    row_score {
+      row_id: 852
+      wx: -0.80592072
+    }
+    row_score {
+      row_id: 853
+      wx: -5.3776755
+    }
+    row_score {
+      row_id: 854
+      wx: -4.9433651
+    }
+    row_score {
+      row_id: 855
+      wx: -6.7459145
+    }
+    row_score {
+      row_id: 856
+      wx: -4.9655995
+    }
+    row_score {
+      row_id: 857
+      wx: -0.74786466
+    }
+    row_score {
+      row_id: 858
+      wx: -1.7946454
+    }
+    row_score {
+      row_id: 859
+      wx: -4.905107
+    }
+    row_score {
+      row_id: 860
+      wx: -6.1077914
+    }
+    row_score {
+      row_id: 861
+      wx: -5.354578
+    }
+    row_score {
+      row_id: 862
+      wx: -3.5175869
+    }
+    row_score {
+      row_id: 863
+      wx: -3.274133
+    }
+    row_score {
+      row_id: 864
+      wx: -3.8011672
+    }
+    row_score {
+      row_id: 865
+      wx: -3.8332217
+    }
+    row_score {
+      row_id: 866
+      wx: -5.978837
+    }
+    row_score {
+      row_id: 867
+      wx: -6.2274022
+    }
+    row_score {
+      row_id: 868
+      wx: -4.9780259
+    }
+    row_score {
+      row_id: 869
+      wx: -4.433743
+    }
+    row_score {
+      row_id: 870
+      wx: -1.6385959
+    }
+    row_score {
+      row_id: 871
+      wx: 1.9809858
+    }
+    row_score {
+      row_id: 872
+      wx: -4.304306
+    }
+    row_score {
+      row_id: 873
+      wx: -1.5844818
+    }
+    row_score {
+      row_id: 874
+      wx: -2.5124485
+    }
+    row_score {
+      row_id: 875
+      wx: -4.5112739
+    }
+    row_score {
+      row_id: 876
+      wx: -1.4819579
+    }
+    row_score {
+      row_id: 877
+      wx: -1.1688218
+    }
+    row_score {
+      row_id: 878
+      wx: -0.6048944
+    }
+    row_score {
+      row_id: 879
+      wx: -3.9025426
+    }
+    row_score {
+      row_id: 880
+      wx: -4.8642411
+    }
+    row_score {
+      row_id: 881
+      wx: -6.6777987
+    }
+    row_score {
+      row_id: 882
+      wx: -2.559576
+    }
+    row_score {
+      row_id: 883
+      wx: -4.3802013
+    }
+    row_score {
+      row_id: 884
+      wx: -4.336751
+    }
+    row_score {
+      row_id: 885
+      wx: -1.1129982
+    }
+    row_score {
+      row_id: 886
+      wx: 0.48801744
+    }
+    row_score {
+      row_id: 887
+      wx: -1.3696828
+    }
+    row_score {
+      row_id: 888
+      wx: -2.0554273
+    }
+    row_score {
+      row_id: 889
+      wx: -2.4895418
+    }
+    row_score {
+      row_id: 890
+      wx: 1.3481021
+    }
+    row_score {
+      row_id: 891
+      wx: -3.2396064
+    }
+    row_score {
+      row_id: 892
+      wx: -1.2133888
+    }
+    row_score {
+      row_id: 893
+      wx: -2.9130917
+    }
+    row_score {
+      row_id: 894
+      wx: -2.4321897
+    }
+    row_score {
+      row_id: 895
+      wx: -5.1754656
+    }
+    row_score {
+      row_id: 896
+      wx: -4.6045575
+    }
+    row_score {
+      row_id: 897
+      wx: -3.5575442
+    }
+    row_score {
+      row_id: 898
+      wx: -6.0144682
+    }
+    row_score {
+      row_id: 899
+      wx: -5.2969136
+    }
+    row_score {
+      row_id: 900
+      wx: -3.6659031
+    }
+    row_score {
+      row_id: 901
+      wx: -3.6903806
+    }
+    row_score {
+      row_id: 902
+      wx: -4.424427
+    }
+    row_score {
+      row_id: 903
+      wx: -1.691448
+    }
+    row_score {
+      row_id: 904
+      wx: -4.6216784
+    }
+    row_score {
+      row_id: 905
+      wx: -2.3883114
+    }
+    row_score {
+      row_id: 906
+      wx: -1.2524371
+    }
+    row_score {
+      row_id: 907
+      wx: -3.4884114
+    }
+    row_score {
+      row_id: 908
+      wx: -5.0368571
+    }
+    row_score {
+      row_id: 909
+      wx: -1.1314576
+    }
+    row_score {
+      row_id: 910
+      wx: 1.167323
+    }
+    row_score {
+      row_id: 911
+      wx: -4.8356123
+    }
+    row_score {
+      row_id: 912
+      wx: -4.5662928
+    }
+    row_score {
+      row_id: 913
+      wx: -4.7858086
+    }
+    row_score {
+      row_id: 914
+      wx: -5.3219457
+    }
+    row_score {
+      row_id: 915
+      wx: 0.89280492
+    }
+    row_score {
+      row_id: 916
+      wx: -0.20768297
+    }
+    row_score {
+      row_id: 917
+      wx: -1.861499
+    }
+    row_score {
+      row_id: 918
+      wx: -3.2423429
+    }
+    row_score {
+      row_id: 919
+      wx: 0.78357995
+    }
+    row_score {
+      row_id: 920
+      wx: 1.0766299
+    }
+    row_score {
+      row_id: 921
+      wx: 1.1984615
+    }
+    row_score {
+      row_id: 922
+      wx: -5.2824974
+    }
+    row_score {
+      row_id: 923
+      wx: -4.673326
+    }
+    row_score {
+      row_id: 924
+      wx: -0.65030223
+    }
+    row_score {
+      row_id: 925
+      wx: -3.7598915
+    }
+    row_score {
+      row_id: 926
+      wx: -0.089523785
+    }
+    row_score {
+      row_id: 927
+      wx: -2.0663934
+    }
+    row_score {
+      row_id: 928
+      wx: -0.64195108
+    }
+    row_score {
+      row_id: 929
+      wx: -6.0962138
+    }
+    row_score {
+      row_id: 930
+      wx: -0.70637888
+    }
+    row_score {
+      row_id: 931
+      wx: -5.061862
+    }
+    row_score {
+      row_id: 932
+      wx: -3.2339387
+    }
+    row_score {
+      row_id: 933
+      wx: -1.4409032
+    }
+    row_score {
+      row_id: 934
+      wx: -4.0449977
+    }
+    row_score {
+      row_id: 935
+      wx: -0.38789165
+    }
+    row_score {
+      row_id: 936
+      wx: -6.6009741
+    }
+    row_score {
+      row_id: 937
+      wx: -1.3007523
+    }
+    row_score {
+      row_id: 938
+      wx: -2.6047311
+    }
+    row_score {
+      row_id: 939
+      wx: 0.077606082
+    }
+    row_score {
+      row_id: 940
+      wx: -2.3989303
+    }
+    row_score {
+      row_id: 941
+      wx: 0.091355838
+    }
+    row_score {
+      row_id: 942
+      wx: 0.55157864
+    }
+    row_score {
+      row_id: 943
+      wx: -3.1127496
+    }
+    row_score {
+      row_id: 944
+      wx: -0.90022928
+    }
+    row_score {
+      row_id: 945
+      wx: -2.9117832
+    }
+    row_score {
+      row_id: 946
+      wx: -4.4833956
+    }
+    row_score {
+      row_id: 947
+      wx: -0.79065669
+    }
+    row_score {
+      row_id: 948
+      wx: 1.7269456
+    }
+    row_score {
+      row_id: 949
+      wx: -2.0075278
+    }
+    row_score {
+      row_id: 950
+      wx: -5.6663284
+    }
+    row_score {
+      row_id: 951
+      wx: -6.7351718
+    }
+    row_score {
+      row_id: 952
+      wx: -2.3341835
+    }
+    row_score {
+      row_id: 953
+      wx: -4.1973171
+    }
+    row_score {
+      row_id: 954
+      wx: -4.3436718
+    }
+    row_score {
+      row_id: 955
+      wx: -0.72512448
+    }
+    row_score {
+      row_id: 956
+      wx: -4.7787385
+    }
+    row_score {
+      row_id: 957
+      wx: -5.3451791
+    }
+    row_score {
+      row_id: 958
+      wx: -1.4293213
+    }
+    row_score {
+      row_id: 959
+      wx: -0.62107503
+    }
+    row_score {
+      row_id: 960
+      wx: -6.1898551
+    }
+    row_score {
+      row_id: 961
+      wx: -1.2244222
+    }
+    row_score {
+      row_id: 962
+      wx: -0.60794491
+    }
+    row_score {
+      row_id: 963
+      wx: -2.5123172
+    }
+    row_score {
+      row_id: 964
+      wx: -2.0653911
+    }
+    row_score {
+      row_id: 965
+      wx: -3.2736151
+    }
+    row_score {
+      row_id: 966
+      wx: -1.0043343
+    }
+    row_score {
+      row_id: 967
+      wx: 0.32520047
+    }
+    row_score {
+      row_id: 968
+      wx: -0.613515
+    }
+    row_score {
+      row_id: 969
+      wx: -5.2086883
+    }
+    row_score {
+      row_id: 970
+      wx: -3.1702492
+    }
+    row_score {
+      row_id: 971
+      wx: 0.5397833
+    }
+    row_score {
+      row_id: 972
+      wx: 0.015453157
+    }
+    row_score {
+      row_id: 973
+      wx: 1.5637301
+    }
+    row_score {
+      row_id: 974
+      wx: 1.4131135
+    }
+    row_score {
+      row_id: 975
+      wx: -1.4133484
+    }
+    row_score {
+      row_id: 976
+      wx: -1.8216182
+    }
+    row_score {
+      row_id: 977
+      wx: -2.3293443
+    }
+    row_score {
+      row_id: 978
+      wx: -1.662248
+    }
+    row_score {
+      row_id: 979
+      wx: -3.4975643
+    }
+    row_score {
+      row_id: 980
+      wx: -2.9617455
+    }
+    row_score {
+      row_id: 981
+      wx: 2.858882
+    }
+    row_score {
+      row_id: 982
+      wx: 1.6979517
+    }
+    row_score {
+      row_id: 983
+      wx: -2.8616264
+    }
+    row_score {
+      row_id: 984
+      wx: -0.11407486
+    }
+    row_score {
+      row_id: 985
+      wx: -1.1982454
+    }
+    row_score {
+      row_id: 986
+      wx: 1.9570965
+    }
+    row_score {
+      row_id: 987
+      wx: -3.9815664
+    }
+    row_score {
+      row_id: 988
+      wx: -0.42878744
+    }
+    row_score {
+      row_id: 989
+      wx: -0.41065624
+    }
+    row_score {
+      row_id: 990
+      wx: -0.70637888
+    }
+    row_score {
+      row_id: 991
+      wx: -2.8219361
+    }
+    row_score {
+      row_id: 992
+      wx: -0.83326519
+    }
+    row_score {
+      row_id: 993
+      wx: -2.2645059
+    }
+    row_score {
+      row_id: 994
+      wx: -2.7444315
+    }
+    row_score {
+      row_id: 995
+      wx: -0.70637888
+    }
+    row_score {
+      row_id: 996
+      wx: -2.7825766
+    }
+    row_score {
+      row_id: 997
+      wx: -4.6165752
+    }
+    row_score {
+      row_id: 998
+      wx: -1.3391452
+    }
+    row_score {
+      row_id: 999
+      wx: 1.2019027
+    }
+    row_score {
+      row_id: 1000
+      wx: -0.33863628
+    }
+    row_score {
+      row_id: 1001
+      wx: -1.5863452
+    }
+    row_score {
+      row_id: 1002
+      wx: -5.798213
+    }
+    row_score {
+      row_id: 1003
+      wx: -1.9506809
+    }
+    row_score {
+      row_id: 1004
+      wx: -1.37132
+    }
+    row_score {
+      row_id: 1005
+      wx: -2.1882844
+    }
+    row_score {
+      row_id: 1006
+      wx: -1.1174592
+    }
+    row_score {
+      row_id: 1007
+      wx: -5.5988669
+    }
+    row_score {
+      row_id: 1008
+      wx: 2.0891304
+    }
+    row_score {
+      row_id: 1009
+      wx: -3.0354195
+    }
+    row_score {
+      row_id: 1010
+      wx: -3.5564623
+    }
+    row_score {
+      row_id: 1011
+      wx: -3.5310102
+    }
+    row_score {
+      row_id: 1012
+      wx: -0.89279824
+    }
+    row_score {
+      row_id: 1013
+      wx: -2.6576443
+    }
+    row_score {
+      row_id: 1014
+      wx: -3.4816525
+    }
+    row_score {
+      row_id: 1015
+      wx: 0.052355796
+    }
+    row_score {
+      row_id: 1016
+      wx: -4.1262889
+    }
+    row_score {
+      row_id: 1017
+      wx: 0.98124915
+    }
+    row_score {
+      row_id: 1018
+      wx: -0.82087779
+    }
+    row_score {
+      row_id: 1019
+      wx: -3.0749776
+    }
+    row_score {
+      row_id: 1020
+      wx: -4.3805017
+    }
+    row_score {
+      row_id: 1021
+      wx: -2.6241961
+    }
+    row_score {
+      row_id: 1022
+      wx: 1.6354226
+    }
+    row_score {
+      row_id: 1023
+      wx: -2.7783713
+    }
+    row_score {
+      row_id: 1024
+      wx: -2.2287962
+    }
+    row_score {
+      row_id: 1025
+      wx: 0.64767545
+    }
+    row_score {
+      row_id: 1026
+      wx: -3.1803963
+    }
+    row_score {
+      row_id: 1027
+      wx: -5.2446113
+    }
+    row_score {
+      row_id: 1028
+      wx: -2.4794056
+    }
+    row_score {
+      row_id: 1029
+      wx: -4.8959141
+    }
+    row_score {
+      row_id: 1030
+      wx: 1.6707348
+    }
+    row_score {
+      row_id: 1031
+      wx: 0.28780025
+    }
+    row_score {
+      row_id: 1032
+      wx: -0.50077033
+    }
+    row_score {
+      row_id: 1033
+      wx: -3.585629
+    }
+    row_score {
+      row_id: 1034
+      wx: -2.9356868
+    }
+    row_score {
+      row_id: 1035
+      wx: -5.3977466
+    }
+    row_score {
+      row_id: 1036
+      wx: -4.034533
+    }
+    row_score {
+      row_id: 1037
+      wx: -4.6274853
+    }
+    row_score {
+      row_id: 1038
+      wx: 1.6682798
+    }
+    row_score {
+      row_id: 1039
+      wx: -2.4332912
+    }
+    row_score {
+      row_id: 1040
+      wx: -4.9022012
+    }
+    row_score {
+      row_id: 1041
+      wx: -1.9187858
+    }
+    row_score {
+      row_id: 1042
+      wx: -3.6609564
+    }
+    row_score {
+      row_id: 1043
+      wx: -0.37510434
+    }
+    row_score {
+      row_id: 1044
+      wx: 0.73471344
+    }
+    row_score {
+      row_id: 1045
+      wx: -1.2002141
+    }
+    row_score {
+      row_id: 1046
+      wx: -6.52987
+    }
+    row_score {
+      row_id: 1047
+      wx: -2.626487
+    }
+    row_score {
+      row_id: 1048
+      wx: 0.43222389
+    }
+    row_score {
+      row_id: 1049
+      wx: 1.0249767
+    }
+    row_score {
+      row_id: 1050
+      wx: -0.76055205
+    }
+    row_score {
+      row_id: 1051
+      wx: 2.0861983
+    }
+    row_score {
+      row_id: 1052
+      wx: -3.5106926
+    }
+    row_score {
+      row_id: 1053
+      wx: -4.3437028
+    }
+    row_score {
+      row_id: 1054
+      wx: -5.1106415
+    }
+    row_score {
+      row_id: 1055
+      wx: 0.20731966
+    }
+    row_score {
+      row_id: 1056
+      wx: -0.27074242
+    }
+    row_score {
+      row_id: 1057
+      wx: -4.3894882
+    }
+    row_score {
+      row_id: 1058
+      wx: -5.304399
+    }
+    row_score {
+      row_id: 1059
+      wx: 2.0072539
+    }
+    row_score {
+      row_id: 1060
+      wx: -1.4548557
+    }
+    row_score {
+      row_id: 1061
+      wx: -2.7602975
+    }
+    row_score {
+      row_id: 1062
+      wx: -2.564019
+    }
+    row_score {
+      row_id: 1063
+      wx: 2.3076975
+    }
+    row_score {
+      row_id: 1064
+      wx: -1.9821638
+    }
+    row_score {
+      row_id: 1065
+      wx: -4.9769125
+    }
+    row_score {
+      row_id: 1066
+      wx: -1.9832273
+    }
+    row_score {
+      row_id: 1067
+      wx: -3.7733409
+    }
+    row_score {
+      row_id: 1068
+      wx: -3.6131063
+    }
+    row_score {
+      row_id: 1069
+      wx: -3.4457996
+    }
+    row_score {
+      row_id: 1070
+      wx: -5.1067057
+    }
+    row_score {
+      row_id: 1071
+      wx: -5.9359455
+    }
+    row_score {
+      row_id: 1072
+      wx: -4.5990367
+    }
+    row_score {
+      row_id: 1073
+      wx: -3.4029472
+    }
+    row_score {
+      row_id: 1074
+      wx: -1.5692457
+    }
+    row_score {
+      row_id: 1075
+      wx: -0.35996366
+    }
+    row_score {
+      row_id: 1076
+      wx: -1.4898038
+    }
+    row_score {
+      row_id: 1077
+      wx: -4.7270741
+    }
+    row_score {
+      row_id: 1078
+      wx: -4.826333
+    }
+    row_score {
+      row_id: 1079
+      wx: -6.2187548
+    }
+    row_score {
+      row_id: 1080
+      wx: -5.6936097
+    }
+    row_score {
+      row_id: 1081
+      wx: -1.0239651
+    }
+    row_score {
+      row_id: 1082
+      wx: -1.467458
+    }
+    row_score {
+      row_id: 1083
+      wx: -1.0485337
+    }
+    row_score {
+      row_id: 1084
+      wx: 0.061967172
+    }
+    row_score {
+      row_id: 1085
+      wx: -3.3019273
+    }
+    row_score {
+      row_id: 1086
+      wx: -1.9559389
+    }
+    row_score {
+      row_id: 1087
+      wx: -6.0798173
+    }
+    row_score {
+      row_id: 1088
+      wx: -5.267808
+    }
+    row_score {
+      row_id: 1089
+      wx: -3.5000563
+    }
+    row_score {
+      row_id: 1090
+      wx: 3.2605906
+    }
+    row_score {
+      row_id: 1091
+      wx: 0.16118293
+    }
+    row_score {
+      row_id: 1092
+      wx: -1.3552412
+    }
+    row_score {
+      row_id: 1093
+      wx: 0.044308566
+    }
+    row_score {
+      row_id: 1094
+      wx: -2.5321174
+    }
+    row_score {
+      row_id: 1095
+      wx: 1.7812546
+    }
+    row_score {
+      row_id: 1096
+      wx: -1.6903452
+    }
+    row_score {
+      row_id: 1097
+      wx: -0.70202118
+    }
+    row_score {
+      row_id: 1098
+      wx: -2.0255616
+    }
+    row_score {
+      row_id: 1099
+      wx: -4.4183269
+    }
+    row_score {
+      row_id: 1100
+      wx: -4.1883979
+    }
+    row_score {
+      row_id: 1101
+      wx: -4.8946462
+    }
+    row_score {
+      row_id: 1102
+      wx: 1.7564524
+    }
+    row_score {
+      row_id: 1103
+      wx: -1.5029838
+    }
+    row_score {
+      row_id: 1104
+      wx: -0.9187156
+    }
+    row_score {
+      row_id: 1105
+      wx: -2.9418545
+    }
+    row_score {
+      row_id: 1106
+      wx: -1.3307362
+    }
+    row_score {
+      row_id: 1107
+      wx: 2.1366973
+    }
+    row_score {
+      row_id: 1108
+      wx: -2.3416381
+    }
+    row_score {
+      row_id: 1109
+      wx: -4.8004856
+    }
+    row_score {
+      row_id: 1110
+      wx: -5.79085
+    }
+    row_score {
+      row_id: 1111
+      wx: -2.3553486
+    }
+    row_score {
+      row_id: 1112
+      wx: -0.93093956
+    }
+    row_score {
+      row_id: 1113
+      wx: -0.95706075
+    }
+    row_score {
+      row_id: 1114
+      wx: -6.011137
+    }
+    row_score {
+      row_id: 1115
+      wx: -5.2574639
+    }
+    row_score {
+      row_id: 1116
+      wx: 0.30407232
+    }
+    row_score {
+      row_id: 1117
+      wx: -0.00065376441
+    }
+    row_score {
+      row_id: 1118
+      wx: -5.4986477
+    }
+    row_score {
+      row_id: 1119
+      wx: 2.1684608
+    }
+    row_score {
+      row_id: 1120
+      wx: -3.7681344
+    }
+    row_score {
+      row_id: 1121
+      wx: -4.6187181
+    }
+    row_score {
+      row_id: 1122
+      wx: -3.2051117
+    }
+    row_score {
+      row_id: 1123
+      wx: -6.0528259
+    }
+    row_score {
+      row_id: 1124
+      wx: -2.636857
+    }
+    row_score {
+      row_id: 1125
+      wx: -3.5965929
+    }
+    row_score {
+      row_id: 1126
+      wx: -6.06702
+    }
+    row_score {
+      row_id: 1127
+      wx: -4.4249711
+    }
+    row_score {
+      row_id: 1128
+      wx: -1.1454617
+    }
+    row_score {
+      row_id: 1129
+      wx: -3.8234854
+    }
+    row_score {
+      row_id: 1130
+      wx: -5.2919769
+    }
+    row_score {
+      row_id: 1131
+      wx: -6.1360946
+    }
+    row_score {
+      row_id: 1132
+      wx: -4.6380582
+    }
+    row_score {
+      row_id: 1133
+      wx: -0.54807216
+    }
+    row_score {
+      row_id: 1134
+      wx: -1.2087026
+    }
+    row_score {
+      row_id: 1135
+      wx: -5.608511
+    }
+    row_score {
+      row_id: 1136
+      wx: -5.9745874
+    }
+    row_score {
+      row_id: 1137
+      wx: -1.9924179
+    }
+    row_score {
+      row_id: 1138
+      wx: 1.2113961
+    }
+    row_score {
+      row_id: 1139
+      wx: -0.63319111
+    }
+    row_score {
+      row_id: 1140
+      wx: -1.9225571
+    }
+    row_score {
+      row_id: 1141
+      wx: -2.74628
+    }
+    row_score {
+      row_id: 1142
+      wx: -5.1586065
+    }
+    row_score {
+      row_id: 1143
+      wx: -1.9002314
+    }
+    row_score {
+      row_id: 1144
+      wx: -4.5601315
+    }
+    row_score {
+      row_id: 1145
+      wx: -1.0785913
+    }
+    row_score {
+      row_id: 1146
+      wx: -4.8893523
+    }
+    row_score {
+      row_id: 1147
+      wx: -2.0074658
+    }
+    row_score {
+      row_id: 1148
+      wx: -2.3396864
+    }
+    row_score {
+      row_id: 1149
+      wx: 3.8086927
+    }
+    row_score {
+      row_id: 1150
+      wx: -4.1588149
+    }
+    row_score {
+      row_id: 1151
+      wx: -0.14101991
+    }
+    row_score {
+      row_id: 1152
+      wx: 1.4806011
+    }
+    row_score {
+      row_id: 1153
+      wx: 2.3516538
+    }
+    row_score {
+      row_id: 1154
+      wx: -4.0164466
+    }
+    row_score {
+      row_id: 1155
+      wx: -7.3195739
+    }
+    row_score {
+      row_id: 1156
+      wx: -6.5910654
+    }
+    row_score {
+      row_id: 1157
+      wx: -2.2705765
+    }
+    row_score {
+      row_id: 1158
+      wx: -6.1795549
+    }
+    row_score {
+      row_id: 1159
+      wx: -6.8360906
+    }
+    row_score {
+      row_id: 1160
+      wx: -4.243422
+    }
+    row_score {
+      row_id: 1161
+      wx: -4.5010495
+    }
+    row_score {
+      row_id: 1162
+      wx: -3.3992774
+    }
+    row_score {
+      row_id: 1163
+      wx: -1.4623524
+    }
+    row_score {
+      row_id: 1164
+      wx: -1.7347827
+    }
+    row_score {
+      row_id: 1165
+      wx: 0.529951
+    }
+    row_score {
+      row_id: 1166
+      wx: -4.6589561
+    }
+    row_score {
+      row_id: 1167
+      wx: -2.6635203
+    }
+    row_score {
+      row_id: 1168
+      wx: -3.0715969
+    }
+    row_score {
+      row_id: 1169
+      wx: -5.3940229
+    }
+    row_score {
+      row_id: 1170
+      wx: -0.61896086
+    }
+    row_score {
+      row_id: 1171
+      wx: -0.17810093
+    }
+    row_score {
+      row_id: 1172
+      wx: -3.2070544
+    }
+    row_score {
+      row_id: 1173
+      wx: 4.4848351
+    }
+    row_score {
+      row_id: 1174
+      wx: 1.6725296
+    }
+    row_score {
+      row_id: 1175
+      wx: -5.824
+    }
+    row_score {
+      row_id: 1176
+      wx: 0.523537
+    }
+    row_score {
+      row_id: 1177
+      wx: 0.5635525
+    }
+    row_score {
+      row_id: 1178
+      wx: 2.3816056
+    }
+    row_score {
+      row_id: 1179
+      wx: -3.4116092
+    }
+    row_score {
+      row_id: 1180
+      wx: -0.021400338
+    }
+    row_score {
+      row_id: 1181
+      wx: 0.20224126
+    }
+    row_score {
+      row_id: 1182
+      wx: -1.0435441
+    }
+    row_score {
+      row_id: 1183
+      wx: -0.4230068
+    }
+    row_score {
+      row_id: 1184
+      wx: -4.7710128
+    }
+    row_score {
+      row_id: 1185
+      wx: 2.1553485
+    }
+    row_score {
+      row_id: 1186
+      wx: -6.1260037
+    }
+    row_score {
+      row_id: 1187
+      wx: -1.629915
+    }
+    row_score {
+      row_id: 1188
+      wx: 1.5386744
+    }
+    row_score {
+      row_id: 1189
+      wx: 1.7118733
+    }
+    row_score {
+      row_id: 1190
+      wx: 0.040870935
+    }
+    row_score {
+      row_id: 1191
+      wx: 0.68410158
+    }
+    row_score {
+      row_id: 1192
+      wx: -4.2190442
+    }
+    row_score {
+      row_id: 1193
+      wx: 0.084784344
+    }
+    row_score {
+      row_id: 1194
+      wx: -5.55554
+    }
+    row_score {
+      row_id: 1195
+      wx: -4.0443716
+    }
+    row_score {
+      row_id: 1196
+      wx: 1.8439959
+    }
+    row_score {
+      row_id: 1197
+      wx: -0.5019713
+    }
+    row_score {
+      row_id: 1198
+      wx: -1.4293213
+    }
+    row_score {
+      row_id: 1199
+      wx: -4.3469467
+    }
+    row_score {
+      row_id: 1200
+      wx: -1.4878733
+    }
+    row_score {
+      row_id: 1201
+      wx: -3.8847649
+    }
+    row_score {
+      row_id: 1202
+      wx: 1.4754783
+    }
+    row_score {
+      row_id: 1203
+      wx: 2.0905991
+    }
+    row_score {
+      row_id: 1204
+      wx: 3.4204893
+    }
+    row_score {
+      row_id: 1205
+      wx: -2.2613091
+    }
+    row_score {
+      row_id: 1206
+      wx: -0.91080934
+    }
+    row_score {
+      row_id: 1207
+      wx: -4.2467446
+    }
+    row_score {
+      row_id: 1208
+      wx: -4.1185689
+    }
+    row_score {
+      row_id: 1209
+      wx: -4.3114052
+    }
+    row_score {
+      row_id: 1210
+      wx: -3.2554622
+    }
+    row_score {
+      row_id: 1211
+      wx: -4.7455974
+    }
+    row_score {
+      row_id: 1212
+      wx: -0.30343792
+    }
+    row_score {
+      row_id: 1213
+      wx: -1.7557355
+    }
+    row_score {
+      row_id: 1214
+      wx: -2.6851058
+    }
+    row_score {
+      row_id: 1215
+      wx: -0.92307329
+    }
+    row_score {
+      row_id: 1216
+      wx: 0.55859971
+    }
+    row_score {
+      row_id: 1217
+      wx: -0.7912662
+    }
+    row_score {
+      row_id: 1218
+      wx: -1.3467528
+    }
+    row_score {
+      row_id: 1219
+      wx: 0.9331615
+    }
+    row_score {
+      row_id: 1220
+      wx: 3.2631891
+    }
+    row_score {
+      row_id: 1221
+      wx: -5.0353532
+    }
+    row_score {
+      row_id: 1222
+      wx: -4.38226
+    }
+    row_score {
+      row_id: 1223
+      wx: -1.2361388
+    }
+    row_score {
+      row_id: 1224
+      wx: -3.9920638
+    }
+    row_score {
+      row_id: 1225
+      wx: -2.4006519
+    }
+    row_score {
+      row_id: 1226
+      wx: 0.79075503
+    }
+    row_score {
+      row_id: 1227
+      wx: -3.1825285
+    }
+    row_score {
+      row_id: 1228
+      wx: -3.5078692
+    }
+    row_score {
+      row_id: 1229
+      wx: -4.3782854
+    }
+    row_score {
+      row_id: 1230
+      wx: -2.9644351
+    }
+    row_score {
+      row_id: 1231
+      wx: -1.2231704
+    }
+    row_score {
+      row_id: 1232
+      wx: -0.17650892
+    }
+    row_score {
+      row_id: 1233
+      wx: -2.6552634
+    }
+    row_score {
+      row_id: 1234
+      wx: -1.7168307
+    }
+    row_score {
+      row_id: 1235
+      wx: 0.49912864
+    }
+    row_score {
+      row_id: 1236
+      wx: -1.7593887
+    }
+    row_score {
+      row_id: 1237
+      wx: -4.4142346
+    }
+    row_score {
+      row_id: 1238
+      wx: -5.8623562
+    }
+    row_score {
+      row_id: 1239
+      wx: -1.6037544
+    }
+    row_score {
+      row_id: 1240
+      wx: -2.003108
+    }
+    row_score {
+      row_id: 1241
+      wx: -0.48793155
+    }
+    row_score {
+      row_id: 1242
+      wx: -1.2385539
+    }
+    row_score {
+      row_id: 1243
+      wx: -5.0739737
+    }
+    row_score {
+      row_id: 1244
+      wx: -2.023345
+    }
+    row_score {
+      row_id: 1245
+      wx: -0.031471748
+    }
+    row_score {
+      row_id: 1246
+      wx: -4.792007
+    }
+    row_score {
+      row_id: 1247
+      wx: -2.2017779
+    }
+    row_score {
+      row_id: 1248
+      wx: -0.80017823
+    }
+    row_score {
+      row_id: 1249
+      wx: -0.785484
+    }
+    row_score {
+      row_id: 1250
+      wx: 0.25426984
+    }
+    row_score {
+      row_id: 1251
+      wx: -0.48037064
+    }
+    row_score {
+      row_id: 1252
+      wx: -5.7493119
+    }
+    row_score {
+      row_id: 1253
+      wx: 0.74420452
+    }
+    row_score {
+      row_id: 1254
+      wx: -3.5329838
+    }
+    row_score {
+      row_id: 1255
+      wx: -6.5502634
+    }
+    row_score {
+      row_id: 1256
+      wx: 0.90776324
+    }
+    row_score {
+      row_id: 1257
+      wx: -5.913909
+    }
+    row_score {
+      row_id: 1258
+      wx: -5.816813
+    }
+    row_score {
+      row_id: 1259
+      wx: -3.062418
+    }
+    row_score {
+      row_id: 1260
+      wx: -2.7680466
+    }
+    row_score {
+      row_id: 1261
+      wx: -1.6489729
+    }
+    row_score {
+      row_id: 1262
+      wx: 2.1553628
+    }
+    row_score {
+      row_id: 1263
+      wx: -1.5049015
+    }
+    row_score {
+      row_id: 1264
+      wx: 3.3031151
+    }
+    row_score {
+      row_id: 1265
+      wx: -3.0603237
+    }
+    row_score {
+      row_id: 1266
+      wx: 3.8921158
+    }
+    row_score {
+      row_id: 1267
+      wx: -0.37420335
+    }
+    row_score {
+      row_id: 1268
+      wx: -2.6031663
+    }
+    row_score {
+      row_id: 1269
+      wx: -5.2781396
+    }
+    row_score {
+      row_id: 1270
+      wx: -3.2597618
+    }
+    row_score {
+      row_id: 1271
+      wx: -1.6838336
+    }
+    row_score {
+      row_id: 1272
+      wx: 1.1383011
+    }
+    row_score {
+      row_id: 1273
+      wx: -5.8489933
+    }
+    row_score {
+      row_id: 1274
+      wx: -1.6528041
+    }
+    row_score {
+      row_id: 1275
+      wx: -3.4289896
+    }
+    row_score {
+      row_id: 1276
+      wx: -2.0821292
+    }
+    row_score {
+      row_id: 1277
+      wx: -0.70629013
+    }
+    row_score {
+      row_id: 1278
+      wx: -2.5863023
+    }
+    row_score {
+      row_id: 1279
+      wx: -0.28235883
+    }
+    row_score {
+      row_id: 1280
+      wx: -2.789731
+    }
+    row_score {
+      row_id: 1281
+      wx: -3.651932
+    }
+    row_score {
+      row_id: 1282
+      wx: -0.49178734
+    }
+    row_score {
+      row_id: 1283
+      wx: -5.5772934
+    }
+    row_score {
+      row_id: 1284
+      wx: -1.6620513
+    }
+    row_score {
+      row_id: 1285
+      wx: -3.8770018
+    }
+    row_score {
+      row_id: 1286
+      wx: -0.47185269
+    }
+    row_score {
+      row_id: 1287
+      wx: 1.1168872
+    }
+    row_score {
+      row_id: 1288
+      wx: -3.1921451
+    }
+    row_score {
+      row_id: 1289
+      wx: -1.3205968
+    }
+    row_score {
+      row_id: 1290
+      wx: -2.2146118
+    }
+    row_score {
+      row_id: 1291
+      wx: -1.8627242
+    }
+    row_score {
+      row_id: 1292
+      wx: -3.8567967
+    }
+    row_score {
+      row_id: 1293
+      wx: -5.2492833
+    }
+    row_score {
+      row_id: 1294
+      wx: -3.9774272
+    }
+    row_score {
+      row_id: 1295
+      wx: -5.4545727
+    }
+    row_score {
+      row_id: 1296
+      wx: -0.840432
+    }
+    row_score {
+      row_id: 1297
+      wx: 0.49669093
+    }
+    row_score {
+      row_id: 1298
+      wx: -4.2208939
+    }
+    row_score {
+      row_id: 1299
+      wx: -3.4870744
+    }
+    row_score {
+      row_id: 1300
+      wx: 3.7052326
+    }
+    row_score {
+      row_id: 1301
+      wx: -0.94358218
+    }
+    row_score {
+      row_id: 1302
+      wx: -1.1684306
+    }
+    row_score {
+      row_id: 1303
+      wx: 1.0574725
+    }
+    row_score {
+      row_id: 1304
+      wx: 0.45070213
+    }
+    row_score {
+      row_id: 1305
+      wx: -4.1420164
+    }
+    row_score {
+      row_id: 1306
+      wx: 0.27190575
+    }
+    row_score {
+      row_id: 1307
+      wx: 0.086365514
+    }
+    row_score {
+      row_id: 1308
+      wx: -1.9716258
+    }
+    row_score {
+      row_id: 1309
+      wx: -5.3424106
+    }
+    row_score {
+      row_id: 1310
+      wx: -5.6336794
+    }
+    row_score {
+      row_id: 1311
+      wx: -4.7142787
+    }
+    row_score {
+      row_id: 1312
+      wx: 2.3979025
+    }
+    row_score {
+      row_id: 1313
+      wx: 3.3675401
+    }
+    row_score {
+      row_id: 1314
+      wx: 0.95212185
+    }
+    row_score {
+      row_id: 1315
+      wx: -1.3591753
+    }
+    row_score {
+      row_id: 1316
+      wx: -5.6132932
+    }
+    row_score {
+      row_id: 1317
+      wx: -4.5368657
+    }
+    row_score {
+      row_id: 1318
+      wx: -5.7992435
+    }
+    row_score {
+      row_id: 1319
+      wx: -5.7126055
+    }
+    row_score {
+      row_id: 1320
+      wx: -1.729884
+    }
+    row_score {
+      row_id: 1321
+      wx: -3.4649956
+    }
+    row_score {
+      row_id: 1322
+      wx: -4.4982347
+    }
+    row_score {
+      row_id: 1323
+      wx: -1.1666209
+    }
+    row_score {
+      row_id: 1324
+      wx: -6.2322087
+    }
+    row_score {
+      row_id: 1325
+      wx: 1.0178322
+    }
+    row_score {
+      row_id: 1326
+      wx: -3.5193887
+    }
+    row_score {
+      row_id: 1327
+      wx: -0.85608524
+    }
+    row_score {
+      row_id: 1328
+      wx: -4.5758448
+    }
+    row_score {
+      row_id: 1329
+      wx: -1.2927054
+    }
+    row_score {
+      row_id: 1330
+      wx: 0.30013305
+    }
+    row_score {
+      row_id: 1331
+      wx: 1.1928767
+    }
+    row_score {
+      row_id: 1332
+      wx: 0.950305
+    }
+    row_score {
+      row_id: 1333
+      wx: -4.3284016
+    }
+    row_score {
+      row_id: 1334
+      wx: -6.7001004
+    }
+    row_score {
+      row_id: 1335
+      wx: -0.57657087
+    }
+    row_score {
+      row_id: 1336
+      wx: -4.5563221
+    }
+    row_score {
+      row_id: 1337
+      wx: -5.0958009
+    }
+    row_score {
+      row_id: 1338
+      wx: -4.8512359
+    }
+    row_score {
+      row_id: 1339
+      wx: -0.44694078
+    }
+    row_score {
+      row_id: 1340
+      wx: -4.5368075
+    }
+    row_score {
+      row_id: 1341
+      wx: 1.66108
+    }
+    row_score {
+      row_id: 1342
+      wx: -0.5828107
+    }
+    row_score {
+      row_id: 1343
+      wx: -0.16016702
+    }
+    row_score {
+      row_id: 1344
+      wx: -2.9688897
+    }
+    row_score {
+      row_id: 1345
+      wx: 1.0209942
+    }
+    row_score {
+      row_id: 1346
+      wx: -4.9035754
+    }
+    row_score {
+      row_id: 1347
+      wx: -4.9759746
+    }
+    row_score {
+      row_id: 1348
+      wx: -3.6949861
+    }
+    row_score {
+      row_id: 1349
+      wx: -3.6336493
+    }
+    row_score {
+      row_id: 1350
+      wx: 1.3388917
+    }
+    row_score {
+      row_id: 1351
+      wx: 3.2354741
+    }
+    row_score {
+      row_id: 1352
+      wx: -5.3676519
+    }
+    row_score {
+      row_id: 1353
+      wx: 0.64077073
+    }
+    row_score {
+      row_id: 1354
+      wx: -1.5824071
+    }
+    row_score {
+      row_id: 1355
+      wx: -0.57517451
+    }
+    row_score {
+      row_id: 1356
+      wx: 3.5202944
+    }
+    row_score {
+      row_id: 1357
+      wx: -1.1729289
+    }
+    row_score {
+      row_id: 1358
+      wx: -0.97605103
+    }
+    row_score {
+      row_id: 1359
+      wx: -5.256196
+    }
+    row_score {
+      row_id: 1360
+      wx: -5.1356816
+    }
+    row_score {
+      row_id: 1361
+      wx: -3.8888447
+    }
+    row_score {
+      row_id: 1362
+      wx: -4.1199646
+    }
+    row_score {
+      row_id: 1363
+      wx: -5.0115256
+    }
+    row_score {
+      row_id: 1364
+      wx: -4.9639297
+    }
+    row_score {
+      row_id: 1365
+      wx: -0.56801206
+    }
+    row_score {
+      row_id: 1366
+      wx: 0.20626114
+    }
+    row_score {
+      row_id: 1367
+      wx: 1.5312804
+    }
+    row_score {
+      row_id: 1368
+      wx: 2.6083469
+    }
+    row_score {
+      row_id: 1369
+      wx: -0.79679918
+    }
+    row_score {
+      row_id: 1370
+      wx: -4.0562844
+    }
+    row_score {
+      row_id: 1371
+      wx: -1.7892151
+    }
+    row_score {
+      row_id: 1372
+      wx: -1.8932495
+    }
+    row_score {
+      row_id: 1373
+      wx: -2.9363778
+    }
+    row_score {
+      row_id: 1374
+      wx: 2.1768484
+    }
+    row_score {
+      row_id: 1375
+      wx: -3.6864557
+    }
+    row_score {
+      row_id: 1376
+      wx: -0.41615292
+    }
+    row_score {
+      row_id: 1377
+      wx: -0.018830162
+    }
+    row_score {
+      row_id: 1378
+      wx: 2.692385
+    }
+    row_score {
+      row_id: 1379
+      wx: 1.950006
+    }
+    row_score {
+      row_id: 1380
+      wx: 0.62708539
+    }
+    row_score {
+      row_id: 1381
+      wx: -3.2774954
+    }
+    row_score {
+      row_id: 1382
+      wx: -1.8814615
+    }
+    row_score {
+      row_id: 1383
+      wx: 1.0941782
+    }
+    row_score {
+      row_id: 1384
+      wx: -5.8554645
+    }
+    row_score {
+      row_id: 1385
+      wx: -5.445241
+    }
+    row_score {
+      row_id: 1386
+      wx: -5.0764537
+    }
+    row_score {
+      row_id: 1387
+      wx: -2.0731733
+    }
+    row_score {
+      row_id: 1388
+      wx: -4.0156455
+    }
+    row_score {
+      row_id: 1389
+      wx: -0.45583937
+    }
+    row_score {
+      row_id: 1390
+      wx: -6.3175783
+    }
+    row_score {
+      row_id: 1391
+      wx: -3.5254941
+    }
+    row_score {
+      row_id: 1392
+      wx: -2.3404744
+    }
+    row_score {
+      row_id: 1393
+      wx: -1.0486094
+    }
+    row_score {
+      row_id: 1394
+      wx: 0.84036565
+    }
+    row_score {
+      row_id: 1395
+      wx: -6.0723329
+    }
+    row_score {
+      row_id: 1396
+      wx: -1.4894221
+    }
+    row_score {
+      row_id: 1397
+      wx: 0.19852339
+    }
+    row_score {
+      row_id: 1398
+      wx: -4.8354239
+    }
+    row_score {
+      row_id: 1399
+      wx: -5.3843861
+    }
+    row_score {
+      row_id: 1400
+      wx: -3.0412276
+    }
+    row_score {
+      row_id: 1401
+      wx: -3.1139662
+    }
+    row_score {
+      row_id: 1402
+      wx: -5.6883159
+    }
+    row_score {
+      row_id: 1403
+      wx: -1.3024297
+    }
+    row_score {
+      row_id: 1404
+      wx: -3.0547409
+    }
+    row_score {
+      row_id: 1405
+      wx: -2.3047082
+    }
+    row_score {
+      row_id: 1406
+      wx: -3.4333656
+    }
+    row_score {
+      row_id: 1407
+      wx: -3.5923567
+    }
+    row_score {
+      row_id: 1408
+      wx: -0.43118572
+    }
+    row_score {
+      row_id: 1409
+      wx: -2.1920173
+    }
+    row_score {
+      row_id: 1410
+      wx: 1.3237822
+    }
+    row_score {
+      row_id: 1411
+      wx: 0.97159672
+    }
+    row_score {
+      row_id: 1412
+      wx: 1.1981057
+    }
+    row_score {
+      row_id: 1413
+      wx: -5.1620913
+    }
+    row_score {
+      row_id: 1414
+      wx: -4.8879685
+    }
+    row_score {
+      row_id: 1415
+      wx: -1.8526881
+    }
+    row_score {
+      row_id: 1416
+      wx: 0.19804537
+    }
+    row_score {
+      row_id: 1417
+      wx: -3.278774
+    }
+    row_score {
+      row_id: 1418
+      wx: -0.26886445
+    }
+    row_score {
+      row_id: 1419
+      wx: -4.7262254
+    }
+    row_score {
+      row_id: 1420
+      wx: -2.3027499
+    }
+    row_score {
+      row_id: 1421
+      wx: 2.3440266
+    }
+    row_score {
+      row_id: 1422
+      wx: -3.8279698
+    }
+    row_score {
+      row_id: 1423
+      wx: -4.7993183
+    }
+    row_score {
+      row_id: 1424
+      wx: 3.3952785
+    }
+    row_score {
+      row_id: 1425
+      wx: 0.78193653
+    }
+    row_score {
+      row_id: 1426
+      wx: 0.10426284
+    }
+    row_score {
+      row_id: 1427
+      wx: 2.3798506
+    }
+    row_score {
+      row_id: 1428
+      wx: -1.5970826
+    }
+    row_score {
+      row_id: 1429
+      wx: -2.5256886
+    }
+    row_score {
+      row_id: 1430
+      wx: 1.0507979
+    }
+    row_score {
+      row_id: 1431
+      wx: -3.3924673
+    }
+    row_score {
+      row_id: 1432
+      wx: -5.4618769
+    }
+    row_score {
+      row_id: 1433
+      wx: -3.2497542
+    }
+    row_score {
+      row_id: 1434
+      wx: -1.5824071
+    }
+    row_score {
+      row_id: 1435
+      wx: 0.94780636
+    }
+    row_score {
+      row_id: 1436
+      wx: -3.776967
+    }
+    row_score {
+      row_id: 1437
+      wx: -1.4532292
+    }
+    row_score {
+      row_id: 1438
+      wx: -4.0956788
+    }
+    row_score {
+      row_id: 1439
+      wx: 2.3150091
+    }
+    row_score {
+      row_id: 1440
+      wx: 1.8807225
+    }
+    row_score {
+      row_id: 1441
+      wx: -1.7239373
+    }
+    row_score {
+      row_id: 1442
+      wx: -3.8814611
+    }
+    row_score {
+      row_id: 1443
+      wx: -4.6374173
+    }
+    row_score {
+      row_id: 1444
+      wx: -5.0969572
+    }
+    row_score {
+      row_id: 1445
+      wx: -6.6132822
+    }
+    row_score {
+      row_id: 1446
+      wx: -1.9256904
+    }
+    row_score {
+      row_id: 1447
+      wx: -3.0535908
+    }
+    row_score {
+      row_id: 1448
+      wx: -5.7877808
+    }
+    row_score {
+      row_id: 1449
+      wx: -4.5377684
+    }
+    row_score {
+      row_id: 1450
+      wx: -1.5671214
+    }
+    row_score {
+      row_id: 1451
+      wx: -2.0306365
+    }
+    row_score {
+      row_id: 1452
+      wx: -1.2144449
+    }
+    row_score {
+      row_id: 1453
+      wx: -6.4396939
+    }
+    row_score {
+      row_id: 1454
+      wx: -5.3708858
+    }
+    row_score {
+      row_id: 1455
+      wx: -5.1390209
+    }
+    row_score {
+      row_id: 1456
+      wx: -4.7885609
+    }
+    row_score {
+      row_id: 1457
+      wx: 2.1486988
+    }
+    row_score {
+      row_id: 1458
+      wx: -0.15956084
+    }
+    row_score {
+      row_id: 1459
+      wx: -0.95660031
+    }
+    row_score {
+      row_id: 1460
+      wx: -1.9978167
+    }
+    row_score {
+      row_id: 1461
+      wx: -0.54763019
+    }
+    row_score {
+      row_id: 1462
+      wx: -3.2495823
+    }
+    row_score {
+      row_id: 1463
+      wx: 1.859754
+    }
+    row_score {
+      row_id: 1464
+      wx: 1.1344206
+    }
+    row_score {
+      row_id: 1465
+      wx: 0.88909352
+    }
+    row_score {
+      row_id: 1466
+      wx: -1.933835
+    }
+    row_score {
+      row_id: 1467
+      wx: -0.24389504
+    }
+    row_score {
+      row_id: 1468
+      wx: -4.8524442
+    }
+    row_score {
+      row_id: 1469
+      wx: -3.9467771
+    }
+    row_score {
+      row_id: 1470
+      wx: -1.6229463
+    }
+    row_score {
+      row_id: 1471
+      wx: -1.1663448
+    }
+    row_score {
+      row_id: 1472
+      wx: 1.4867995
+    }
+    row_score {
+      row_id: 1473
+      wx: -1.6361567
+    }
+    row_score {
+      row_id: 1474
+      wx: -0.52620947
+    }
+    row_score {
+      row_id: 1475
+      wx: -6.8404479
+    }
+    row_score {
+      row_id: 1476
+      wx: -2.5243237
+    }
+    row_score {
+      row_id: 1477
+      wx: -2.2993271
+    }
+    row_score {
+      row_id: 1478
+      wx: -1.3218646
+    }
+    row_score {
+      row_id: 1479
+      wx: 2.3308148
+    }
+    row_score {
+      row_id: 1480
+      wx: -4.8851066
+    }
+    row_score {
+      row_id: 1481
+      wx: -4.7476912
+    }
+    row_score {
+      row_id: 1482
+      wx: 3.2415478
+    }
+    row_score {
+      row_id: 1483
+      wx: -5.3034706
+    }
+    row_score {
+      row_id: 1484
+      wx: -7.0183249
+    }
+    row_score {
+      row_id: 1485
+      wx: -4.0271196
+    }
+    row_score {
+      row_id: 1486
+      wx: -1.7136774
+    }
+    row_score {
+      row_id: 1487
+      wx: -4.7844973
+    }
+    row_score {
+      row_id: 1488
+      wx: -1.1174209
+    }
+    row_score {
+      row_id: 1489
+      wx: -6.0882478
+    }
+    row_score {
+      row_id: 1490
+      wx: -2.8967516
+    }
+    row_score {
+      row_id: 1491
+      wx: 0.80328685
+    }
+    row_score {
+      row_id: 1492
+      wx: -4.454042
+    }
+    row_score {
+      row_id: 1493
+      wx: -2.2099319
+    }
+    row_score {
+      row_id: 1494
+      wx: -2.8010094
+    }
+    row_score {
+      row_id: 1495
+      wx: -6.4404459
+    }
+    row_score {
+      row_id: 1496
+      wx: -0.87927508
+    }
+    row_score {
+      row_id: 1497
+      wx: -5.8175192
+    }
+    row_score {
+      row_id: 1498
+      wx: -3.9140174
+    }
+    row_score {
+      row_id: 1499
+      wx: -3.4368916
+    }
+    row_score {
+      row_id: 1500
+      wx: -0.48075113
+    }
+    row_score {
+      row_id: 1501
+      wx: -4.1552935
+    }
+    row_score {
+      row_id: 1502
+      wx: 1.3175532
+    }
+    row_score {
+      row_id: 1503
+      wx: 1.1656492
+    }
+    row_score {
+      row_id: 1504
+      wx: -1.626018
+    }
+    row_score {
+      row_id: 1505
+      wx: -3.7012789
+    }
+    row_score {
+      row_id: 1506
+      wx: 1.3511617
+    }
+    row_score {
+      row_id: 1507
+      wx: -1.5233009
+    }
+    row_score {
+      row_id: 1508
+      wx: -2.6002102
+    }
+    row_score {
+      row_id: 1509
+      wx: -4.4107471
+    }
+    row_score {
+      row_id: 1510
+      wx: 0.50061691
+    }
+    row_score {
+      row_id: 1511
+      wx: -0.35729262
+    }
+    row_score {
+      row_id: 1512
+      wx: -3.0961008
+    }
+    row_score {
+      row_id: 1513
+      wx: -2.2420919
+    }
+    row_score {
+      row_id: 1514
+      wx: -1.3508835
+    }
+    row_score {
+      row_id: 1515
+      wx: 0.33797982
+    }
+    row_score {
+      row_id: 1516
+      wx: -0.049397398
+    }
+    row_score {
+      row_id: 1517
+      wx: -1.0507687
+    }
+    row_score {
+      row_id: 1518
+      wx: 4.014564
+    }
+    row_score {
+      row_id: 1519
+      wx: -3.0341792
+    }
+    row_score {
+      row_id: 1520
+      wx: -5.15044
+    }
+    row_score {
+      row_id: 1521
+      wx: -4.7511873
+    }
+    row_score {
+      row_id: 1522
+      wx: -1.144346
+    }
+    row_score {
+      row_id: 1523
+      wx: 0.76738018
+    }
+    row_score {
+      row_id: 1524
+      wx: -0.47373983
+    }
+    row_score {
+      row_id: 1525
+      wx: -6.3433366
+    }
+    row_score {
+      row_id: 1526
+      wx: -0.29370186
+    }
+    row_score {
+      row_id: 1527
+      wx: -5.1946564
+    }
+    row_score {
+      row_id: 1528
+      wx: -4.2175932
+    }
+    row_score {
+      row_id: 1529
+      wx: -0.11540846
+    }
+    row_score {
+      row_id: 1530
+      wx: -2.0767074
+    }
+    row_score {
+      row_id: 1531
+      wx: -2.0919452
+    }
+    row_score {
+      row_id: 1532
+      wx: -3.7282536
+    }
+    row_score {
+      row_id: 1533
+      wx: -2.4726717
+    }
+    row_score {
+      row_id: 1534
+      wx: -3.7146714
+    }
+    row_score {
+      row_id: 1535
+      wx: -2.5303922
+    }
+    row_score {
+      row_id: 1536
+      wx: 0.26350752
+    }
+    row_score {
+      row_id: 1537
+      wx: -1.2640879
+    }
+    row_score {
+      row_id: 1538
+      wx: 0.63790858
+    }
+    row_score {
+      row_id: 1539
+      wx: -4.37011
+    }
+    row_score {
+      row_id: 1540
+      wx: -0.23274067
+    }
+    row_score {
+      row_id: 1541
+      wx: -2.4646671
+    }
+    row_score {
+      row_id: 1542
+      wx: -1.7076921
+    }
+    row_score {
+      row_id: 1543
+      wx: -3.9380391
+    }
+    row_score {
+      row_id: 1544
+      wx: 0.64061964
+    }
+    row_score {
+      row_id: 1545
+      wx: -1.5405599
+    }
+    row_score {
+      row_id: 1546
+      wx: 0.36359617
+    }
+    row_score {
+      row_id: 1547
+      wx: 1.107617
+    }
+    row_score {
+      row_id: 1548
+      wx: -4.7565584
+    }
+    row_score {
+      row_id: 1549
+      wx: -5.0562387
+    }
+    row_score {
+      row_id: 1550
+      wx: 0.81002241
+    }
+    row_score {
+      row_id: 1551
+      wx: -1.7774621
+    }
+    row_score {
+      row_id: 1552
+      wx: 1.6128559
+    }
+    row_score {
+      row_id: 1553
+      wx: -2.3060505
+    }
+    row_score {
+      row_id: 1554
+      wx: -2.3347404
+    }
+    row_score {
+      row_id: 1555
+      wx: -3.8263359
+    }
+    row_score {
+      row_id: 1556
+      wx: -4.9895835
+    }
+    row_score {
+      row_id: 1557
+      wx: -0.40710708
+    }
+    row_score {
+      row_id: 1558
+      wx: -2.0210578
+    }
+    row_score {
+      row_id: 1559
+      wx: -3.4114099
+    }
+    row_score {
+      row_id: 1560
+      wx: 2.2109318
+    }
+    row_score {
+      row_id: 1561
+      wx: -1.3122357
+    }
+    row_score {
+      row_id: 1562
+      wx: -4.6968751
+    }
+    row_score {
+      row_id: 1563
+      wx: -1.734138
+    }
+    row_score {
+      row_id: 1564
+      wx: -0.91080934
+    }
+    row_score {
+      row_id: 1565
+      wx: -6.0817652
+    }
+    row_score {
+      row_id: 1566
+      wx: -1.0852424
+    }
+    row_score {
+      row_id: 1567
+      wx: -4.5802021
+    }
+    row_score {
+      row_id: 1568
+      wx: -2.8286669
+    }
+    row_score {
+      row_id: 1569
+      wx: 2.889827
+    }
+    row_score {
+      row_id: 1570
+      wx: -2.722002
+    }
+    row_score {
+      row_id: 1571
+      wx: 3.1154895
+    }
+    row_score {
+      row_id: 1572
+      wx: -4.6722097
+    }
+    row_score {
+      row_id: 1573
+      wx: -2.8786025
+    }
+    row_score {
+      row_id: 1574
+      wx: -6.3137689
+    }
+    row_score {
+      row_id: 1575
+      wx: -3.3228345
+    }
+    row_score {
+      row_id: 1576
+      wx: -1.9778211
+    }
+    row_score {
+      row_id: 1577
+      wx: -3.3440864
+    }
+    row_score {
+      row_id: 1578
+      wx: 0.84724957
+    }
+    row_score {
+      row_id: 1579
+      wx: -0.85741711
+    }
+    row_score {
+      row_id: 1580
+      wx: -2.5406058
+    }
+    row_score {
+      row_id: 1581
+      wx: -5.2252774
+    }
+    row_score {
+      row_id: 1582
+      wx: 0.32741189
+    }
+    row_score {
+      row_id: 1583
+      wx: -2.2530859
+    }
+    row_score {
+      row_id: 1584
+      wx: -0.63256532
+    }
+    row_score {
+      row_id: 1585
+      wx: 1.2859262
+    }
+    row_score {
+      row_id: 1586
+      wx: -3.08744
+    }
+    row_score {
+      row_id: 1587
+      wx: -0.8877697
+    }
+    row_score {
+      row_id: 1588
+      wx: -3.3641007
+    }
+    row_score {
+      row_id: 1589
+      wx: -0.88125724
+    }
+    row_score {
+      row_id: 1590
+      wx: 3.3163874
+    }
+    row_score {
+      row_id: 1591
+      wx: 0.63855386
+    }
+    row_score {
+      row_id: 1592
+      wx: -6.3034558
+    }
+    row_score {
+      row_id: 1593
+      wx: 0.1055399
+    }
+    row_score {
+      row_id: 1594
+      wx: -2.5991755
+    }
+    row_score {
+      row_id: 1595
+      wx: -1.9292145
+    }
+    row_score {
+      row_id: 1596
+      wx: -4.7503963
+    }
+    row_score {
+      row_id: 1597
+      wx: 2.154639
+    }
+    row_score {
+      row_id: 1598
+      wx: -2.6395235
+    }
+    row_score {
+      row_id: 1599
+      wx: -1.9453017
+    }
+    row_score {
+      row_id: 1600
+      wx: -4.5567951
+    }
+    row_score {
+      row_id: 1601
+      wx: -2.7189264
+    }
+    row_score {
+      row_id: 1602
+      wx: -5.9730844
+    }
+    row_score {
+      row_id: 1603
+      wx: -5.4701934
+    }
+    row_score {
+      row_id: 1604
+      wx: -2.1420944
+    }
+  }
+}

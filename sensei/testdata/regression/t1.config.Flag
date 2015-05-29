@@ -1,0 +1,73 @@
+command_list {
+  command {
+    set {
+      name: "t1 test :)"
+      regularization {
+        l1: 1
+        l2: 0.5
+      }
+      logging {
+        log_timestamp: false
+        text_log_path: "sensei/testdata/regression/t1.log"
+        clear_log_files: true
+      }
+      inertia_factor: 1
+      deterministic: true
+    }
+  }
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set {
+          files_glob: "sensei/testdata/a1a.libsvm"
+        }
+        feature_spec {
+          product {
+          }
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+      }
+    }
+  }
+  command { internal { get_data { } } }
+  # We are testing command_list as well.
+  command { command_list { command { command_list { command {
+    repeat {
+      repetitions: 1000
+      command {
+        fit_model_weights {
+          iterations: 1
+        }
+      }
+      command {
+        evaluate_stats {
+          auc: true
+        }
+      }
+    }
+  } } } } }
+  command {
+    get_model {
+    }
+  }
+  command {
+    write_model {
+      set {
+        format: TEXT
+        output_model_path: "sensei/testdata/regression/t1.model"
+      }
+    }
+  }
+  command {
+    write_model {
+      write {
+      }
+    }
+  }
+}

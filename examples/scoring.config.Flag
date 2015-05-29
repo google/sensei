@@ -1,0 +1,31 @@
+command_list {
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set {
+          files_glob: "input_with_ids.libsvm"
+        }
+        read_model {
+          format: TEXT
+          model_input_path: "model.txt"
+        }
+        user_id_feature_name: "id"
+      }
+    }
+  }
+  command {
+    score_rows {
+      set {
+        format: TEXT
+        output_fname: "scores.txt"
+      }
+    }
+  }
+  command {
+    score_rows {
+      write_scores {
+      }
+    }
+  }
+}

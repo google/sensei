@@ -1,0 +1,46 @@
+command_list {
+  command {
+    set {
+      logging {
+        log_timestamp: false
+        text_log_path: "sensei/testdata/regression/b17267972.log"
+        clear_log_files: true
+      }
+      inertia_factor: 1.0
+      allow_undo: true
+      deterministic: true
+    }
+  }
+  command {
+    read_data {
+      data_reader {
+        format: LIBSVM
+        training_set: {
+          files_glob: "sensei/testdata/simplest.libsvm"
+        }
+        feature_spec {
+          product {
+            prefix: ""
+          }
+        }
+        thread_count: 1
+      }
+    }
+  }
+  command {
+    prune_features {
+      feature_pruning {
+        feature_scoring { feature_ordering: WEIGHT_ABSOLUTE_VALUE }
+        top_count: 0
+      }
+    }
+  }
+  command {
+    prune_features {
+      feature_pruning {
+        feature_scoring { feature_ordering: WEIGHT_ABSOLUTE_VALUE }
+        top_count: 0
+      }
+    }
+  }
+}
